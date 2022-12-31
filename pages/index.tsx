@@ -1,4 +1,17 @@
 import Head from 'next/head'
+import styled from 'styled-components'
+
+const S = {
+  TestButton: styled.button`
+    border: none;
+    padding: 15px;
+    cursor: pointer;
+
+    &:hover {
+      opacity: 0.7;
+    }
+  `,
+}
 
 export default function Home() {
   return (
@@ -12,7 +25,9 @@ export default function Home() {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <main>Test</main>
+      <main>
+        <S.TestButton>Test</S.TestButton>
+      </main>
     </>
   )
 }
