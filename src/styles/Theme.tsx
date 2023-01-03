@@ -13,12 +13,22 @@ const theme = {
     fontSizeXs: TYPOGRAPHY.fontSizeXs,
     fontSizeSm: TYPOGRAPHY.fontSizeSm,
     fontSizeReg: TYPOGRAPHY.fontSizeReg,
+    fontSizeMed1: TYPOGRAPHY.fontSizeMed1,
+    fontSizeMed2: TYPOGRAPHY.fontSizeMed2,
+    fontSizeLg: TYPOGRAPHY.fontSizeLg,
+    fontSizeXl: TYPOGRAPHY.fontSizeXl,
+    fontSizeXxl: TYPOGRAPHY.fontSizeXxl,
+    fontSizeXxxl: TYPOGRAPHY.fontSizeXxxl,
   },
   fontWeights: {
     fontWeightReg: TYPOGRAPHY.fontWeightReg,
+    fontWeightMedium: TYPOGRAPHY.fontWeightMedium,
+    fontWeightBold: TYPOGRAPHY.fontWeightBold,
   },
   breakPoints: {
     tabletPortrait: BREAKPOINTS.bpTabletPortrait,
+    tabletLandscape: BREAKPOINTS.bpTabletLandscape,
+    desktop: BREAKPOINTS.bpDesktop,
   },
 }
 

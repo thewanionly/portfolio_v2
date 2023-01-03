@@ -12,12 +12,22 @@ declare module 'styled-components' {
       fontSizeXs: string
       fontSizeSm: string
       fontSizeReg: string
+      fontSizeMed1: string
+      fontSizeMed2: string
+      fontSizeLg: string
+      fontSizeXl: string
+      fontSizeXxl: string
+      fontSizeXxxl: string
     }
     fontWeights: {
       fontWeightReg: number
+      fontWeightMedium: number
+      fontWeightBold: number
     }
     breakPoints: {
       tabletPortrait: string
+      tabletLandscape: string
+      desktop: string
     }
   }
 }
