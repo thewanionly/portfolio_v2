@@ -1,5 +1,5 @@
 import type { AppProps } from 'next/app'
-import { GlobalStyles, Theme } from '../styles'
+import { GlobalStyles, Theme } from '../common/styles'
 
 export default function App({ Component, pageProps }: AppProps) {
   return (
