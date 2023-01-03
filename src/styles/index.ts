@@ -1,5 +1,4 @@
-import COLORS from './colors'
-import TYPOGRAPHY from './typography'
-import BREAKPOINTS from './breakpoints'
+import Theme from './theme/Theme'
+import GlobalStyles from './GlobalStyles'
 
-export { COLORS, TYPOGRAPHY, BREAKPOINTS }
+export { GlobalStyles, Theme }

@@ -1,7 +1,5 @@
-import React from 'react'
-import { ThemeProvider } from 'styled-components'
 import { rgba } from 'polished'
-import { COLORS, TYPOGRAPHY, BREAKPOINTS } from './'
+import { BREAKPOINTS, COLORS, TYPOGRAPHY } from '../variables'
 
 const theme = {
   colors: {
@@ -71,12 +69,4 @@ const theme = {
   },
 }
 
-type ThemeProps = {
-  children: React.ReactNode
-}
-
-const Theme = ({ children }: ThemeProps) => (
-  <ThemeProvider theme={theme}>{children}</ThemeProvider>
-)
-
-export default Theme
+export default theme
