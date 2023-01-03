@@ -63,9 +63,9 @@ const theme = {
     fontWeightBold: TYPOGRAPHY.fontWeightBold,
   },
   breakPoints: {
-    tabletPortrait: BREAKPOINTS.bpTabletPortrait,
-    tabletLandscape: BREAKPOINTS.bpTabletLandscape,
-    desktop: BREAKPOINTS.bpDesktop,
+    tabletPortrait: BREAKPOINTS.tabletPortrait,
+    tabletLandscape: BREAKPOINTS.tabletLandscape,
+    desktop: BREAKPOINTS.desktop,
   },
 }
 

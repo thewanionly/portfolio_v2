@@ -14,6 +14,21 @@ const GlobalStyles = createGlobalStyle`
     scroll-behavior: smooth;
     font-size: 43.75%; //1rem = 7px 7px/16px = 43.75%
 
+    @media only screen and ${({ theme: { breakPoints } }) =>
+      breakPoints.tabletPortrait} {
+      font-size: 50%; //1rem = 8px 8px/16px = 50%
+    }
+
+    @media only screen and ${({ theme: { breakPoints } }) =>
+      breakPoints.tabletLandscape} {
+      font-size: 56.25%; //1rem = 9px 9px/16px = 56.25%
+    }
+
+    @media only screen and ${({ theme: { breakPoints } }) =>
+      breakPoints.desktop} {
+      font-size: 62.5%; //1rem = 10px 10px/16px = 62.5%
+    }
+
     & * {
       font-family: ${({ theme: { fonts } }) => fonts.fontFamily};
       font-size:  ${({ theme: { fontSizes } }) => fontSizes.fontSizeReg};
