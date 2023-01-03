@@ -2,6 +2,7 @@ const COLORS = {
   /* Brand Colors */
   blue: '#506db5',
   blueLight: '#738ac4',
+  dark: '#0e0e0e',
 
   /* Neutral Colors */
   grey: '#cfcfcf',
