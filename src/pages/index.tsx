@@ -1,4 +1,5 @@
 import Head from 'next/head'
+import Header from '../sections/Header'
 
 export default function Home() {
   return (
@@ -30,7 +31,9 @@ export default function Home() {
         <link rel="icon" href="/favicon/favicon.ico" />
         <link rel="manifest" href="/favicon/site.webmanifest" />
       </Head>
-      <main></main>
+      <main>
+        <Header />
+      </main>
     </>
   )
 }
