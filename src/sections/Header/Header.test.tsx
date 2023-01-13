@@ -10,7 +10,10 @@ describe('Header', () => {
     it(`displays logo image`, () => {
       setup()
 
-      // TODO
+      const logo = screen.getByAltText('Header logo')
+
+      expect(logo).toBeInTheDocument()
+      expect(logo).toHaveAttribute('src', '/images/logo.svg')
     })
 
     it(`displays a hamburger menu icon when screen size is smaller than 1024px`, () => {
