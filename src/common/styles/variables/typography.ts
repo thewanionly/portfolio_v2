@@ -1,4 +1,4 @@
-const TYPOGRAPHY = {
+export const TYPOGRAPHY = {
   /* Font family */
   manrope: `'Manrope', sans-serif`,
 
@@ -18,5 +18,3 @@ const TYPOGRAPHY = {
   fontWeightMedium: 500,
   fontWeightBold: 700,
 } as const
-
-export default TYPOGRAPHY

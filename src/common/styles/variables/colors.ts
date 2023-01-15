@@ -1,4 +1,4 @@
-const COLORS = {
+export const COLORS = {
   /* Brand Colors */
   blue: '#506db5',
   blueLight: '#738ac4',
@@ -13,5 +13,3 @@ const COLORS = {
   /* Utility colors */
   red: '#e74c3c',
 } as const
-
-export default COLORS
