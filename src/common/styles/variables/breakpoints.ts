@@ -4,10 +4,8 @@ const screenSizes = {
   lg: '90em', // 1440px / 16 (rem can't be used in media queries)
 }
 
-const BREAKPOINTS = {
+export const BREAKPOINTS = {
   tabletPortrait: `(min-width: ${screenSizes.sm})`,
   tabletLandscape: `(min-width: ${screenSizes.reg})`,
   desktop: `(min-width: ${screenSizes.lg})`,
 } as const
-
-export default BREAKPOINTS

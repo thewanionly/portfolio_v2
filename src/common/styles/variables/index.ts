@@ -1,5 +1,3 @@
-import COLORS from './colors'
-import TYPOGRAPHY from './typography'
-import BREAKPOINTS from './breakpoints'
-
-export { COLORS, TYPOGRAPHY, BREAKPOINTS }
+export * from './colors'
+export * from './typography'
+export * from './breakpoints'
