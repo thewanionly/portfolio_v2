@@ -1,4 +1,4 @@
-import { render, screen } from '@testing-library/react'
+import { render, screen } from '../../common/tests'
 import Header from './Header'
 
 const setup = () => {
