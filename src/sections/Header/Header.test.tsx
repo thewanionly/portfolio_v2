@@ -16,10 +16,13 @@ describe('Header', () => {
       expect(logo).toHaveAttribute('src', '/images/logo.svg')
     })
 
-    xit(`displays a hamburger menu icon when screen size is smaller than 1024px`, () => {
+    it(`displays a hamburger menu icon when screen size is smaller than 1024px`, () => {
+      // TODO: Test responsive screen sizes
       setup()
 
-      // TODO
+      const menuUIcon = screen.getByRole('button', { name: 'Nav menu' })
+
+      expect(menuUIcon).toBeInTheDocument()
     })
 
     xit(`hides the hamburger menu icon when screen size is larger than 1024px`, () => {
