@@ -26,11 +26,9 @@ const S = {
   HeaderLogoContainer: styled.div`
     user-select: none;
     cursor: pointer;
-    display: flex;
-    align-items: center;
 
-    width: 13rem;
     height: 2.4rem;
+    width: 11.44rem;
     position: relative;
   `,
   HeaderLogo: styled(Image)``,
