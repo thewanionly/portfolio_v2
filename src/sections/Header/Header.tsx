@@ -4,6 +4,8 @@ import styled from 'styled-components'
 
 import { container } from '../../common/styles/utilities'
 
+import { HeaderNavToggle } from './HeaderNavToggle'
+
 const S = {
   Header: styled.header`
     position: fixed;
@@ -34,57 +36,11 @@ const S = {
   HeaderLogo: styled(Image)``,
 }
 
-const HeaderNavToggleIcon = styled.span`
-  position: relative;
-
-  &,
-  &::before,
-  &::after {
-    display: block;
-    background-color: ${({ theme: { colors } }) => colors.navToggle};
-    content: '';
-    height: 0.2rem;
-    width: 2.4rem;
-    position: absolute;
-    transition: all 0.2s ease-out;
-  }
-
-  &::before {
-    top: -0.5rem;
-  }
-
-  &::after {
-    top: 0.5rem;
-  }
-`
-
-const HeaderNavToggle = styled.button`
-  position: absolute;
-  background: transparent;
-  color: ${({ theme: { colors } }) => colors.navToggle};
-  width: 2.4rem;
-  padding: 1rem 0;
-  overflow: hidden;
-
-  &:focus,
-  &:hover {
-    ${HeaderNavToggleIcon} {
-      &,
-      &::before,
-      &::after {
-        background-color: ${({ theme: { colors } }) => colors.primary};
-      }
-    }
-  }
-`
-
 const Header = () => {
   return (
     <S.Header>
       <S.HeaderContainer>
-        <HeaderNavToggle title="Nav menu">
-          <HeaderNavToggleIcon />
-        </HeaderNavToggle>
+        <HeaderNavToggle />
         <S.HeaderLogoLink href="#">
           <S.HeaderLogoContainer>
             <S.HeaderLogo src="/images/logo.svg" alt="Header logo" fill />
