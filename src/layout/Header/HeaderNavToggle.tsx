@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import styled, { css } from 'styled-components'
+import { useHeaderContext } from './Header.context'
 
 const StyledHeaderNavToggleIcon = styled.span<WithCloseIcon>`
   position: relative;
@@ -80,17 +81,15 @@ type WithCloseIcon = {
 }
 
 export const HeaderNavToggle = () => {
-  const [open, setOpen] = useState(false)
-
-  const toggleOpen = () => setOpen((prev) => !prev)
+  const { isNavMenuOpen, toggleNavMenu } = useHeaderContext()
 
   return (
     <StyledHeaderNavToggle
       title="Nav menu"
-      showCloseIcon={open}
-      onClick={toggleOpen}
+      showCloseIcon={isNavMenuOpen}
+      onClick={toggleNavMenu}
     >
-      <StyledHeaderNavToggleIcon showCloseIcon={open} />
+      <StyledHeaderNavToggleIcon showCloseIcon={isNavMenuOpen} />
     </StyledHeaderNavToggle>
   )
 }

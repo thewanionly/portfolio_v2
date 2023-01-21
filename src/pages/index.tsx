@@ -1,5 +1,5 @@
 import Head from 'next/head'
-import Header from '../layout/Header'
+import Header, { HeaderProvider } from '../layout/Header'
 
 export default function Home() {
   return (
@@ -32,7 +32,9 @@ export default function Home() {
         <link rel="manifest" href="/favicon/site.webmanifest" />
       </Head>
       <main>
-        <Header />
+        <HeaderProvider>
+          <Header />
+        </HeaderProvider>
       </main>
     </>
   )
