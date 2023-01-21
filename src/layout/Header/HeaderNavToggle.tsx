@@ -68,6 +68,11 @@ const StyledHeaderNavToggle = styled.button<WithCloseIcon>`
       }
     }
   }
+
+  @media only screen and ${({ theme: { breakPoints } }) =>
+      breakPoints.tabletLandscape} {
+    display: none;
+  }
 `
 
 type WithCloseIcon = {

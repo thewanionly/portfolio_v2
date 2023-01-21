@@ -57,6 +57,11 @@ const GlobalStyles = createGlobalStyle`
         background-color: ${({ theme: { colors } }) => colors.primaryLight};
       }
     }
+
+    @media only screen and ${({ theme: { breakPoints } }) =>
+      breakPoints.tabletLandscape} {
+     overflow: unset !important;
+    }
   }
 
   section {

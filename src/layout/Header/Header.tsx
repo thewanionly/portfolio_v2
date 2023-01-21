@@ -15,15 +15,53 @@ const S = {
     height: 8.1rem;
     display: flex;
     align-items: center;
+
+    &::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      background-color: ${({ theme: { colors } }) => colors.headerDividerBg};
+      height: 0.1rem;
+      width: 100%;
+      max-width: 120rem;
+
+      @media only screen and ${({ theme: { breakPoints } }) =>
+          breakPoints.tabletPortrait} {
+        left: calc((100% - min(120rem, 80%)) / 2);
+        width: 80%;
+      }
+
+      @media only screen and ${({ theme: { breakPoints } }) =>
+          breakPoints.desktop} {
+        left: calc((100% - min(120rem, 75%)) / 2);
+        width: 75%;
+      }
+    }
   `,
   HeaderContainer: styled.div`
     ${container}
 
     display: flex;
     align-items: center;
+
+    @media only screen and ${({ theme: { breakPoints } }) =>
+        breakPoints.tabletLandscape} {
+      justify-content: space-between;
+    }
   `,
   HeaderLogoLink: styled(Link)`
     margin: 0 auto;
+
+    @media only screen and ${({ theme: { breakPoints } }) =>
+        breakPoints.tabletPortrait} {
+      margin: 0 5rem;
+    }
+
+    @media only screen and ${({ theme: { breakPoints } }) =>
+        breakPoints.tabletLandscape} {
+      margin: 0;
+    }
   `,
   HeaderLogoContainer: styled.div`
     user-select: none;
@@ -33,7 +71,6 @@ const S = {
     width: 11.44rem;
     position: relative;
   `,
-  HeaderLogo: styled(Image)``,
 }
 
 const Header = () => {
@@ -43,7 +80,7 @@ const Header = () => {
         <HeaderNavToggle />
         <S.HeaderLogoLink href="#">
           <S.HeaderLogoContainer>
-            <S.HeaderLogo src="/images/logo.svg" alt="Header logo" fill />
+            <Image src="/images/logo.svg" alt="Header logo" fill />
           </S.HeaderLogoContainer>
         </S.HeaderLogoLink>
       </S.HeaderContainer>
