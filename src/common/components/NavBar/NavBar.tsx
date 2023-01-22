@@ -1,24 +1,49 @@
 import Link from 'next/link'
-import styled from 'styled-components'
+import styled, { css } from 'styled-components'
 
 const S = {
-  NavBar: styled.nav`
+  NavBar: styled.nav<WithIsMenu>`
     visibility: hidden;
     opacity: 0;
     transition: opacity 0.3s ease-out;
     user-select: none;
 
-    @media only screen and ${({ theme: { breakPoints } }) =>
-        breakPoints.tabletLandscape} {
-      visibility: visible;
-      opacity: 1;
-    }
-  `,
-  NavBarList: styled.ul`
-    display: none;
+    ${({ isMenu }) =>
+      isMenu &&
+      css`
+        visibility: visible;
+        opacity: 1;
+
+        position: absolute;
+        top: 7.5rem;
+        left: 0;
+        background-color: ${({ theme: { colors } }) => colors.navMenuBg};
+        padding: 8rem;
+        width: 100%;
+        height: calc(100vh - 7.5rem);
+        z-index: 1;
+        text-align: center;
+      `}
 
     @media only screen and ${({ theme: { breakPoints } }) =>
-        breakPoints.tabletLandscape} {
+      breakPoints.tabletLandscape} {
+      visibility: ${({ isMenu }) => (isMenu ? 'hidden' : 'visible')};
+      opacity: ${({ isMenu }) => (isMenu ? 0 : 1)};
+    }
+  `,
+  NavBarList: styled.ul<WithIsMenu>`
+    display: none;
+
+    ${({ isMenu }) =>
+      isMenu &&
+      css`
+        display: flex;
+        flex-direction: column;
+        gap: 2em;
+      `}
+
+    @media only screen and ${({ theme: { breakPoints } }) =>
+      breakPoints.tabletLandscape} {
       display: flex;
       gap: 3.4rem;
     }
@@ -57,10 +82,19 @@ const NAVIGATION_LINKS = {
   },
 }
 
-const NavBar = () => {
+type WithIsMenu = {
+  isMenu: boolean
+}
+
+type NavBarProps = {
+  className?: string
+  isMenu: boolean
+}
+
+const NavBar = ({ className, isMenu = false }: NavBarProps) => {
   return (
-    <S.NavBar>
-      <S.NavBarList>
+    <S.NavBar className={className} isMenu={isMenu}>
+      <S.NavBarList isMenu={isMenu}>
         {Object.values(NAVIGATION_LINKS).map(({ href, label }) => (
           <S.NavBarListItem key={label}>
             <S.NavBarLink href={href}>{label}</S.NavBarLink>
