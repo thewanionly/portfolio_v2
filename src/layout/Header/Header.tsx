@@ -2,8 +2,10 @@ import Image from 'next/image'
 import Link from 'next/link'
 import styled from 'styled-components'
 
+import { NavBar } from '../../common/components'
 import { container } from '../../common/styles/utilities'
 
+import { useHeaderContext } from './Header.context'
 import { HeaderNavToggle } from './HeaderNavToggle'
 
 const S = {
@@ -74,6 +76,8 @@ const S = {
 }
 
 const Header = () => {
+  const { isNavMenuOpen } = useHeaderContext()
+
   return (
     <S.Header>
       <S.HeaderContainer>
@@ -83,6 +87,7 @@ const Header = () => {
             <Image src="/images/logo.svg" alt="Header logo" fill />
           </S.HeaderLogoContainer>
         </S.HeaderLogoLink>
+        <NavBar isMenu={isNavMenuOpen} />
       </S.HeaderContainer>
     </S.Header>
   )
