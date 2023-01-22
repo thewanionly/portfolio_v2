@@ -2,6 +2,7 @@ import Image from 'next/image'
 import Link from 'next/link'
 import styled from 'styled-components'
 
+import { NavBar } from '../../common/components'
 import { container } from '../../common/styles/utilities'
 
 import { HeaderNavToggle } from './HeaderNavToggle'
@@ -83,6 +84,7 @@ const Header = () => {
             <Image src="/images/logo.svg" alt="Header logo" fill />
           </S.HeaderLogoContainer>
         </S.HeaderLogoLink>
+        <NavBar />
       </S.HeaderContainer>
     </S.Header>
   )
