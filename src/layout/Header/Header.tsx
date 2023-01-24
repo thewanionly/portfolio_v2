@@ -1,8 +1,6 @@
-import Image from 'next/image'
-import Link from 'next/link'
 import styled from 'styled-components'
 
-import { NavBar } from '../../common/components'
+import { Logo, NavBar } from '../../common/components'
 import { container } from '../../common/styles/utilities'
 
 import { useHeaderContext } from './Header.context'
@@ -52,7 +50,7 @@ const S = {
       justify-content: space-between;
     }
   `,
-  HeaderLogoLink: styled(Link)`
+  HeaderLogo: styled(Logo)`
     margin: 0 auto;
 
     @media only screen and ${({ theme: { breakPoints } }) =>
@@ -65,14 +63,6 @@ const S = {
       margin: 0;
     }
   `,
-  HeaderLogoContainer: styled.div`
-    user-select: none;
-    cursor: pointer;
-
-    height: 2.4rem;
-    width: 11.44rem;
-    position: relative;
-  `,
 }
 
 const Header = () => {
@@ -82,11 +72,7 @@ const Header = () => {
     <S.Header>
       <S.HeaderContainer>
         <HeaderNavToggle />
-        <S.HeaderLogoLink href="#">
-          <S.HeaderLogoContainer>
-            <Image src="/images/logo.svg" alt="Header logo" fill />
-          </S.HeaderLogoContainer>
-        </S.HeaderLogoLink>
+        <S.HeaderLogo altText="Header logo" />
         <NavBar isMenu={isNavMenuOpen} />
       </S.HeaderContainer>
     </S.Header>
