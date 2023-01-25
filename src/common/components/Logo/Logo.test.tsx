@@ -1,3 +1,4 @@
+import userEvent from '@testing-library/user-event'
 import { render, screen } from '../../../common/tests'
 import Logo from './Logo'
 
@@ -18,10 +19,14 @@ describe('Logo', () => {
   })
 
   describe('Interaction', () => {
-    xit(`goes back the top of the screen when logo is clicked`, () => {
+    xit(`changes the URL to "#" when Logo is clicked`, () => {
+      const redirect = jest.fn()
       setup()
 
-      // TODO
+      const logo = screen.getByAltText('Logo')
+      userEvent.click(logo)
+
+      expect(redirect).toHaveBeenCalledWith('#')
     })
   })
 })
