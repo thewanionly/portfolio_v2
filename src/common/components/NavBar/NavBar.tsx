@@ -27,8 +27,17 @@ const S = {
 
     @media only screen and ${({ theme: { breakPoints } }) =>
       breakPoints.tabletLandscape} {
-      visibility: ${({ isMenu }) => (isMenu ? 'hidden' : 'visible')};
-      opacity: ${({ isMenu }) => (isMenu ? 0 : 1)};
+      visibility: visible;
+      opacity: 1;
+
+      position: initial;
+      top: 0;
+      left: 0;
+      background-color: transparent;
+      padding: 0;
+      width: auto;
+      height: auto;
+      z-index: 0;
     }
   `,
   NavBarList: styled.ul<WithIsMenu>`
@@ -45,6 +54,7 @@ const S = {
     @media only screen and ${({ theme: { breakPoints } }) =>
       breakPoints.tabletLandscape} {
       display: flex;
+      flex-direction: row;
       gap: 3.4rem;
     }
   `,
