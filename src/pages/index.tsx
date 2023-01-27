@@ -1,4 +1,5 @@
 import Head from 'next/head'
+import Footer from '../layout/Footer/Footer'
 import Header, { HeaderProvider } from '../layout/Header'
 
 export default function Home() {
@@ -34,6 +35,7 @@ export default function Home() {
       <main>
         <HeaderProvider>
           <Header />
+          <Footer />
         </HeaderProvider>
       </main>
     </>
