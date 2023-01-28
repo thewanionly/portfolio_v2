@@ -1,6 +1,7 @@
 import styled from 'styled-components'
 
 import { Logo, NavBar } from '../../common/components'
+import { NAVIGATION_LINKS } from '../../common/constants'
 import { container } from '../../common/styles/utilities'
 
 import { useHeaderContext } from './Header.context'
@@ -73,7 +74,10 @@ const Header = () => {
       <S.HeaderContainer>
         <HeaderNavToggle />
         <S.HeaderLogo altText="Header logo" />
-        <NavBar isMenu={isNavMenuOpen} />
+        <NavBar
+          isMenu={isNavMenuOpen}
+          links={Object.values(NAVIGATION_LINKS)}
+        />
       </S.HeaderContainer>
     </S.Header>
   )

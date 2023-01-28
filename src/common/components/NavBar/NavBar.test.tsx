@@ -1,23 +1,20 @@
-import { render, screen } from '@testing-library/react'
+import { render, screen } from '../../../common/tests'
+import { NAVIGATION_LINKS } from '../../constants'
 import NavBar from './NavBar'
 
 const setup = () => {
-  render(<NavBar />)
+  render(<NavBar links={Object.values(NAVIGATION_LINKS)} isMenu />)
 }
 
 describe('NavBar', () => {
   describe('Layout', () => {
-    xit.each`
-      path            | section
-      ${'/#'}         | ${'Home'}
-      ${'/#about'}    | ${'About'}
-      ${'/#skills'}   | ${'Skills'}
-      ${'/#projects'} | ${'Projects'}
-      ${'/#contact'}  | ${'Contact'}
-    `('displays $section navigation link', ({ path, section }) => {
-      // setup(path)
-      // TODO
-      // expect(screen.getByTestId(section)).toBeInTheDocument()
+    it(`displays the navigation links`, () => {
+      // WIP
+      setup()
+
+      Object.values(NAVIGATION_LINKS).forEach(({ label }) => {
+        expect(screen.getByRole('link', { name: label })).toBeInTheDocument()
+      })
     })
   })
 
