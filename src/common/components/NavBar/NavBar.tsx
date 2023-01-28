@@ -69,43 +69,26 @@ const S = {
   `,
 }
 
-const NAVIGATION_LINKS = {
-  home: {
-    href: '#',
-    label: 'Home',
-  },
-  about: {
-    href: '#about',
-    label: 'About',
-  },
-  skills: {
-    href: '#skills',
-    label: 'Skills',
-  },
-  projects: {
-    href: '#projects',
-    label: 'Projects',
-  },
-  contact: {
-    href: '#contact',
-    label: 'Contact',
-  },
-}
-
 type WithIsMenu = {
   isMenu: boolean
 }
 
-type NavBarProps = {
-  className?: string
-  isMenu: boolean
+interface NavLink {
+  href: string
+  label: string
 }
 
-const NavBar = ({ className, isMenu = false }: NavBarProps) => {
+type NavBarProps = {
+  className?: string
+  links: NavLink[]
+  isMenu?: boolean
+}
+
+const NavBar = ({ className, links, isMenu = false }: NavBarProps) => {
   return (
     <S.NavBar className={className} isMenu={isMenu}>
       <S.NavBarList isMenu={isMenu}>
-        {Object.values(NAVIGATION_LINKS).map(({ href, label }) => (
+        {links?.map(({ href, label }) => (
           <S.NavBarListItem key={label}>
             <S.NavBarLink href={href}>{label}</S.NavBarLink>
           </S.NavBarListItem>
