@@ -1,4 +1,3 @@
-import userEvent from '@testing-library/user-event'
 import { render, screen } from '../../../common/tests'
 import Logo from './Logo'
 
@@ -19,14 +18,12 @@ describe('Logo', () => {
   })
 
   describe('Interaction', () => {
-    xit(`changes the URL to "#" when Logo is clicked`, () => {
-      const redirect = jest.fn()
+    it(`navigates to "#" when Logo is clicked`, () => {
       setup()
 
-      const logo = screen.getByAltText('Logo')
-      userEvent.click(logo)
+      const logo = screen.getByRole('link', { name: 'Logo' })
 
-      expect(redirect).toHaveBeenCalledWith('#')
+      expect(logo).toHaveAttribute('href', '#')
     })
   })
 })
