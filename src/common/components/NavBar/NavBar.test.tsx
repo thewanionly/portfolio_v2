@@ -1,18 +1,26 @@
 import { render, screen } from '../../../common/tests'
 import { NAVIGATION_LINKS } from '../../constants'
-import NavBar from './NavBar'
+import NavBar, { NavLink } from './NavBar'
 
+const navBarLinks: NavLink[] = Object.values(NAVIGATION_LINKS)
 const setup = () => {
-  render(<NavBar links={Object.values(NAVIGATION_LINKS)} isMenu />)
+  render(
+    <NavBar>
+      <NavBar.List>
+        {navBarLinks.map(({ href, label }) => (
+          <NavBar.ListItem key={label} href={href} label={label} />
+        ))}
+      </NavBar.List>
+    </NavBar>
+  )
 }
 
 describe('NavBar', () => {
   describe('Layout', () => {
     it(`displays the navigation links`, () => {
-      // WIP
       setup()
 
-      Object.values(NAVIGATION_LINKS).forEach(({ label }) => {
+      navBarLinks.forEach(({ label }) => {
         expect(screen.getByRole('link', { name: label })).toBeInTheDocument()
       })
     })
