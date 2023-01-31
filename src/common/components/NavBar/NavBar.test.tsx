@@ -27,17 +27,23 @@ describe('NavBar', () => {
   })
 
   describe('Interaction', () => {
-    xit.each`
-      path            | section
-      ${'/#'}         | ${'Home'}
-      ${'/#about'}    | ${'About'}
-      ${'/#skills'}   | ${'Skills'}
-      ${'/#projects'} | ${'Projects'}
-      ${'/#contact'}  | ${'Contact'}
-    `('displays $section when path is $path', ({ path, section }) => {
-      // setup(path)
-      // TODO
-      // expect(screen.getByTestId(section)).toBeInTheDocument()
-    })
+    it.each`
+      path           | section
+      ${'#'}         | ${'Home'}
+      ${'#about'}    | ${'About'}
+      ${'#skills'}   | ${'Skills'}
+      ${'#projects'} | ${'Projects'}
+      ${'#contact'}  | ${'Contact'}
+    `(
+      `navigates to $path when $section nav link is clicked`,
+      ({ path, section }) => {
+        setup()
+
+        expect(screen.getByRole('link', { name: section })).toHaveAttribute(
+          'href',
+          path
+        )
+      }
+    )
   })
 })
