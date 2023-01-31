@@ -1,6 +1,8 @@
 import styled from 'styled-components'
 
-import { Logo } from '../../common/components'
+import { Logo, NavBar } from '../../common/components'
+import { NavLink } from '../../common/components/NavBar'
+import { NAVIGATION_LINKS } from '../../common/constants'
 import { container } from '../../common/styles/utilities'
 
 const S = {
@@ -13,13 +15,37 @@ const S = {
     ${container}
   `,
   FooterLogo: styled(Logo)``,
+  FooterNavBar: styled(NavBar)`
+    margin-bottom: 5rem;
+  `,
+  FooterNavBarList: styled(NavBar.List)`
+    display: flex;
+    flex-direction: column;
+    gap: 1.6rem;
+
+    @media only screen and ${({ theme: { breakPoints } }) =>
+        breakPoints.tabletPortrait} {
+      flex-direction: row;
+      gap: 3.4rem;
+    }
+  `,
+  FooterNavBarListItem: styled(NavBar.ListItem)``,
 }
 
 const Footer = () => {
+  const navBarLinks: NavLink[] = Object.values(NAVIGATION_LINKS)
+
   return (
     <S.Footer>
       <S.FooterContainer>
         <S.FooterLogo altText="Footer logo" />
+        <S.FooterNavBar>
+          <S.FooterNavBarList>
+            {navBarLinks.map(({ href, label }) => (
+              <S.FooterNavBarListItem key={label} href={href} label={label} />
+            ))}
+          </S.FooterNavBarList>
+        </S.FooterNavBar>
       </S.FooterContainer>
     </S.Footer>
   )

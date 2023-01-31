@@ -1,9 +1,13 @@
+import { NavLink } from '../../common/components/NavBar'
+import { NAVIGATION_LINKS } from '../../common/constants'
 import { render, screen } from '../../common/tests'
 import Footer from './Footer'
 
 const setup = () => {
   render(<Footer />)
 }
+
+const navBarLinks: NavLink[] = Object.values(NAVIGATION_LINKS)
 
 describe('Footer', () => {
   describe('Layout', () => {
@@ -16,9 +20,12 @@ describe('Footer', () => {
       expect(logo).toHaveAttribute('src', '/images/logo.svg')
     })
 
-    xit('displays navigation links', () => {
+    it('displays navigation links', () => {
       setup()
-      // TODO
+
+      navBarLinks.forEach(({ label }) => {
+        expect(screen.getByRole('link', { name: label })).toBeInTheDocument()
+      })
     })
 
     xit('displays a quotation text', () => {
