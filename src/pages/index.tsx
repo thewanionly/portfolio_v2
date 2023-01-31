@@ -35,8 +35,8 @@ export default function Home() {
       <main>
         <HeaderProvider>
           <Header />
-          <Footer />
         </HeaderProvider>
+        <Footer />
       </main>
     </>
   )
