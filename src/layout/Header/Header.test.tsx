@@ -1,9 +1,21 @@
-import { render, screen } from '../../common/tests'
+import userEvent from '@testing-library/user-event'
+import { act } from 'react-dom/test-utils'
+
+import { NavLink } from '../../common/components/NavBar'
+import { NAVIGATION_LINKS } from '../../common/constants'
+import { render, screen, waitFor } from '../../common/tests'
 import Header from './Header'
+import { HeaderProvider } from './Header.context'
 
 const setup = () => {
-  render(<Header />)
+  render(
+    <HeaderProvider>
+      <Header />
+    </HeaderProvider>
+  )
 }
+
+const navBarLinks: NavLink[] = Object.values(NAVIGATION_LINKS)
 
 describe('Header', () => {
   describe('Layout', () => {
@@ -20,7 +32,7 @@ describe('Header', () => {
       // TODO: Test responsive screen sizes
       setup()
 
-      const menuUIcon = screen.getByRole('button', { name: 'Nav menu' })
+      const menuUIcon = screen.getByRole('button', { name: 'open nav menu' })
 
       expect(menuUIcon).toBeInTheDocument()
     })
@@ -28,53 +40,122 @@ describe('Header', () => {
     xit(`hides the hamburger menu icon when screen size is larger than 1024px`, () => {
       setup()
 
-      // TODO
+      // TODO: Test responsive screen sizes
     })
 
     xit(`hides the navigation links when screen size is smaller than 1024px`, () => {
       setup()
 
-      // TODO
+      // TODO: Test responsive screen sizes
+      // setup(screen.getByRole('navigation', { name: }))
+      // expect(screen.getByRole('link', { name: label })).toBeInTheDocument()
     })
 
     xit(`displays the navigation links when screen size is larger than 1024px`, () => {
-      setup()
-
-      // TODO
+      // TODO: Test responsive screen sizes
+      // navBarLinks.forEach(({ label }) => {
+      //   expect(screen.getByRole('link', { name: label })).toBeInTheDocument()
+      // })
     })
   })
 
   describe('Interaction', () => {
-    xit(`goes back the top of the screen when logo is clicked`, () => {
+    it(`navigates to "#" when Header Logo is clicked`, () => {
       setup()
 
-      // TODO
+      const headerLogo = screen.getByRole('link', { name: 'Header logo' })
+
+      expect(headerLogo).toHaveAttribute('href', '#')
     })
 
-    xit(`opens the nav menu when hamburger menu icon is clicked`, () => {
+    it(`opens the nav menu when hamburger menu icon is clicked`, async () => {
       setup()
 
-      // TODO
-      // displays close icon when nav menu is opened
-      // displays the navigation links when nav menu is opened
+      // Check if nav links does not exist
+      navBarLinks.forEach(({ label }) => {
+        expect(
+          screen.queryByRole('link', { name: label })
+        ).not.toBeInTheDocument()
+      })
+
+      // Click hamburger menu icon
+      userEvent.click(screen.getByRole('button', { name: 'open nav menu' }))
+
+      // Check if close menu icon is displayed
+      expect(
+        await screen.findByRole('button', {
+          name: 'close nav menu',
+        })
+      ).toBeInTheDocument()
+
+      // Check if nav links are displayed
+      navBarLinks.forEach(({ label }) => {
+        expect(screen.getByRole('link', { name: label })).toBeInTheDocument()
+      })
     })
 
-    xit(`closes the nav menu when close icon is clicked`, () => {
+    it(`closes the nav menu when close icon is clicked`, async () => {
+      // TODO: Resolve act warnings
       setup()
 
-      // TODO
+      // Click hamburger menu icon
+      userEvent.click(screen.getByRole('button', { name: 'open nav menu' }))
+
+      // Check if close menu icon is displayed
+      const closeMenu = await screen.findByRole('button', {
+        name: 'close nav menu',
+      })
+      expect(closeMenu).toBeInTheDocument()
+
+      // Close the nav menu
+      userEvent.click(closeMenu)
+
+      // Check if open nav menu icon is displayed
+      expect(
+        await screen.findByRole('button', { name: 'open nav menu' })
+      ).toBeInTheDocument()
     })
 
-    xit(`closes the nav menu when any of the navigation links is clicked`, () => {
+    it(`closes the nav menu when any of the navigation links is clicked`, async () => {
+      // TODO: Resolve act warnings
       setup()
 
-      // TODO
+      // Click hamburger menu icon
+      userEvent.click(screen.getByRole('button', { name: 'open nav menu' }))
+      expect(
+        await screen.findByRole('button', {
+          name: 'close nav menu',
+        })
+      ).toBeInTheDocument()
+
+      // Click on Home link
+      userEvent.click(await screen.findByRole('link', { name: 'Home' }))
+
+      // Checks if open nav menu icon is displayed
+      expect(
+        screen.queryByRole('button', { name: 'open nav menu' })
+      ).not.toBeInTheDocument()
     })
 
-    xit(`closes the nav menu when logo is clicked`, () => {
+    it(`closes the nav menu when logo is clicked`, async () => {
+      // TODO: Resolve act warnings
       setup()
 
-      // TODO
+      // Click hamburger menu icon
+      userEvent.click(screen.getByRole('button', { name: 'open nav menu' }))
+      expect(
+        await screen.findByRole('button', {
+          name: 'close nav menu',
+        })
+      ).toBeInTheDocument()
+
+      // Click on Logo
+      userEvent.click(await screen.findByRole('link', { name: 'Header logo' }))
+
+      // Checks if open nav menu icon is displayed
+      expect(
+        screen.queryByRole('button', { name: 'open nav menu' })
+      ).not.toBeInTheDocument()
     })
   })
 })
