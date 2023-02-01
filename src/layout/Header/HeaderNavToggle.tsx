@@ -85,7 +85,7 @@ export const HeaderNavToggle = () => {
 
   return (
     <StyledHeaderNavToggle
-      title="Nav menu"
+      aria-label={isNavMenuOpen ? 'close nav menu' : 'open nav menu'}
       showCloseIcon={isNavMenuOpen}
       onClick={toggleNavMenu}
     >
