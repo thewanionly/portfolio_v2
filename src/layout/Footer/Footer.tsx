@@ -1,3 +1,4 @@
+import Link from 'next/link'
 import styled from 'styled-components'
 
 import { Logo, NavBar } from '../../common/components'
@@ -46,6 +47,35 @@ const Footer = () => {
             ))}
           </S.FooterNavBarList>
         </S.FooterNavBar>
+        <q data-testid="footer-quotation">{`Hard work beats talent when talent doesn't work hard.`}</q>
+        <p data-testid="footer-copyright">
+          {`Copyright ${new Date().getFullYear()}. All Rights Reserved.`}
+        </p>
+        <div>
+          <Link href="mailto:pelloani@gmail.com" target="_blank" title="Gmail">
+            <svg aria-label="Gmail icon">
+              <use xlinkHref="/icons/gmail.svg#img"></use>
+            </svg>
+          </Link>
+          <Link
+            href="https://www.linkedin.com/in/pitogoelloaniross/"
+            target="_blank"
+            title="LinkedIn"
+          >
+            <svg>
+              <use xlinkHref="/icons/linkedin.svg#img"></use>
+            </svg>
+          </Link>
+          <Link
+            href="https://github.com/thewanionly/"
+            target="_blank"
+            title="GitHub"
+          >
+            <svg>
+              <use xlinkHref="/icons/github.svg#img"></use>
+            </svg>
+          </Link>
+        </div>
       </S.FooterContainer>
     </S.Footer>
   )

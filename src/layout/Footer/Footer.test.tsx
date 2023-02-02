@@ -7,13 +7,15 @@ const setup = () => {
   render(<Footer />)
 }
 
+beforeEach(() => {
+  setup()
+})
+
 const navBarLinks: NavLink[] = Object.values(NAVIGATION_LINKS)
 
 describe('Footer', () => {
   describe('Layout', () => {
     it(`displays logo image`, () => {
-      setup()
-
       const logo = screen.getByAltText('Footer logo')
 
       expect(logo).toBeInTheDocument()
@@ -21,62 +23,61 @@ describe('Footer', () => {
     })
 
     it('displays navigation links', () => {
-      setup()
-
       navBarLinks.forEach(({ label }) => {
         expect(screen.getByRole('link', { name: label })).toBeInTheDocument()
       })
     })
 
-    xit('displays a quotation text', () => {
-      setup()
-      // TODO
+    it('displays a quotation text', () => {
+      expect(screen.getByTestId('footer-quotation')).toBeInTheDocument()
     })
 
-    xit('displays copyright text', () => {
-      setup()
-      // TODO
+    it('displays copyright text', () => {
+      expect(screen.getByTestId('footer-copyright')).toBeInTheDocument()
     })
 
-    xit('displays GMail icon', () => {
-      setup()
-      // TODO
+    it('displays Gmail icon', () => {
+      expect(
+        screen.getByRole('link', { name: 'Gmail icon' })
+      ).toBeInTheDocument()
     })
 
-    xit('displays LinkedIn icon', () => {
-      setup()
-      // TODO
+    it('displays LinkedIn icon', () => {
+      expect(screen.getByRole('link', { name: 'LinkedIn' })).toBeInTheDocument()
     })
 
-    xit('displays GitHub icon', () => {
-      setup()
-      // TODO
+    it('displays GitHub icon', () => {
+      expect(screen.getByRole('link', { name: 'GitHub' })).toBeInTheDocument()
     })
   })
 
   describe('Interaction', () => {
-    xit(`goes back the top of the screen when logo is clicked`, () => {
-      setup()
-
-      // TODO
+    it(`navigates to "#" when Footer Logo is clicked`, () => {
+      expect(screen.getByRole('link', { name: 'Footer logo' })).toHaveAttribute(
+        'href',
+        '#'
+      )
     })
 
-    xit(`opens mail application when GMail icon is clicked`, () => {
-      setup()
-
-      // TODO
+    it(`navigates to "mailto:pelloani@gmail.com" when Gmail icon is clicked`, () => {
+      expect(screen.getByRole('link', { name: 'Gmail icon' })).toHaveAttribute(
+        'href',
+        'mailto:pelloani@gmail.com'
+      )
     })
 
-    xit(`opens LinkedIn website when LinkedIn icon is clicked`, () => {
-      setup()
-
-      // TODO
+    it(`navigates to "https://www.linkedin.com/in/pitogoelloaniross/" when LinkedIn icon is clicked`, () => {
+      expect(screen.getByRole('link', { name: 'LinkedIn' })).toHaveAttribute(
+        'href',
+        'https://www.linkedin.com/in/pitogoelloaniross/'
+      )
     })
 
-    xit(`opens GitHub website when GitHub icon is clicked`, () => {
-      setup()
-
-      // TODO
+    it(`navigates to "https://github.com/thewanionly/" when GitHub icon is clicked`, () => {
+      expect(screen.getByRole('link', { name: 'GitHub' })).toHaveAttribute(
+        'href',
+        'https://github.com/thewanionly/'
+      )
     })
   })
 })
