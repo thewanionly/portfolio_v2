@@ -1,6 +1,5 @@
 import Head from 'next/head'
-import Footer from '../layout/Footer/Footer'
-import Header, { HeaderProvider } from '../layout/Header'
+import { Footer, Header, HeaderProvider } from '../layout'
 
 export default function Home() {
   return (
