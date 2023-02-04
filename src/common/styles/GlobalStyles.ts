@@ -77,11 +77,13 @@ const GlobalStyles = createGlobalStyle`
   h5,
   h6 {
     text-transform: uppercase;
+
   }
 
   h1 {
     font-size: ${({ theme: { fontSizes } }) => fontSizes.fontSizeXxxl};
     line-height: 5.8rem;
+    font-weight: ${({ theme: { fontWeights } }) => fontWeights.fontWeightBold};
   }
 
   h2 {
