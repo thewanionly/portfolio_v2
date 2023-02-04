@@ -1,8 +1,8 @@
 import Head from 'next/head'
-import Footer from '../layout/Footer/Footer'
-import Header, { HeaderProvider } from '../layout/Header'
+import { Footer, Header, HeaderProvider } from '../layout'
+import { Home } from '../sections'
 
-export default function Home() {
+export default function Index() {
   return (
     <>
       <Head>
@@ -36,6 +36,7 @@ export default function Home() {
         <HeaderProvider>
           <Header />
         </HeaderProvider>
+        <Home />
         <Footer />
       </main>
     </>
