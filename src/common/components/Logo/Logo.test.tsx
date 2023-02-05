@@ -1,5 +1,5 @@
 import { render, screen } from '../../../common/tests'
-import Logo from './Logo'
+import { Logo } from './Logo'
 
 const setup = () => {
   render(<Logo />)

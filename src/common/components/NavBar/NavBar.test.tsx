@@ -1,6 +1,6 @@
 import { render, screen } from '../../../common/tests'
 import { NAVIGATION_LINKS } from '../../constants'
-import NavBar, { NavLink } from './NavBar'
+import { NavBar, NavLink } from './NavBar'
 
 const navBarLinks: NavLink[] = Object.values(NAVIGATION_LINKS)
 const setup = () => {
