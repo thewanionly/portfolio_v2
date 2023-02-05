@@ -15,3 +15,7 @@ export const container = css`
     width: 75%;
   }
 `
+
+export const highlightText = css`
+  color: ${({ theme: { colors } }) => colors.primary};
+`

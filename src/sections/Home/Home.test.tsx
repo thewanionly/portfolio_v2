@@ -70,7 +70,7 @@ describe('Home section', () => {
 
       expect(screen.getByRole('link', { name: /contact me/i })).toHaveAttribute(
         'href',
-        '#projects'
+        '#contact'
       )
     })
 
