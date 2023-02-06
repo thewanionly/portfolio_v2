@@ -1,7 +1,7 @@
 import { rgba } from 'polished'
 import { BREAKPOINTS, COLORS, TYPOGRAPHY } from '../variables'
 
-const theme = {
+export const theme = {
   colors: {
     primary: COLORS.blue,
     primaryLight: COLORS.blueLight,
@@ -68,5 +68,3 @@ const theme = {
     desktop: BREAKPOINTS.desktop,
   },
 }
-
-export default theme
