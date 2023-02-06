@@ -37,7 +37,7 @@ type NavBarListItemProps = {
   label: string
 }
 
-const NavBar = ({ className, children }: NavBarProps) => (
+export const NavBar = ({ className, children }: NavBarProps) => (
   <S.NavBar className={className}>{children}</S.NavBar>
 )
 
@@ -55,5 +55,3 @@ const NavBarListItem = ({ className, href, label }: NavBarListItemProps) => (
 
 NavBar.List = NavBarList
 NavBar.ListItem = NavBarListItem
-
-export default NavBar

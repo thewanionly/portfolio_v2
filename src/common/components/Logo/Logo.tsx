@@ -18,12 +18,10 @@ type LogoProps = {
   className?: string
 }
 
-const Logo = ({ altText = 'Logo', className = '' }: LogoProps) => (
+export const Logo = ({ altText = 'Logo', className = '' }: LogoProps) => (
   <Link className={className} href="#">
     <S.LogoContainer>
       <Image src="/images/logo.svg" alt={altText} fill />
     </S.LogoContainer>
   </Link>
 )
-
-export default Logo
