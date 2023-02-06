@@ -5,30 +5,92 @@ import styled, { css, DefaultTheme } from 'styled-components'
 const colorVariantStyles = (
   theme: DefaultTheme,
   color: ButtonColor = ButtonColor.PRIMARY,
-  variant: ButtonVariant = ButtonVariant.CONTAINED
+  variant: ButtonVariant = ButtonVariant.CONTAINED,
+  disabled = false
 ) =>
   ({
     [ButtonColor.PRIMARY]: {
       [ButtonVariant.CONTAINED]: css`
         background-color: ${theme.colors.primary};
+        color: ${theme.colors.btn};
+
+        &:hover {
+          background-color: ${theme.colors.primaryLight};
+        }
+
+        ${disabled &&
+        css`
+          background-color: ${theme.colors.primaryLight};
+          color: ${theme.colors.btnDisabled};
+          opacity: 0.7;
+          cursor: not-allowed;
+
+          &:hover {
+            background-color: ${theme.colors.primaryLight};
+          }
+        `}
       `,
       [ButtonVariant.OUTLINED]: css`
+        background-color: transparent;
         border: 0.1rem solid ${theme.colors.primary};
+        color: ${theme.colors.primary};
+
+        &:hover {
+          background-color: ${theme.colors.primaryLightest};
+        }
+
+        ${disabled &&
+        css`
+          background-color: ${theme.colors.primaryLighter};
+          color: ${theme.colors.btnDisabled};
+          border-color: ${theme.colors.primaryLighter};
+          opacity: 0.7;
+          cursor: not-allowed;
+
+          &:hover {
+            background-color: ${theme.colors.primaryLighter};
+          }
+        `}
       `,
     },
     [ButtonColor.SECONDARY]: {
       [ButtonVariant.CONTAINED]: css`
         background-color: ${theme.colors.secondary};
+        color: ${theme.colors.btn};
+
+        &:hover {
+          background-color: ${theme.colors.secondaryLighter};
+        }
       `,
       [ButtonVariant.OUTLINED]: css`
+        background-color: transparent;
         border: 0.1rem solid ${theme.colors.secondary};
+        color: ${theme.colors.secondary};
+
+        &:hover {
+          background-color: ${theme.colors.secondaryLightest};
+        }
       `,
     },
   }[color][variant])
 
 const S = {
   Button: styled.button<ButtonProps>`
-    ${({ theme, color, variant }) => colorVariantStyles(theme, color, variant)}
+    display: block;
+    padding: 1.5rem 2.5rem;
+    max-width: max-content;
+
+    text-transform: uppercase;
+    font-size: ${({ theme: { fontSizes } }) => fontSizes.fontSizeSm};
+    font-weight: ${({ theme: { fontWeights } }) => fontWeights.fontWeightBold};
+    letter-spacing: 0.1rem;
+    line-height: 1.8rem;
+    text-align: center;
+
+    transition: all 0.2s;
+
+    ${({ theme, color, variant, disabled }) =>
+      colorVariantStyles(theme, color, variant, disabled)}
   `,
   Link: styled(Link)``, // work around because passing Link directly in "as" will throw some TypeScript warnings
 }
@@ -44,28 +106,41 @@ export enum ButtonVariant {
 }
 
 type ButtonProps = {
-  label?: string
-  children?: React.ReactNode
-  onClick?: (event: React.MouseEvent<HTMLButtonElement>) => void
-  color?: ButtonColor
-  variant?: ButtonVariant
   asLink?: boolean
-  linkHref?: string
+  children?: React.ReactNode
+  className?: string
+  color?: ButtonColor
+  disabled?: boolean
+  href?: string
+  label?: string
+  onClick?: (event: React.MouseEvent<HTMLButtonElement>) => void
+  variant?: ButtonVariant
 }
 
 export const Button = ({
-  label,
-  children,
-  onClick,
-  color = ButtonColor.PRIMARY,
-  variant = ButtonVariant.CONTAINED,
   asLink = false,
-  linkHref = '',
+  children,
+  className = '',
+  color = ButtonColor.PRIMARY,
+  disabled = false,
+  href = '',
+  label,
+  onClick,
+  variant = ButtonVariant.CONTAINED,
 }: ButtonProps) => {
   const buttonProps = {
+    className,
     color,
     variant,
-    ...(!asLink ? { onClick } : { as: S.Link, href: linkHref }),
+    disabled,
+    ...(!asLink
+      ? { onClick }
+      : {
+          as: S.Link,
+          href: !disabled ? href : '',
+          role: 'link',
+          ['aria-disabled']: disabled,
+        }),
   }
 
   return <S.Button {...buttonProps}>{label || children}</S.Button>

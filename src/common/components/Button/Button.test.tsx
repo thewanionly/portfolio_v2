@@ -77,6 +77,14 @@ describe('Button', () => {
 
       await waitFor(() => expect(onClickHandler).toHaveBeenCalled())
     })
+
+    it('disables the button when `disabled` prop is set to true', () => {
+      render(<Button label="Disabled button" disabled />)
+
+      const button = screen.getByRole('button')
+
+      expect(button).toBeDisabled()
+    })
   })
 
   describe('As link element', () => {
@@ -139,14 +147,23 @@ describe('Button', () => {
         expect(link).toHaveStyle(`${propertyToColor}: ${theme.colors.primary}`)
       }
     )
-    it('contains a link equivalent to the `linkHref` prop', () => {
+
+    it('contains a link equivalent to the `href` prop', () => {
       const buttonLabel = 'Click me'
-      const linkHref = '#sample'
-      render(<Button asLink label={buttonLabel} linkHref={linkHref} />)
+      const href = '#sample'
+      render(<Button asLink label={buttonLabel} href={href} />)
 
       const link = screen.getByRole('link', { name: buttonLabel })
 
-      expect(link).toHaveAttribute('href', linkHref)
+      expect(link).toHaveAttribute('href', href)
+    })
+
+    it('disables the link when `disabled` prop is set to true', () => {
+      render(<Button asLink href="#test" label="Disabled button" disabled />)
+
+      const link = screen.getByRole('link')
+
+      expect(link).not.toHaveAttribute('href', '#test')
     })
   })
 })
