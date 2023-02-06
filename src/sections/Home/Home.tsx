@@ -1,40 +1,7 @@
 import Link from 'next/link'
-import styled, { css } from 'styled-components'
+import styled from 'styled-components'
+import { Button, ButtonVariant } from '../../common/components'
 import { container, highlightText } from '../../common/styles/utilities'
-
-// TODO: Refactor into another component
-const button = css`
-  display: block;
-  padding: 1.5rem 2.5rem;
-  max-width: max-content;
-
-  text-transform: uppercase;
-  font-size: ${({ theme: { fontSizes } }) => fontSizes.fontSizeSm};
-  font-weight: ${({ theme: { fontWeights } }) => fontWeights.fontWeightBold};
-  letter-spacing: 0.1rem;
-  line-height: 1.8rem;
-  text-align: center;
-
-  transition: all 0.2s;
-
-  // primary
-  background-color: ${({ theme: { colors } }) => colors.primary};
-  color: ${({ theme: { colors } }) => colors.btn};
-
-  &:hover {
-    background-color: ${({ theme: { colors } }) => colors.primaryLight};
-  }
-`
-
-const buttonPrimaryOutline = css`
-  background-color: transparent;
-  border: 0.1rem solid ${({ theme: { colors } }) => colors.primary};
-  color: ${({ theme: { colors } }) => colors.primary};
-
-  &:hover {
-    background-color: ${({ theme: { colors } }) => colors.primaryLightest};
-  }
-`
 
 const S = {
   Home: styled.section`
@@ -81,23 +48,7 @@ const S = {
     justify-content: center;
     gap: 2rem;
   `,
-  HomeCTAButton: styled(Link)`
-    ${button}
-
-    flex: 1;
-    flex-basis: 45%;
-    max-width: 100%;
-    min-width: 29rem;
-
-    @media only screen and ${({ theme: { breakPoints } }) =>
-        breakPoints.tabletPortrait} {
-      max-width: 35rem;
-    }
-  `,
-  HomeCTAButtonOutline: styled(Link)`
-    ${button}
-    ${buttonPrimaryOutline}
-
+  HomeCTAButton: styled(Button)`
     flex: 1;
     flex-basis: 45%;
     max-width: 100%;
@@ -157,10 +108,16 @@ export const Home = () => (
         </S.HomeSubtitleText>
       </S.HomeSubtitle>
       <S.HomeCTAButtonGroup>
-        <S.HomeCTAButton href="#projects">View my work</S.HomeCTAButton>
-        <S.HomeCTAButtonOutline href="#contact">
+        <S.HomeCTAButton asLink href="#projects">
+          View my work
+        </S.HomeCTAButton>
+        <S.HomeCTAButton
+          asLink
+          href="#contact"
+          variant={ButtonVariant.OUTLINED}
+        >
           Contact me
-        </S.HomeCTAButtonOutline>
+        </S.HomeCTAButton>
       </S.HomeCTAButtonGroup>
       <S.HomeSocialGroup>
         <S.HomeSocialGroupItem>
