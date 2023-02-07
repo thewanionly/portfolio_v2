@@ -38,21 +38,21 @@ describe('Home section', () => {
     it('displays Gmail icon', () => {
       setup()
 
-      expect(
-        screen.getByRole('link', { name: 'Gmail icon' })
-      ).toBeInTheDocument()
+      expect(screen.getByRole('link', { name: /gmail/i })).toBeInTheDocument()
     })
 
     it('displays LinkedIn icon', () => {
       setup()
 
-      expect(screen.getByRole('link', { name: 'LinkedIn' })).toBeInTheDocument()
+      expect(
+        screen.getByRole('link', { name: /linkedin/i })
+      ).toBeInTheDocument()
     })
 
     it('displays GitHub icon', () => {
       setup()
 
-      expect(screen.getByRole('link', { name: 'GitHub' })).toBeInTheDocument()
+      expect(screen.getByRole('link', { name: /github/i })).toBeInTheDocument()
     })
   })
 
@@ -77,7 +77,7 @@ describe('Home section', () => {
     it(`contains a link to "mailto:pelloani@gmail.com" in the Gmail icon`, () => {
       setup()
 
-      expect(screen.getByRole('link', { name: 'Gmail icon' })).toHaveAttribute(
+      expect(screen.getByRole('link', { name: /gmail/i })).toHaveAttribute(
         'href',
         'mailto:pelloani@gmail.com'
       )
@@ -86,7 +86,7 @@ describe('Home section', () => {
     it(`contains a link to "https://www.linkedin.com/in/pitogoelloaniross/" in the LinkedIn icon`, () => {
       setup()
 
-      expect(screen.getByRole('link', { name: 'LinkedIn' })).toHaveAttribute(
+      expect(screen.getByRole('link', { name: /linkedin/i })).toHaveAttribute(
         'href',
         'https://www.linkedin.com/in/pitogoelloaniross/'
       )
@@ -95,7 +95,7 @@ describe('Home section', () => {
     it(`contains a link to "https://github.com/thewanionly/" in the GitHub icon`, () => {
       setup()
 
-      expect(screen.getByRole('link', { name: 'GitHub' })).toHaveAttribute(
+      expect(screen.getByRole('link', { name: /github/i })).toHaveAttribute(
         'href',
         'https://github.com/thewanionly/'
       )

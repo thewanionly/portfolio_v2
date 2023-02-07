@@ -1,6 +1,6 @@
 import Link from 'next/link'
 import styled from 'styled-components'
-import { Button, ButtonVariant } from '../../common/components'
+import { Button, ButtonVariant, Icon } from '../../common/components'
 import { container, highlightText } from '../../common/styles/utilities'
 
 const S = {
@@ -74,7 +74,7 @@ const S = {
       color: ${({ theme: { colors } }) => colors.primary};
     }
   `,
-  HomeSocialIcon: styled.svg`
+  HomeSocialIcon: styled(Icon)`
     width: 2.4rem;
     height: 2.4rem;
   `,
@@ -126,9 +126,7 @@ export const Home = () => (
             target="_blank"
             title="Gmail"
           >
-            <S.HomeSocialIcon aria-label="Gmail icon">
-              <use xlinkHref="/icons/gmail.svg#img"></use>
-            </S.HomeSocialIcon>
+            <S.HomeSocialIcon name="gmail" />
           </S.HomeSocialLink>
         </S.HomeSocialGroupItem>
         <S.HomeSocialGroupItem>
@@ -137,9 +135,7 @@ export const Home = () => (
             target="_blank"
             title="LinkedIn"
           >
-            <S.HomeSocialIcon>
-              <use xlinkHref="/icons/linkedin.svg#img"></use>
-            </S.HomeSocialIcon>
+            <S.HomeSocialIcon name="linkedin" />
           </S.HomeSocialLink>
         </S.HomeSocialGroupItem>
         <S.HomeSocialGroupItem>
@@ -148,9 +144,7 @@ export const Home = () => (
             target="_blank"
             title="GitHub"
           >
-            <S.HomeSocialIcon>
-              <use xlinkHref="/icons/github.svg#img"></use>
-            </S.HomeSocialIcon>
+            <S.HomeSocialIcon name="github" />
           </S.HomeSocialLink>
         </S.HomeSocialGroupItem>
       </S.HomeSocialGroup>
