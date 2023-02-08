@@ -7,7 +7,11 @@ const IconMap = {
   linkedin: SiLinkedin,
 } as const
 
-type IconName = keyof typeof IconMap
+export enum IconName {
+  GITHUB = 'github',
+  GMAIL = 'gmail',
+  LINKEDIN = 'linkedin',
+}
 
 type IconProps = {
   className?: string
