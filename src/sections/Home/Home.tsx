@@ -1,6 +1,7 @@
-import Link from 'next/link'
 import styled from 'styled-components'
-import { Button, ButtonVariant, Icon } from '../../common/components'
+import { Button, ButtonVariant } from '../../common/components'
+import { SocialIcons } from '../../common/components/SocialIcons'
+import { SOCIAL_LINKS } from '../../common/constants'
 import { container, highlightText } from '../../common/styles/utilities'
 
 const S = {
@@ -59,25 +60,6 @@ const S = {
       max-width: 35rem;
     }
   `,
-  HomeSocialGroup: styled.ul`
-    display: flex;
-    align-items: flex-start;
-    justify-content: center;
-    gap: 2rem;
-    color: ${({ theme: { colors } }) => colors.icon};
-  `,
-  HomeSocialGroupItem: styled.li``,
-  HomeSocialLink: styled(Link)`
-    transition: all 0.2s;
-
-    &:hover {
-      color: ${({ theme: { colors } }) => colors.primary};
-    }
-  `,
-  HomeSocialIcon: styled(Icon)`
-    width: 2.4rem;
-    height: 2.4rem;
-  `,
 }
 
 export const Home = () => (
@@ -119,35 +101,7 @@ export const Home = () => (
           Contact me
         </S.HomeCTAButton>
       </S.HomeCTAButtonGroup>
-      <S.HomeSocialGroup>
-        <S.HomeSocialGroupItem>
-          <S.HomeSocialLink
-            href="mailto:pelloani@gmail.com"
-            target="_blank"
-            title="Gmail"
-          >
-            <S.HomeSocialIcon name="gmail" />
-          </S.HomeSocialLink>
-        </S.HomeSocialGroupItem>
-        <S.HomeSocialGroupItem>
-          <S.HomeSocialLink
-            href="https://www.linkedin.com/in/pitogoelloaniross/"
-            target="_blank"
-            title="LinkedIn"
-          >
-            <S.HomeSocialIcon name="linkedin" />
-          </S.HomeSocialLink>
-        </S.HomeSocialGroupItem>
-        <S.HomeSocialGroupItem>
-          <S.HomeSocialLink
-            href="https://github.com/thewanionly/"
-            target="_blank"
-            title="GitHub"
-          >
-            <S.HomeSocialIcon name="github" />
-          </S.HomeSocialLink>
-        </S.HomeSocialGroupItem>
-      </S.HomeSocialGroup>
+      <SocialIcons icons={Object.values(SOCIAL_LINKS)} />
     </S.HomeContainer>
   </S.Home>
 )
