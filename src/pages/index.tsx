@@ -13,7 +13,7 @@ interface HomeAttributes {
   }[]
 }
 
-const { title, cats } = attributes as HomeAttributes
+const { title, cats } = attributes as unknown as HomeAttributes
 
 export default function Index() {
   return (
