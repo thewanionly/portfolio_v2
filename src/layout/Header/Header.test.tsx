@@ -1,9 +1,8 @@
 import userEvent from '@testing-library/user-event'
-import { act } from 'react-dom/test-utils'
 
 import { NavLink } from '../../common/components/NavBar'
 import { NAVIGATION_LINKS } from '../../common/constants'
-import { render, screen, waitFor } from '../../common/tests'
+import { render, screen } from '../../common/tests'
 import Header from './Header'
 import { HeaderProvider } from './Header.context'
 
