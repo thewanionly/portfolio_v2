@@ -2,6 +2,19 @@ import Head from 'next/head'
 import { Footer, Header, HeaderProvider } from '../layout'
 import { Home } from '../sections'
 
+import { attributes, react as HomeContent } from '../content/home.md'
+
+interface HomeAttributes {
+  title: string
+  date: Date
+  cats: {
+    description: string
+    name: string
+  }[]
+}
+
+const { title, cats } = attributes as HomeAttributes
+
 export default function Index() {
   return (
     <>
@@ -31,12 +44,25 @@ export default function Index() {
         />
         <link rel="icon" href="/favicon/favicon.ico" />
         <link rel="manifest" href="/favicon/site.webmanifest" />
+        <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
       </Head>
       <main>
         <HeaderProvider>
           <Header />
         </HeaderProvider>
         <Home />
+        <article>
+          <h1>{title}</h1>
+          <HomeContent />
+          <ul>
+            {cats.map((cat, k) => (
+              <li key={k}>
+                <h2>{cat.name}</h2>
+                <p>{cat.description}</p>
+              </li>
+            ))}
+          </ul>
+        </article>
         <Footer />
       </main>
     </>
