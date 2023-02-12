@@ -1,4 +1,4 @@
 ---
 fullName: Elloani Ross Pitogo
-greeting: Hello there
+greeting: Hi there!
 ---
