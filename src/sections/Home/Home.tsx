@@ -3,6 +3,14 @@ import { Button, ButtonVariant } from '../../common/components'
 import { SocialIcons } from '../../common/components/SocialIcons'
 import { SOCIAL_LINKS } from '../../common/constants'
 import { container, highlightText } from '../../common/styles/utilities'
+import { attributes } from '../../../content/home.md'
+
+interface HomeContentAttributes {
+  fullName: string
+  greeting: string
+}
+
+const { fullName, greeting } = attributes as unknown as HomeContentAttributes
 
 const S = {
   Home: styled.section`
@@ -66,8 +74,8 @@ export const Home = () => (
   <S.Home>
     <S.HomeContainer>
       <S.HomeTitle>
-        <S.HomeTitleSecondary>Hi there, I am</S.HomeTitleSecondary>
-        <S.HomeTitlePrimary>Elloani Ross Pitogo</S.HomeTitlePrimary>
+        <S.HomeTitleSecondary>{greeting} I am</S.HomeTitleSecondary>
+        <S.HomeTitlePrimary>{fullName}</S.HomeTitlePrimary>
       </S.HomeTitle>
       <S.HomeSubtitle data-testid="home-subtitle">
         <S.HomeSubtitleText>

@@ -4,19 +4,17 @@ backend:
 media_folder: public/img
 public_folder: img
 collections:
-  - name: 'pages'
-    label: 'Pages'
+  - name: 'sections'
+    label: 'Sections'
     files:
       - label: 'Home'
         name: 'home'
         file: 'content/home.md'
         fields:
-          - { label: 'Title', name: 'title', widget: 'string' }
-          - { label: 'Publish Date', name: 'date', widget: 'datetime' }
-          - { label: 'Body', name: 'body', widget: 'markdown' }
-          - label: 'Cats'
-            name: 'cats'
-            widget: list
-            fields:
-              - { label: 'Name', name: 'name', widget: 'string' }
-              - { label: 'Description', name: 'description', widget: 'text' }
+          - { label: 'Full name', name: 'fullName', widget: 'string' }
+          - {
+              label: 'Greeting text',
+              name: 'greeting',
+              widget: 'string',
+              hint: 'Displayed above the full name',
+            }
