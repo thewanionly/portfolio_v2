@@ -2,7 +2,7 @@ import Head from 'next/head'
 import { Footer, Header, HeaderProvider } from '../layout'
 import { Home } from '../sections'
 
-import { attributes, react as HomeContent } from '../content/home.md'
+import { attributes, react as HomeContent } from '../../content/home.md'
 
 interface HomeAttributes {
   title: string
