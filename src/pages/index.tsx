@@ -1,8 +1,33 @@
 import Head from 'next/head'
+import { useEffect } from 'react'
+
+import { Content, useContentContext } from '../common/context'
 import { Footer, Header, HeaderProvider } from '../layout'
 import { Home } from '../sections'
 
-export default function Index() {
+export async function getStaticProps() {
+  const { attributes: homeContent } = await require('../../content/home.md')
+
+  return {
+    props: {
+      content: {
+        home: homeContent,
+      },
+    },
+  }
+}
+
+interface IndexProps {
+  content: Content
+}
+
+export default function Index({ content }: IndexProps) {
+  const { initializeContent } = useContentContext()
+
+  useEffect(() => {
+    initializeContent(content)
+  }, [content, initializeContent])
+
   return (
     <>
       <Head>
