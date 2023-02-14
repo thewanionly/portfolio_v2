@@ -2,15 +2,8 @@ import styled from 'styled-components'
 import { Button, ButtonVariant } from '../../common/components'
 import { SocialIcons } from '../../common/components/SocialIcons'
 import { SOCIAL_LINKS } from '../../common/constants'
+import { useContentContext } from '../../common/context'
 import { container, highlightText } from '../../common/styles/utilities'
-import { attributes } from '../../../content/home.md'
-
-interface HomeContentAttributes {
-  fullName: string
-  greeting: string
-}
-
-const { fullName, greeting } = attributes as unknown as HomeContentAttributes
 
 const S = {
   Home: styled.section`
@@ -70,46 +63,52 @@ const S = {
   `,
 }
 
-export const Home = () => (
-  <S.Home>
-    <S.HomeContainer>
-      <S.HomeTitle>
-        <S.HomeTitleSecondary>{greeting} I am</S.HomeTitleSecondary>
-        <S.HomeTitlePrimary>{fullName}</S.HomeTitlePrimary>
-      </S.HomeTitle>
-      <S.HomeSubtitle data-testid="home-subtitle">
-        <S.HomeSubtitleText>
-          You can call me{' '}
-          <S.HomeSubtitleTextHighlighy>Wani</S.HomeSubtitleTextHighlighy>.
-        </S.HomeSubtitleText>
-        <S.HomeSubtitleText>
-          School-taught{' '}
-          <S.HomeSubtitleTextHighlighy>
-            Computer Engineer
-          </S.HomeSubtitleTextHighlighy>
-          ,
-        </S.HomeSubtitleText>
-        <S.HomeSubtitleText>
-          Industry-taught{' '}
-          <S.HomeSubtitleTextHighlighy>
-            Front-end Web Developer
-          </S.HomeSubtitleTextHighlighy>
-          .
-        </S.HomeSubtitleText>
-      </S.HomeSubtitle>
-      <S.HomeCTAButtonGroup>
-        <S.HomeCTAButton asLink href="#projects">
-          View my work
-        </S.HomeCTAButton>
-        <S.HomeCTAButton
-          asLink
-          href="#contact"
-          variant={ButtonVariant.OUTLINED}
-        >
-          Contact me
-        </S.HomeCTAButton>
-      </S.HomeCTAButtonGroup>
-      <SocialIcons icons={Object.values(SOCIAL_LINKS)} />
-    </S.HomeContainer>
-  </S.Home>
-)
+export const Home = () => {
+  const { content } = useContentContext()
+
+  const { fullName, greeting } = content?.home
+
+  return (
+    <S.Home>
+      <S.HomeContainer>
+        <S.HomeTitle>
+          <S.HomeTitleSecondary>{greeting} I am</S.HomeTitleSecondary>
+          <S.HomeTitlePrimary>{fullName}</S.HomeTitlePrimary>
+        </S.HomeTitle>
+        <S.HomeSubtitle data-testid="home-subtitle">
+          <S.HomeSubtitleText>
+            You can call me{' '}
+            <S.HomeSubtitleTextHighlighy>Wani</S.HomeSubtitleTextHighlighy>.
+          </S.HomeSubtitleText>
+          <S.HomeSubtitleText>
+            School-taught{' '}
+            <S.HomeSubtitleTextHighlighy>
+              Computer Engineer
+            </S.HomeSubtitleTextHighlighy>
+            ,
+          </S.HomeSubtitleText>
+          <S.HomeSubtitleText>
+            Industry-taught{' '}
+            <S.HomeSubtitleTextHighlighy>
+              Front-end Web Developer
+            </S.HomeSubtitleTextHighlighy>
+            .
+          </S.HomeSubtitleText>
+        </S.HomeSubtitle>
+        <S.HomeCTAButtonGroup>
+          <S.HomeCTAButton asLink href="#projects">
+            View my work
+          </S.HomeCTAButton>
+          <S.HomeCTAButton
+            asLink
+            href="#contact"
+            variant={ButtonVariant.OUTLINED}
+          >
+            Contact me
+          </S.HomeCTAButton>
+        </S.HomeCTAButtonGroup>
+        <SocialIcons icons={Object.values(SOCIAL_LINKS)} />
+      </S.HomeContainer>
+    </S.Home>
+  )
+}

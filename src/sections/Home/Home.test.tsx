@@ -1,5 +1,11 @@
-import { render, screen } from '../../common/tests'
+import { mockedContent, render, screen } from '../../common/tests'
 import { Home } from './Home'
+
+jest.mock('../../common/context', () => ({
+  useContentContext: () => ({
+    content: mockedContent,
+  }),
+}))
 
 const setup = () => {
   render(<Home />)
@@ -7,14 +13,25 @@ const setup = () => {
 
 describe('Home section', () => {
   describe('Layout', () => {
-    it('displays a self-introduction text displayed as header text', () => {
+    it('displays a greeting text', () => {
       setup()
 
-      expect(
-        screen.getByRole('heading', {
-          level: 1,
-        })
-      ).toBeInTheDocument()
+      const greetingText = screen.getByText(
+        new RegExp(mockedContent.home.greeting)
+      )
+
+      expect(greetingText).toBeInTheDocument()
+    })
+
+    it('displays my full name as header text', () => {
+      setup()
+
+      const fullNameText = screen.getByRole('heading', {
+        name: new RegExp(mockedContent.home.fullName),
+        level: 1,
+      })
+
+      expect(fullNameText).toBeInTheDocument()
     })
 
     it('displays more details about me displayed in short sentences', () => {
