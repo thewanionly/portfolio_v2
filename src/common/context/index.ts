@@ -1,1 +1,1 @@
-export * from './Content.context'
+export * from './content'
