@@ -12,7 +12,7 @@ export class HomeContent {
       nicknameValue: '',
     },
     public description: string = '',
-    public highlightedWords: string = '',
+    public highlightedWords: string[] = [],
     public projectsCTA: string = '',
     public contactsCTA: string = ''
   ) {}
