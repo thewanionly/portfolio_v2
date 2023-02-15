@@ -11,11 +11,7 @@ collections:
         name: 'home'
         file: 'content/home.md'
         fields:
-          - {
-              label: 'Display picture',
-              name: 'avatar',
-              widget: 'image'
-            }
+          - { label: 'Display picture', name: 'avatar', widget: 'image' }
           - {
               label: 'Greeting text',
               name: 'greeting',
@@ -23,14 +19,20 @@ collections:
               hint: 'Displayed above the full name',
             }
           - { label: 'Full name', name: 'fullName', widget: 'string' }
-          - {
-              label: 'Nickname text',
-              name: 'nicknameText',
-              widget: 'object',
-              fields:
-                - { label: 'Nickname intro', name: 'nicknameIntro', widget: 'string' }
-                - { label: 'Nickname value', name: 'nicknameValue', widget: 'string' }
-            }
+          - label: 'Nickname text'
+            name: 'nicknameText'
+            widget: 'object'
+            fields:
+              - {
+                  label: 'Nickname intro',
+                  name: 'nicknameIntro',
+                  widget: 'string',
+                }
+              - {
+                  label: 'Nickname value',
+                  name: 'nicknameValue',
+                  widget: 'string',
+                }
           - {
               label: 'Description',
               name: 'description',
@@ -47,11 +49,11 @@ collections:
               label: 'Projects section CTA text',
               name: 'projectsCTA',
               widget: 'string',
-              hint: `Displayed in the Hero section's primary button`
+              hint: 'Displayed in the primary button',
             }
           - {
               label: 'Contacts section CTA text',
               name: 'contactsCTA',
               widget: 'string',
-              hint: `Displayed in the Hero section's secondary button`
+              hint: 'Displayed in the secondary button',
             }
