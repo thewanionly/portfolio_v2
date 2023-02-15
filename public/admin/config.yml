@@ -11,7 +11,7 @@ collections:
         name: 'home'
         file: 'content/home.md'
         fields:
-           - {
+          - {
               label: 'Display picture',
               name: 'avatar',
               widget: 'image'
