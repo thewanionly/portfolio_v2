@@ -37,11 +37,17 @@ const S = {
     font-weight: inherit;
   `,
   HomeSubtitle: styled.div``,
-  HomeSubtitleText: styled.p`
+  HomeNicknameText: styled.p`
     color: ${({ theme: { colors } }) => colors.bodyLight};
     line-height: 2.5rem;
   `,
-  HomeSubtitleTextHighlighy: styled.strong`
+  HomeDescriptionText: styled.p`
+    color: ${({ theme: { colors } }) => colors.bodyLight};
+    line-height: 2.5rem;
+    max-width: 48rem;
+    margin: 0 auto;
+  `,
+  HomeTextHighlight: styled.strong`
     ${highlightText}
   `,
   HomeCTAButtonGroup: styled.div`
@@ -63,10 +69,54 @@ const S = {
   `,
 }
 
+const removePunctuation = (text: string) =>
+  text.replace(/[.,\/#!$%\^&\*;:{}=\-_`~()]/g, '').replace(/\s{2,}/g, ' ')
+
+const renderDescription = (description: string, highlightedWords: string[]) => {
+  let updatedDescription = description
+  const highLightedWordMap: { [key: string]: string } = {}
+
+  // Create a one-word reference to the hightLightedWord in the description text
+  // This is in order for the highlighted words not to be split up into multiple words when split
+  highlightedWords.forEach((word) => {
+    const referenceWord: string = (Math.random() + 1).toString(36).substring(7)
+
+    highLightedWordMap[referenceWord] = word
+
+    updatedDescription = updatedDescription.replace(word, referenceWord)
+  })
+
+  const descriptionArray = updatedDescription.split(' ')
+
+  return descriptionArray.map((word, idx) => {
+    const addSpace = idx !== descriptionArray.length - 1
+    const rawWord = removePunctuation(word)
+
+    if (Object.keys(highLightedWordMap).includes(rawWord)) {
+      const actualText = word.replace(rawWord, highLightedWordMap[rawWord])
+      return (
+        <S.HomeTextHighlight key={rawWord}>
+          {addSpace ? `${actualText} ` : actualText}
+        </S.HomeTextHighlight>
+      )
+    }
+
+    return addSpace ? `${word} ` : word
+  })
+}
+
 export const Home = () => {
   const { content } = useContentContext()
 
-  const { fullName, greeting } = content?.home
+  const {
+    fullName,
+    greeting,
+    nicknameText,
+    description,
+    highlightedWords,
+    projectsCTA,
+    contactsCTA,
+  } = content?.home
 
   return (
     <S.Home>
@@ -75,36 +125,27 @@ export const Home = () => {
           <S.HomeTitleSecondary>{greeting} I am</S.HomeTitleSecondary>
           <S.HomeTitlePrimary>{fullName}</S.HomeTitlePrimary>
         </S.HomeTitle>
-        <S.HomeSubtitle data-testid="home-subtitle">
-          <S.HomeSubtitleText>
-            You can call me{' '}
-            <S.HomeSubtitleTextHighlighy>Wani</S.HomeSubtitleTextHighlighy>.
-          </S.HomeSubtitleText>
-          <S.HomeSubtitleText>
-            School-taught{' '}
-            <S.HomeSubtitleTextHighlighy>
-              Computer Engineer
-            </S.HomeSubtitleTextHighlighy>
-            ,
-          </S.HomeSubtitleText>
-          <S.HomeSubtitleText>
-            Industry-taught{' '}
-            <S.HomeSubtitleTextHighlighy>
-              Front-end Web Developer
-            </S.HomeSubtitleTextHighlighy>
-            .
-          </S.HomeSubtitleText>
+        <S.HomeSubtitle>
+          <S.HomeNicknameText>
+            {`${nicknameText.nicknameIntro} `}
+            <S.HomeTextHighlight>
+              {`${nicknameText.nicknameValue}.`}
+            </S.HomeTextHighlight>
+          </S.HomeNicknameText>
+          <S.HomeDescriptionText data-testid="description">
+            {renderDescription(description, highlightedWords)}
+          </S.HomeDescriptionText>
         </S.HomeSubtitle>
         <S.HomeCTAButtonGroup>
           <S.HomeCTAButton asLink href="#projects">
-            View my work
+            {projectsCTA}
           </S.HomeCTAButton>
           <S.HomeCTAButton
             asLink
             href="#contact"
             variant={ButtonVariant.OUTLINED}
           >
-            Contact me
+            {contactsCTA}
           </S.HomeCTAButton>
         </S.HomeCTAButtonGroup>
         <SocialIcons icons={Object.values(SOCIAL_LINKS)} />

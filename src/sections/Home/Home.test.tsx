@@ -34,22 +34,48 @@ describe('Home section', () => {
       expect(fullNameText).toBeInTheDocument()
     })
 
-    it('displays more details about me displayed in short sentences', () => {
+    it('displays my nickname', () => {
       setup()
 
-      expect(screen.getByTestId('home-subtitle')).toBeInTheDocument()
+      const nickNameIntro = screen.getByText(
+        new RegExp(mockedContent.home.nicknameText.nicknameIntro)
+      )
+      const nickNameValue = screen.getByText(
+        new RegExp(mockedContent.home.nicknameText.nicknameValue)
+      )
+
+      expect(nickNameIntro).toBeInTheDocument()
+      expect(nickNameValue).toBeInTheDocument()
     })
 
-    it('displays View My Work CTA button link', () => {
+    it('displays description text', () => {
       setup()
 
-      expect(screen.getByRole('link', { name: /view my work/i }))
+      const descriptionContainer = screen.getByTestId('description')
+
+      expect(descriptionContainer.textContent).toBe(
+        mockedContent.home.description
+      )
     })
 
-    it('displays Contact Me CTA button link', () => {
+    it('displays Projects section CTA button link', () => {
       setup()
 
-      expect(screen.getByRole('link', { name: /contact me/i }))
+      expect(
+        screen.getByRole('link', {
+          name: new RegExp(mockedContent.home.projectsCTA),
+        })
+      )
+    })
+
+    it('displays Contacts section CTA button link', () => {
+      setup()
+
+      expect(
+        screen.getByRole('link', {
+          name: new RegExp(mockedContent.home.contactsCTA),
+        })
+      )
     })
 
     it('displays Gmail icon', () => {
@@ -74,21 +100,24 @@ describe('Home section', () => {
   })
 
   describe('Interactions', () => {
-    it(`contains a link to "#projects" in the View My Work CTA button link`, () => {
+    it(`contains a link to "#projects" in the Projects section CTA button link`, () => {
       setup()
 
       expect(
-        screen.getByRole('link', { name: /view my work/i })
+        screen.getByRole('link', {
+          name: new RegExp(mockedContent.home.projectsCTA),
+        })
       ).toHaveAttribute('href', '#projects')
     })
 
-    it(`contains a link to "#contact" in the Contact me CTA button link`, () => {
+    it(`contains a link to "#contact" in the Projects section CTA button link`, () => {
       setup()
 
-      expect(screen.getByRole('link', { name: /contact me/i })).toHaveAttribute(
-        'href',
-        '#contact'
-      )
+      expect(
+        screen.getByRole('link', {
+          name: new RegExp(mockedContent.home.contactsCTA),
+        })
+      ).toHaveAttribute('href', '#contact')
     })
 
     it(`contains a link to "mailto:pelloani@gmail.com" in the Gmail icon`, () => {
