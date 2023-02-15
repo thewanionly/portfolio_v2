@@ -1,4 +1,5 @@
 import { createContext, useCallback, useContext, useState } from 'react'
+import { AboutContent, HomeContent } from './Content.types'
 
 type ContentProviderPops = {
   children: React.ReactNode
@@ -7,14 +8,6 @@ type ContentProviderPops = {
 type ContentContextValue = {
   content: Content
   initializeContent: ContentSetterFn
-}
-
-class HomeContent {
-  constructor(public fullName: string = '', public greeting: string = '') {}
-}
-
-class AboutContent {
-  constructor(public title: string = '') {}
 }
 
 export interface Content {
