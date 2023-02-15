@@ -11,7 +11,10 @@ collections:
         name: 'home'
         file: 'content/home.md'
         fields:
-          - { label: 'Display picture', name: 'avatar', widget: 'image' }
+          - label: 'Display picture'
+            name: 'avatar'
+            widget: 'image'
+            required: false
           - {
               label: 'Greeting text',
               name: 'greeting',
@@ -36,15 +39,13 @@ collections:
           - {
               label: 'Description',
               name: 'description',
-              widget: 'string',
+              widget: 'text',
               hint: 'More information about what you do. Placed below the nickname.',
             }
-          - {
-              label: 'Important words in the description',
-              name: 'highlightedWords',
-              widget: 'list',
-              hint: 'Words in the description field that should be highlighted',
-            }
+          - label: 'Important words in the description'
+            name: 'highlightedWords'
+            widget: 'list'
+            hint: 'Words in the description field that should be highlighted'
           - {
               label: 'Projects section CTA text',
               name: 'projectsCTA',
