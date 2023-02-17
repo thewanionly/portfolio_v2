@@ -73,8 +73,11 @@ collections:
         file: 'content/components/logo.md'
         fields:
           - label: 'Logo image'
-            name: 'logoSrc'
+            name: 'src'
             widget: 'image'
+          - label: 'Default alt text'
+            name: 'defaultAltText'
+            widget: 'string'
       - label: 'Nav Links'
         name: 'navLinks'
         file: 'content/components/navLinks.md'
@@ -120,4 +123,7 @@ collections:
             widget: 'text'
           - label: 'Copyright text'
             name: 'copyrightText'
-            widget: 'text'
+            widget: 'object'
+            fields:
+              - { label: 'Line 1', name: 'line1', widget: 'string' }
+              - { label: 'Line 2', name: 'line2', widget: 'string' }

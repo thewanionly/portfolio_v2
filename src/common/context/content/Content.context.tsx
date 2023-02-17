@@ -3,6 +3,7 @@ import {
   AboutContent,
   ComponentsContent,
   Content,
+  FooterContent,
   HomeContent,
 } from './Content.types'
 
@@ -21,6 +22,7 @@ const initialContent = {
   home: new HomeContent(),
   about: new AboutContent(),
   components: new ComponentsContent(),
+  footer: new FooterContent(),
 }
 
 const initialContentContextValue = {

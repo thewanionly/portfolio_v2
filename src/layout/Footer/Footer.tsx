@@ -110,9 +110,13 @@ const S = {
 }
 
 const Footer = () => {
-  const { content } = useContentContext()
+  const {
+    content: { components, footer },
+  } = useContentContext()
 
-  const { navLinks, socialLinks } = content?.components
+  const { footerQuote, copyrightText } = footer
+
+  const { navLinks, socialLinks } = components
 
   return (
     <S.Footer>
@@ -128,12 +132,12 @@ const Footer = () => {
           </S.FooterNavBar>
         </S.FooterTopArea>
         <S.FooterMiddleArea>
-          <q data-testid="footer-quotation">{`Hard work beats talent when talent doesn't work hard.`}</q>
+          <q>{footerQuote}</q>
         </S.FooterMiddleArea>
         <S.FooterBottomArea>
-          <S.FooterCopyrightText data-testid="footer-copyright">
-            <span>All Rights Reserved</span>
-            <span>{`© Elloani Ross A. Pitogo ${new Date().getFullYear()}`}</span>
+          <S.FooterCopyrightText>
+            <span>{copyrightText.line1}</span>
+            <span>{`${copyrightText.line2} ${new Date().getFullYear()}`}</span>
           </S.FooterCopyrightText>
           <SocialIcons icons={socialLinks} />
         </S.FooterBottomArea>

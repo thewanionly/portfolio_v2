@@ -11,6 +11,8 @@ export async function getStaticProps() {
     await require('../../content/components/navLinks.md')
   const { attributes: socialLinksContent } =
     await require('../../content/components/socialLinks.md')
+  const { attributes: footerContent } =
+    await require('../../content/layout/footer.md')
 
   return {
     props: {
@@ -20,6 +22,7 @@ export async function getStaticProps() {
           ...navLinksContent,
           ...socialLinksContent,
         },
+        footer: footerContent,
       },
     },
   }
