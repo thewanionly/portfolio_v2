@@ -58,3 +58,66 @@ collections:
               widget: 'string',
               hint: 'Displayed in the secondary button',
             }
+      - label: 'About'
+        name: 'about'
+        file: 'content/about.md'
+        fields:
+          - label: 'Section title'
+            name: 'sectionTitle'
+            widget: 'string'
+  - name: 'components'
+    label: 'Components'
+    files:
+      - label: 'Logo'
+        name: 'logo'
+        file: 'content/components/logo.md'
+        fields:
+          - label: 'Logo image'
+            name: 'logoSrc'
+            widget: 'image'
+      - label: 'Nav Links'
+        name: 'navLinks'
+        file: 'content/components/navLinks.md'
+        fields:
+          - label: 'Nav links list'
+            name: 'navLinks'
+            widget: 'list'
+            fields:
+              - { label: 'Label', name: 'label', widget: 'string' }
+              - { label: 'Link URL', name: 'link', widget: 'string' }
+      - label: 'Social Links'
+        name: 'socialLinks'
+        file: 'content/components/socialLinks.md'
+        fields:
+          - label: 'Social links list'
+            name: 'socialLinks'
+            widget: 'list'
+            fields:
+              - {
+                  label: 'Title',
+                  name: 'title',
+                  widget: 'string',
+                  hint: 'Displayed when icon is hovered',
+                }
+              - label: 'Icon name'
+                name: 'name'
+                widget: 'select'
+                hint: 'Icon name'
+                options:
+                  - { label: 'Github', value: 'github' }
+                  - { label: 'Gmail', value: 'gmail' }
+                  - { label: 'Linkedin', value: 'linkedin' }
+              - { label: 'Link URL', name: 'link', widget: 'string' }
+  - name: 'layout'
+    label: 'Layout'
+    files:
+      - label: 'Footer'
+        name: 'footer'
+        file: 'content/layout/footer.md'
+        fields:
+          - label: 'Footer quote'
+            name: 'footerQuote'
+            widget: 'text'
+          - label: 'Copyright text'
+            name: 'copyrightText'
+            widget: 'text'
