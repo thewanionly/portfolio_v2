@@ -14,14 +14,15 @@ const S = {
 }
 
 type LogoProps = {
+  src: string
   altText?: string
   className?: string
 }
 
-export const Logo = ({ altText = 'Logo', className = '' }: LogoProps) => (
+export const Logo = ({ src, altText = 'Logo', className = '' }: LogoProps) => (
   <Link className={className} href="#">
     <S.LogoContainer>
-      <Image src="/images/logo.svg" alt={altText} fill />
+      <Image src={src} alt={altText} fill />
     </S.LogoContainer>
   </Link>
 )

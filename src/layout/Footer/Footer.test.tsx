@@ -1,4 +1,5 @@
-import { mockedContent, render, screen } from '../../common/tests'
+import { render, screen } from '../../common/tests'
+import { footerLogo, mockedContent } from '../../common/tests/mocks'
 import Footer from './Footer'
 
 jest.mock('../../common/context', () => ({
@@ -16,10 +17,10 @@ describe('Footer', () => {
     it(`displays logo image`, () => {
       setup()
 
-      const logo = screen.getByAltText('Footer logo')
+      const logo = screen.getByAltText(footerLogo.alt)
 
       expect(logo).toBeInTheDocument()
-      expect(logo).toHaveAttribute('src', '/images/logo.svg')
+      expect(logo).toHaveAttribute('src', mockedContent.components.logo.src)
     })
 
     it('displays navigation links', () => {
@@ -64,13 +65,12 @@ describe('Footer', () => {
   })
 
   describe('Interaction', () => {
-    it(`navigates to "#" when Footer Logo is clicked`, () => {
+    it(`contains link to "#" in the Footer Logo`, () => {
       setup()
 
-      expect(screen.getByRole('link', { name: 'Footer logo' })).toHaveAttribute(
-        'href',
-        '#'
-      )
+      expect(
+        screen.getByRole('link', { name: footerLogo.alt })
+      ).toHaveAttribute('href', '#')
     })
 
     it('contains appropriate links in each of the social links', () => {

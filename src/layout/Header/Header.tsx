@@ -130,13 +130,13 @@ const Header = () => {
   const { isNavMenuOpen } = useHeaderContext()
   const { content } = useContentContext()
 
-  const { navLinks } = content?.components
+  const { navLinks, logo } = content?.components
 
   return (
     <S.Header>
       <S.HeaderContainer>
         <HeaderNavToggle />
-        <S.HeaderLogo altText="Header logo" />
+        <S.HeaderLogo altText="Header logo" src={logo.src} />
         <S.HeaderNavBar isMenu={isNavMenuOpen}>
           <S.HeaderNavBarList isMenu={isNavMenuOpen}>
             {navLinks.map(({ label, link }) => (

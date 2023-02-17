@@ -1,4 +1,5 @@
-import { mockedContent, render, screen } from '../../common/tests'
+import { render, screen } from '../../common/tests'
+import { mockedContent } from '../../common/tests/mocks'
 import { Home } from './Home'
 
 jest.mock('../../common/context', () => ({

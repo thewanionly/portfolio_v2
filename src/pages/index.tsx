@@ -7,6 +7,8 @@ import { Home } from '../sections'
 
 export async function getStaticProps() {
   const { attributes: homeContent } = await require('../../content/home.md')
+  const { attributes: logoContent } =
+    await require('../../content/components/logo.md')
   const { attributes: navLinksContent } =
     await require('../../content/components/navLinks.md')
   const { attributes: socialLinksContent } =
@@ -19,6 +21,7 @@ export async function getStaticProps() {
       content: {
         home: homeContent,
         components: {
+          logo: logoContent,
           ...navLinksContent,
           ...socialLinksContent,
         },

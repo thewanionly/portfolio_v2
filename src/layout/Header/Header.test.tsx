@@ -1,6 +1,7 @@
 import userEvent from '@testing-library/user-event'
 
-import { mockedContent, render, screen } from '../../common/tests'
+import { render, screen } from '../../common/tests'
+import { headerLogo, mockedContent } from '../../common/tests/mocks'
 import Header from './Header'
 import { HeaderProvider } from './Header.context'
 
@@ -23,10 +24,10 @@ describe('Header', () => {
     it(`displays logo image`, () => {
       setup()
 
-      const logo = screen.getByAltText('Header logo')
+      const logo = screen.getByAltText(headerLogo.alt)
 
       expect(logo).toBeInTheDocument()
-      expect(logo).toHaveAttribute('src', '/images/logo.svg')
+      expect(logo).toHaveAttribute('src', mockedContent.components.logo.src)
     })
 
     it(`displays a hamburger menu icon when screen size is smaller than 1024px`, () => {
@@ -61,12 +62,14 @@ describe('Header', () => {
   })
 
   describe('Interaction', () => {
-    it(`navigates to "#" when Header Logo is clicked`, () => {
+    it(`contains link to "#" in the Header Logo`, () => {
       setup()
 
-      const headerLogo = screen.getByRole('link', { name: 'Header logo' })
+      const headerLogoEl = screen.getByRole('link', {
+        name: headerLogo.alt,
+      })
 
-      expect(headerLogo).toHaveAttribute('href', '#')
+      expect(headerLogoEl).toHaveAttribute('href', '#')
     })
 
     it(`opens the nav menu when hamburger menu icon is clicked`, async () => {
@@ -151,7 +154,11 @@ describe('Header', () => {
       ).toBeInTheDocument()
 
       // Click on Logo
-      userEvent.click(await screen.findByRole('link', { name: 'Header logo' }))
+      userEvent.click(
+        await screen.findByRole('link', {
+          name: headerLogo.alt,
+        })
+      )
 
       // Checks if open nav menu icon is displayed
       expect(
