@@ -1,8 +1,10 @@
-import { render, screen } from '../../../common/tests'
+import { mockedContent, render, screen } from '../../../common/tests'
 import { Logo } from './Logo'
 
+const { defaultAltText, src } = mockedContent.components.logo
+
 const setup = () => {
-  render(<Logo />)
+  render(<Logo altText={defaultAltText} src={src} />)
 }
 
 describe('Logo', () => {
@@ -10,18 +12,18 @@ describe('Logo', () => {
     it(`displays logo image`, () => {
       setup()
 
-      const logo = screen.getByAltText('Logo')
+      const logo = screen.getByAltText(defaultAltText)
 
       expect(logo).toBeInTheDocument()
-      expect(logo).toHaveAttribute('src', '/images/logo.svg')
+      expect(logo).toHaveAttribute('src', src)
     })
   })
 
   describe('Interaction', () => {
-    it(`navigates to "#" when Logo is clicked`, () => {
+    it(`contains link to "#" in the Logo`, () => {
       setup()
 
-      const logo = screen.getByRole('link', { name: 'Logo' })
+      const logo = screen.getByRole('link', { name: defaultAltText })
 
       expect(logo).toHaveAttribute('href', '#')
     })

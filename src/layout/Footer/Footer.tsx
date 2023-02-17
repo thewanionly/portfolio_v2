@@ -116,13 +116,13 @@ const Footer = () => {
 
   const { footerQuote, copyrightText } = footer
 
-  const { navLinks, socialLinks } = components
+  const { logo, navLinks, socialLinks } = components
 
   return (
     <S.Footer>
       <S.FooterContainer>
         <S.FooterTopArea>
-          <S.FooterLogo altText="Footer logo" />
+          <S.FooterLogo altText="Footer logo" src={logo.src} />
           <S.FooterNavBar>
             <S.FooterNavBarList>
               {navLinks.map(({ label, link }) => (

@@ -3,7 +3,17 @@ import { Content, FooterContent, Logo, NavLink, SocialLink } from '../context'
 
 const logo: Logo = {
   defaultAltText: 'Logo',
-  src: '/images/logo.svg',
+  src: 'img/logo.svg',
+}
+
+export const headerLogo = {
+  alt: 'Header logo',
+  src: 'img/logo.svg',
+}
+
+export const footerLogo = {
+  alt: 'Footer logo',
+  src: 'img/logo.svg',
 }
 
 const navLinks: NavLink[] = [
