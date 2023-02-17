@@ -1,5 +1,10 @@
 import { IconName } from '../components'
-import { Content, NavLink, SocialLink } from '../context'
+import { Content, FooterContent, Logo, NavLink, SocialLink } from '../context'
+
+const logo: Logo = {
+  defaultAltText: 'Logo',
+  src: '/images/logo.svg',
+}
 
 const navLinks: NavLink[] = [
   {
@@ -42,6 +47,11 @@ const socialLinks: SocialLink[] = [
   },
 ]
 
+const footer: FooterContent = {
+  footerQuote: 'Work smart',
+  copyrightText: 'Copyright text sample',
+}
+
 export const mockedContent: Content = {
   home: {
     avatar: '',
@@ -60,7 +70,9 @@ export const mockedContent: Content = {
     title: 'About',
   },
   components: {
+    logo,
     navLinks,
     socialLinks,
   },
+  footer,
 }

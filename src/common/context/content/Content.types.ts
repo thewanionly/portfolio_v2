@@ -33,6 +33,10 @@ export interface NavLink {
   link: string
 }
 
+export class Logo {
+  constructor(public defaultAltText: string = '', public src: string = '') {}
+}
+
 export interface SocialLink {
   title: string
   name: IconName
@@ -42,8 +46,17 @@ export interface SocialLink {
 
 export class ComponentsContent {
   constructor(
+    public logo: Logo = new Logo(),
     public navLinks: NavLink[] = [],
     public socialLinks: SocialLink[] = []
+  ) {}
+}
+
+/** Footer types */
+export class FooterContent {
+  constructor(
+    public footerQuote: string = '',
+    public copyrightText: string = ''
   ) {}
 }
 
@@ -52,4 +65,5 @@ export interface Content {
   home: HomeContent
   about: AboutContent
   components: ComponentsContent
+  footer: FooterContent
 }

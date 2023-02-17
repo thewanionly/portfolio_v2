@@ -73,8 +73,11 @@ collections:
         file: 'content/components/logo.md'
         fields:
           - label: 'Logo image'
-            name: 'logoSrc'
+            name: 'src'
             widget: 'image'
+          - label: 'Default alt text'
+            name: 'defaultAltText'
+            widget: 'string'
       - label: 'Nav Links'
         name: 'navLinks'
         file: 'content/components/navLinks.md'

@@ -33,13 +33,17 @@ describe('Footer', () => {
     it('displays a quotation text', () => {
       setup()
 
-      expect(screen.getByTestId('footer-quotation')).toBeInTheDocument()
+      const quotationText = screen.getByText(mockedContent.footer.footerQuote)
+
+      expect(quotationText).toBeInTheDocument()
     })
 
     it('displays copyright text', () => {
       setup()
 
-      expect(screen.getByTestId('footer-copyright')).toBeInTheDocument()
+      const copyRightText = screen.getByText(mockedContent.footer.copyrightText)
+
+      expect(copyRightText).toBeInTheDocument()
     })
 
     it('displays social links', () => {
