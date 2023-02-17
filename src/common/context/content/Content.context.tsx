@@ -1,5 +1,10 @@
 import { createContext, useCallback, useContext, useState } from 'react'
-import { AboutContent, HomeContent } from './Content.types'
+import {
+  AboutContent,
+  ComponentsContent,
+  Content,
+  HomeContent,
+} from './Content.types'
 
 type ContentProviderPops = {
   children: React.ReactNode
@@ -10,16 +15,12 @@ type ContentContextValue = {
   initializeContent: ContentSetterFn
 }
 
-export interface Content {
-  home: HomeContent
-  about: AboutContent
-}
-
 type ContentSetterFn = (data: Content) => void
 
 const initialContent = {
   home: new HomeContent(),
   about: new AboutContent(),
+  components: new ComponentsContent(),
 }
 
 const initialContentContextValue = {

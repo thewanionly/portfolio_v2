@@ -1,5 +1,50 @@
-export const mockedContent = {
+import { IconName } from '../components'
+import { Content, NavLink, SocialLink } from '../context'
+
+const navLinks: NavLink[] = [
+  {
+    label: 'Home',
+    link: '#',
+  },
+  {
+    label: 'About',
+    link: '#about',
+  },
+  {
+    label: 'Skills',
+    link: '#skills',
+  },
+  {
+    label: 'Projects',
+    link: '#projects',
+  },
+  {
+    label: 'Contact',
+    link: '#contact',
+  },
+]
+
+const socialLinks: SocialLink[] = [
+  {
+    link: 'mailto:pelloani@gmail.com',
+    name: IconName.GMAIL,
+    title: 'Gmail',
+  },
+  {
+    link: 'https://www.linkedin.com/in/pitogoelloaniross/',
+    name: IconName.LINKEDIN,
+    title: 'LinkedIn',
+  },
+  {
+    link: 'https://github.com/thewanionly/',
+    name: IconName.GITHUB,
+    title: 'GitHub',
+  },
+]
+
+export const mockedContent: Content = {
   home: {
+    avatar: '',
     greeting: 'Hi there',
     fullName: 'Elloani Ross Pitogo',
     nicknameText: {
@@ -10,5 +55,12 @@ export const mockedContent = {
     highlightedWords: ['Front-end Web Developer'],
     projectsCTA: 'Projects',
     contactsCTA: 'Contacts',
+  },
+  about: {
+    title: 'About',
+  },
+  components: {
+    navLinks,
+    socialLinks,
   },
 }

@@ -1,14 +1,12 @@
-import { render, screen } from '../../../common/tests'
-import { NAVIGATION_LINKS } from '../../constants'
-import { NavBar, NavLink } from './NavBar'
+import { mockedContent, render, screen } from '../../../common/tests'
+import { NavBar } from './NavBar'
 
-const navBarLinks: NavLink[] = Object.values(NAVIGATION_LINKS)
 const setup = () => {
   render(
     <NavBar>
       <NavBar.List>
-        {navBarLinks.map(({ href, label }) => (
-          <NavBar.ListItem key={label} href={href} label={label} />
+        {mockedContent.components.navLinks.map(({ label, link }) => (
+          <NavBar.ListItem key={label} href={link} label={label} />
         ))}
       </NavBar.List>
     </NavBar>
@@ -20,30 +18,22 @@ describe('NavBar', () => {
     it(`displays the navigation links`, () => {
       setup()
 
-      navBarLinks.forEach(({ label }) => {
+      mockedContent.components.navLinks.forEach(({ label }) => {
         expect(screen.getByRole('link', { name: label })).toBeInTheDocument()
       })
     })
   })
 
   describe('Interaction', () => {
-    it.each`
-      path           | section
-      ${'#'}         | ${'Home'}
-      ${'#about'}    | ${'About'}
-      ${'#skills'}   | ${'Skills'}
-      ${'#projects'} | ${'Projects'}
-      ${'#contact'}  | ${'Contact'}
-    `(
-      `navigates to $path when $section nav link is clicked`,
-      ({ path, section }) => {
-        setup()
+    it('contains appropriate links in each of the navbar links', () => {
+      setup()
 
-        expect(screen.getByRole('link', { name: section })).toHaveAttribute(
+      mockedContent.components.navLinks.forEach(({ label, link }) => {
+        expect(screen.getByRole('link', { name: label })).toHaveAttribute(
           'href',
-          path
+          link
         )
-      }
-    )
+      })
+    })
   })
 })

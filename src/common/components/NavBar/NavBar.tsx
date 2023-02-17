@@ -16,11 +16,6 @@ const S = {
   `,
 }
 
-export interface NavLink {
-  href: string
-  label: string
-}
-
 type NavBarProps = {
   className?: string
   children: React.ReactNode

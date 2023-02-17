@@ -1,8 +1,7 @@
-import { render, screen } from '../../../common/tests'
-import { SOCIAL_LINKS } from '../../constants'
-import { SocialIcons, SocialIconLinks } from './SocialIcons'
+import { mockedContent, render, screen } from '../../../common/tests'
+import { SocialIcons } from './SocialIcons'
 
-const socialIcons: SocialIconLinks[] = Object.values(SOCIAL_LINKS)
+const socialIcons = mockedContent.components.socialLinks
 
 const setup = () => {
   render(<SocialIcons icons={socialIcons} />)

@@ -1,10 +1,14 @@
 import userEvent from '@testing-library/user-event'
 
-import { NavLink } from '../../common/components/NavBar'
-import { NAVIGATION_LINKS } from '../../common/constants'
-import { render, screen } from '../../common/tests'
+import { mockedContent, render, screen } from '../../common/tests'
 import Header from './Header'
 import { HeaderProvider } from './Header.context'
+
+jest.mock('../../common/context', () => ({
+  useContentContext: () => ({
+    content: mockedContent,
+  }),
+}))
 
 const setup = () => {
   render(
@@ -13,8 +17,6 @@ const setup = () => {
     </HeaderProvider>
   )
 }
-
-const navBarLinks: NavLink[] = Object.values(NAVIGATION_LINKS)
 
 describe('Header', () => {
   describe('Layout', () => {
@@ -52,7 +54,7 @@ describe('Header', () => {
 
     xit(`displays the navigation links when screen size is larger than 1024px`, () => {
       // TODO: Test responsive screen sizes
-      // navBarLinks.forEach(({ label }) => {
+      // mockedContent.components.navLinks.forEach(({ label }) => {
       //   expect(screen.getByRole('link', { name: label })).toBeInTheDocument()
       // })
     })
@@ -71,7 +73,7 @@ describe('Header', () => {
       setup()
 
       // Check if nav links does not exist
-      navBarLinks.forEach(({ label }) => {
+      mockedContent.components.navLinks.forEach(({ label }) => {
         expect(
           screen.queryByRole('link', { name: label })
         ).not.toBeInTheDocument()
@@ -88,7 +90,7 @@ describe('Header', () => {
       ).toBeInTheDocument()
 
       // Check if nav links are displayed
-      navBarLinks.forEach(({ label }) => {
+      mockedContent.components.navLinks.forEach(({ label }) => {
         expect(screen.getByRole('link', { name: label })).toBeInTheDocument()
       })
     })

@@ -1,21 +1,21 @@
-import { NavLink } from '../../common/components/NavBar'
-import { NAVIGATION_LINKS } from '../../common/constants'
-import { render, screen } from '../../common/tests'
+import { mockedContent, render, screen } from '../../common/tests'
 import Footer from './Footer'
+
+jest.mock('../../common/context', () => ({
+  useContentContext: () => ({
+    content: mockedContent,
+  }),
+}))
 
 const setup = () => {
   render(<Footer />)
 }
 
-beforeEach(() => {
-  setup()
-})
-
-const navBarLinks: NavLink[] = Object.values(NAVIGATION_LINKS)
-
 describe('Footer', () => {
   describe('Layout', () => {
     it(`displays logo image`, () => {
+      setup()
+
       const logo = screen.getByAltText('Footer logo')
 
       expect(logo).toBeInTheDocument()
@@ -23,61 +23,54 @@ describe('Footer', () => {
     })
 
     it('displays navigation links', () => {
-      navBarLinks.forEach(({ label }) => {
+      setup()
+
+      mockedContent.components.navLinks.forEach(({ label }) => {
         expect(screen.getByRole('link', { name: label })).toBeInTheDocument()
       })
     })
 
     it('displays a quotation text', () => {
+      setup()
+
       expect(screen.getByTestId('footer-quotation')).toBeInTheDocument()
     })
 
     it('displays copyright text', () => {
+      setup()
+
       expect(screen.getByTestId('footer-copyright')).toBeInTheDocument()
     })
 
-    it('displays Gmail icon', () => {
-      expect(screen.getByRole('link', { name: /gmail/i })).toBeInTheDocument()
-    })
+    it('displays social links', () => {
+      setup()
 
-    it('displays LinkedIn icon', () => {
-      expect(
-        screen.getByRole('link', { name: /linkedin/i })
-      ).toBeInTheDocument()
-    })
-
-    it('displays GitHub icon', () => {
-      expect(screen.getByRole('link', { name: /github/i })).toBeInTheDocument()
+      mockedContent.components.socialLinks.forEach(({ name }) => {
+        expect(
+          screen.getByRole('link', { name: new RegExp(name) })
+        ).toBeInTheDocument()
+      })
     })
   })
 
   describe('Interaction', () => {
     it(`navigates to "#" when Footer Logo is clicked`, () => {
+      setup()
+
       expect(screen.getByRole('link', { name: 'Footer logo' })).toHaveAttribute(
         'href',
         '#'
       )
     })
 
-    it(`navigates to "mailto:pelloani@gmail.com" when Gmail icon is clicked`, () => {
-      expect(screen.getByRole('link', { name: /gmail/i })).toHaveAttribute(
-        'href',
-        'mailto:pelloani@gmail.com'
-      )
-    })
+    it('contains appropriate links in each of the social links', () => {
+      setup()
 
-    it(`navigates to "https://www.linkedin.com/in/pitogoelloaniross/" when LinkedIn icon is clicked`, () => {
-      expect(screen.getByRole('link', { name: /linkedin/i })).toHaveAttribute(
-        'href',
-        'https://www.linkedin.com/in/pitogoelloaniross/'
-      )
-    })
-
-    it(`navigates to "https://github.com/thewanionly/" when GitHub icon is clicked`, () => {
-      expect(screen.getByRole('link', { name: /github/i })).toHaveAttribute(
-        'href',
-        'https://github.com/thewanionly/'
-      )
+      mockedContent.components.socialLinks.forEach(({ name, link }) => {
+        expect(
+          screen.getByRole('link', { name: new RegExp(name) })
+        ).toHaveAttribute('href', link)
+      })
     })
   })
 })

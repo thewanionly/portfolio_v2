@@ -1,8 +1,7 @@
 import styled, { css } from 'styled-components'
 
 import { Logo, NavBar } from '../../common/components'
-import { NavLink } from '../../common/components/NavBar'
-import { NAVIGATION_LINKS } from '../../common/constants'
+import { useContentContext } from '../../common/context'
 import { container } from '../../common/styles/utilities'
 
 import { useHeaderContext } from './Header.context'
@@ -129,8 +128,9 @@ type WithIsMenu = {
 
 const Header = () => {
   const { isNavMenuOpen } = useHeaderContext()
+  const { content } = useContentContext()
 
-  const navBarLinks: NavLink[] = Object.values(NAVIGATION_LINKS)
+  const { navLinks } = content?.components
 
   return (
     <S.Header>
@@ -139,8 +139,8 @@ const Header = () => {
         <S.HeaderLogo altText="Header logo" />
         <S.HeaderNavBar isMenu={isNavMenuOpen}>
           <S.HeaderNavBarList isMenu={isNavMenuOpen}>
-            {navBarLinks.map(({ href, label }) => (
-              <S.HeaderNavBarListItem key={label} href={href} label={label} />
+            {navLinks.map(({ label, link }) => (
+              <S.HeaderNavBarListItem key={label} href={link} label={label} />
             ))}
           </S.HeaderNavBarList>
         </S.HeaderNavBar>
