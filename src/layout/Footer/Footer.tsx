@@ -136,8 +136,8 @@ const Footer = () => {
         </S.FooterMiddleArea>
         <S.FooterBottomArea>
           <S.FooterCopyrightText>
-            <span>{copyrightText}</span>
-            <span>{`${new Date().getFullYear()}`}</span>
+            <span>{copyrightText.line1}</span>
+            <span>{`${copyrightText.line2} ${new Date().getFullYear()}`}</span>
           </S.FooterCopyrightText>
           <SocialIcons icons={socialLinks} />
         </S.FooterBottomArea>

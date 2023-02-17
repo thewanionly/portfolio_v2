@@ -123,4 +123,7 @@ collections:
             widget: 'text'
           - label: 'Copyright text'
             name: 'copyrightText'
-            widget: 'text'
+            widget: 'object'
+            fields:
+              - { label: 'Line 1', name: 'line1', widget: 'string' }
+              - { label: 'Line 2', name: 'line2', widget: 'string' }

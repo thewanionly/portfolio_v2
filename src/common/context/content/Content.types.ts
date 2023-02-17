@@ -53,10 +53,18 @@ export class ComponentsContent {
 }
 
 /** Footer types */
+interface CopyrightText {
+  line1: string
+  line2: string
+}
+
 export class FooterContent {
   constructor(
     public footerQuote: string = '',
-    public copyrightText: string = ''
+    public copyrightText: CopyrightText = {
+      line1: '',
+      line2: '',
+    }
   ) {}
 }
 

@@ -49,7 +49,10 @@ const socialLinks: SocialLink[] = [
 
 const footer: FooterContent = {
   footerQuote: 'Work smart',
-  copyrightText: 'Copyright text sample',
+  copyrightText: {
+    line1: 'Copyright text sample line 1',
+    line2: 'Copyright text sample line 2',
+  },
 }
 
 export const mockedContent: Content = {
