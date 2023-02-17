@@ -1,6 +1,7 @@
 import userEvent from '@testing-library/user-event'
 
-import { headerLogo, mockedContent, render, screen } from '../../common/tests'
+import { render, screen } from '../../common/tests'
+import { headerLogo, mockedContent } from '../../common/tests/mocks'
 import Header from './Header'
 import { HeaderProvider } from './Header.context'
 

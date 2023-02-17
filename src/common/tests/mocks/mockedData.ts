@@ -1,5 +1,11 @@
-import { IconName } from '../components'
-import { Content, FooterContent, Logo, NavLink, SocialLink } from '../context'
+import { IconName } from '../../components'
+import {
+  Content,
+  FooterContent,
+  Logo,
+  NavLink,
+  SocialLink,
+} from '../../context'
 
 const logo: Logo = {
   defaultAltText: 'Logo',

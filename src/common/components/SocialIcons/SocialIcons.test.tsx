@@ -1,4 +1,5 @@
-import { mockedContent, render, screen } from '../../../common/tests'
+import { render, screen } from '../../tests'
+import { mockedContent } from '../../tests/mocks'
 import { SocialIcons } from './SocialIcons'
 
 const socialIcons = mockedContent.components.socialLinks
