@@ -1,9 +1,9 @@
 import styled from 'styled-components'
 
 import { Logo, NavBar } from '../../common/components'
-import { NavLink } from '../../common/components/NavBar'
 import { SocialIcons } from '../../common/components/SocialIcons'
-import { NAVIGATION_LINKS, SOCIAL_LINKS } from '../../common/constants'
+import { SOCIAL_LINKS } from '../../common/constants'
+import { useContentContext } from '../../common/context'
 import { container } from '../../common/styles/utilities'
 
 const S = {
@@ -111,7 +111,9 @@ const S = {
 }
 
 const Footer = () => {
-  const navBarLinks: NavLink[] = Object.values(NAVIGATION_LINKS)
+  const { content } = useContentContext()
+
+  const { navLinks } = content?.components
 
   return (
     <S.Footer>
@@ -120,8 +122,8 @@ const Footer = () => {
           <S.FooterLogo altText="Footer logo" />
           <S.FooterNavBar>
             <S.FooterNavBarList>
-              {navBarLinks.map(({ href, label }) => (
-                <S.FooterNavBarListItem key={label} href={href} label={label} />
+              {navLinks.map(({ label, link }) => (
+                <S.FooterNavBarListItem key={label} href={link} label={label} />
               ))}
             </S.FooterNavBarList>
           </S.FooterNavBar>

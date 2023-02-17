@@ -1,7 +1,11 @@
-import { NavLink } from '../../common/components/NavBar'
-import { NAVIGATION_LINKS } from '../../common/constants'
-import { render, screen } from '../../common/tests'
+import { mockedContent, render, screen } from '../../common/tests'
 import Footer from './Footer'
+
+jest.mock('../../common/context', () => ({
+  useContentContext: () => ({
+    content: mockedContent,
+  }),
+}))
 
 const setup = () => {
   render(<Footer />)
@@ -10,8 +14,6 @@ const setup = () => {
 beforeEach(() => {
   setup()
 })
-
-const navBarLinks: NavLink[] = Object.values(NAVIGATION_LINKS)
 
 describe('Footer', () => {
   describe('Layout', () => {
@@ -23,7 +25,7 @@ describe('Footer', () => {
     })
 
     it('displays navigation links', () => {
-      navBarLinks.forEach(({ label }) => {
+      mockedContent.components.navLinks.forEach(({ label }) => {
         expect(screen.getByRole('link', { name: label })).toBeInTheDocument()
       })
     })
