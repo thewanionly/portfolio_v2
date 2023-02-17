@@ -1,4 +1,5 @@
-import { Content, NavLink } from '../context'
+import { IconName } from '../components'
+import { Content, NavLink, SocialLink } from '../context'
 
 const navLinks: NavLink[] = [
   {
@@ -23,6 +24,24 @@ const navLinks: NavLink[] = [
   },
 ]
 
+const socialLinks: SocialLink[] = [
+  {
+    link: 'mailto:pelloani@gmail.com',
+    name: IconName.GMAIL,
+    title: 'Gmail',
+  },
+  {
+    link: 'https://www.linkedin.com/in/pitogoelloaniross/',
+    name: IconName.LINKEDIN,
+    title: 'LinkedIn',
+  },
+  {
+    link: 'https://github.com/thewanionly/',
+    name: IconName.GITHUB,
+    title: 'GitHub',
+  },
+]
+
 export const mockedContent: Content = {
   home: {
     avatar: '',
@@ -42,5 +61,6 @@ export const mockedContent: Content = {
   },
   components: {
     navLinks,
+    socialLinks,
   },
 }

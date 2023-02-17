@@ -1,7 +1,6 @@
 import styled from 'styled-components'
 import { Button, ButtonVariant } from '../../common/components'
 import { SocialIcons } from '../../common/components/SocialIcons'
-import { SOCIAL_LINKS } from '../../common/constants'
 import { useContentContext } from '../../common/context'
 import { container, highlightText } from '../../common/styles/utilities'
 
@@ -106,7 +105,9 @@ const renderDescription = (description: string, highlightedWords: string[]) => {
 }
 
 export const Home = () => {
-  const { content } = useContentContext()
+  const {
+    content: { home, components },
+  } = useContentContext()
 
   const {
     fullName,
@@ -116,7 +117,9 @@ export const Home = () => {
     highlightedWords,
     projectsCTA,
     contactsCTA,
-  } = content?.home
+  } = home
+
+  const { socialLinks } = components
 
   return (
     <S.Home>
@@ -148,7 +151,7 @@ export const Home = () => {
             {contactsCTA}
           </S.HomeCTAButton>
         </S.HomeCTAButtonGroup>
-        <SocialIcons icons={Object.values(SOCIAL_LINKS)} />
+        <SocialIcons icons={socialLinks} />
       </S.HomeContainer>
     </S.Home>
   )

@@ -1,3 +1,5 @@
+import { IconName } from '../../components'
+
 /** Home types */
 interface NicknameText {
   nicknameIntro: string
@@ -31,8 +33,18 @@ export interface NavLink {
   link: string
 }
 
+export interface SocialLink {
+  title: string
+  name: IconName
+  link: string
+  target?: string
+}
+
 export class ComponentsContent {
-  constructor(public navLinks: NavLink[] = []) {}
+  constructor(
+    public navLinks: NavLink[] = [],
+    public socialLinks: SocialLink[] = []
+  ) {}
 }
 
 /** Content type */

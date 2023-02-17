@@ -2,7 +2,6 @@ import styled from 'styled-components'
 
 import { Logo, NavBar } from '../../common/components'
 import { SocialIcons } from '../../common/components/SocialIcons'
-import { SOCIAL_LINKS } from '../../common/constants'
 import { useContentContext } from '../../common/context'
 import { container } from '../../common/styles/utilities'
 
@@ -113,7 +112,7 @@ const S = {
 const Footer = () => {
   const { content } = useContentContext()
 
-  const { navLinks } = content?.components
+  const { navLinks, socialLinks } = content?.components
 
   return (
     <S.Footer>
@@ -136,7 +135,7 @@ const Footer = () => {
             <span>All Rights Reserved</span>
             <span>{`© Elloani Ross A. Pitogo ${new Date().getFullYear()}`}</span>
           </S.FooterCopyrightText>
-          <SocialIcons icons={Object.values(SOCIAL_LINKS)} />
+          <SocialIcons icons={socialLinks} />
         </S.FooterBottomArea>
       </S.FooterContainer>
     </S.Footer>

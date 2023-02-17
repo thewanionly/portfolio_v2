@@ -1,5 +1,6 @@
 import Link from 'next/link'
 import styled from 'styled-components'
+import { SocialLink } from '../../context'
 import { Icon, IconName } from '../Icon'
 
 const S = {
@@ -23,23 +24,16 @@ const S = {
   `,
 }
 
-export interface SocialIconLinks {
-  href: string
-  name: IconName
-  target?: string
-  title?: string
-}
-
 type SocialIconsProps = {
   className?: string
-  icons: SocialIconLinks[]
+  icons: SocialLink[]
 }
 
 export const SocialIcons = ({ className = '', icons }: SocialIconsProps) => (
   <S.SocialIconsGroup className={className}>
-    {Object.values(icons)?.map(({ href, name, target = '_blank', title }) => (
+    {Object.values(icons)?.map(({ link, name, target = '_blank', title }) => (
       <li key={name}>
-        <S.SocialIconLink href={href} target={target} title={title}>
+        <S.SocialIconLink href={link} target={target} title={title}>
           <S.SocialIcon name={name} />
         </S.SocialIconLink>
       </li>
