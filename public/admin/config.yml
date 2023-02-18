@@ -1,7 +1,7 @@
 backend:
   name: git-gateway
   branch: main # Branch to update (optional; defaults to master)
-media_folder: public/img
+media_folder: public/img # Media files will be stored in the repo under public/img
 public_folder: img
 collections:
   - name: 'sections'
