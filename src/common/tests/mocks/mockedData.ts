@@ -86,7 +86,21 @@ export const mockedContent: Content = {
     contactsCTA: 'Contacts',
   },
   about: {
-    title: 'About',
+    sectionTitle: 'About',
+    aboutCards: [
+      {
+        title: 'About 1',
+        image: 'img/about-1.svg',
+        description: 'Lorem ipsum about 1',
+        highlightedWords: ['ipsum', 'about'],
+      },
+      {
+        title: 'About 2',
+        image: 'img/about-2.svg',
+        description: 'Sit amet dolor about 1',
+        highlightedWords: ['amet', 'dolor'],
+      },
+    ],
   },
   components: {
     logo,
