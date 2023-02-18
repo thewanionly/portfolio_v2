@@ -65,6 +65,17 @@ collections:
           - label: 'Section title'
             name: 'sectionTitle'
             widget: 'string'
+          - label: 'About content cards'
+            name: 'aboutCard'
+            widget: 'list'
+            fields:
+              - { label: 'Title', name: 'title', widget: 'string' }
+              - { label: 'Image', name: 'image', widget: 'image' }
+              - { label: 'Description', name: 'description', widget: 'text' }
+              - label: 'Important words in the description'
+                name: 'highlightedWords'
+                widget: 'list'
+                hint: 'Words in the description field that should be highlighted'
   - name: 'components'
     label: 'Components'
     files:
