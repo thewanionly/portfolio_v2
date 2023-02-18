@@ -1,12 +1,12 @@
 import { IconName } from '../../components'
 
-/** Home types */
+/** Hero types */
 interface NicknameText {
   nicknameIntro: string
   nicknameValue: string
 }
 
-export class HomeContent {
+export class HeroContent {
   constructor(
     public avatar: string = '',
     public greeting: string = '',
@@ -70,7 +70,7 @@ export class FooterContent {
 
 /** Content type */
 export interface Content {
-  home: HomeContent
+  hero: HeroContent
   about: AboutContent
   components: ComponentsContent
   footer: FooterContent

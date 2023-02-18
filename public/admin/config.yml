@@ -7,9 +7,9 @@ collections:
   - name: 'sections'
     label: 'Sections'
     files:
-      - label: 'Home'
-        name: 'home'
-        file: 'content/sections/home.md'
+      - label: 'Hero'
+        name: 'hero'
+        file: 'content/sections/hero.md'
         fields:
           - label: 'Display picture'
             name: 'avatar'

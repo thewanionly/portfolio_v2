@@ -3,11 +3,11 @@ import { useEffect } from 'react'
 
 import { Content, useContentContext } from '../common/context'
 import { Footer, Header, HeaderProvider } from '../layout'
-import { Home } from '../sections'
+import { Hero } from '../sections'
 
 export async function getStaticProps() {
-  const { attributes: homeContent } =
-    await require('../../content/sections/home.md')
+  const { attributes: heroContent } =
+    await require('../../content/sections/hero.md')
   const { attributes: logoContent } =
     await require('../../content/components/logo.md')
   const { attributes: navLinksContent } =
@@ -20,7 +20,7 @@ export async function getStaticProps() {
   return {
     props: {
       content: {
-        home: homeContent,
+        hero: heroContent,
         components: {
           logo: logoContent,
           ...navLinksContent,
@@ -76,7 +76,7 @@ export default function Index({ content }: IndexProps) {
         <HeaderProvider>
           <Header />
         </HeaderProvider>
-        <Home />
+        <Hero />
         <Footer />
       </main>
     </>
