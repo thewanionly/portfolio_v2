@@ -87,7 +87,7 @@ export const mockedContent: Content = {
   },
   about: {
     sectionTitle: 'About',
-    aboutCards: [
+    aboutCard: [
       {
         title: 'About 1',
         image: 'img/about-1.svg',

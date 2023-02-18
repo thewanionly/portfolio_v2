@@ -23,7 +23,7 @@ export class HeroContent {
 }
 
 /** About types */
-interface AboutCard {
+export interface AboutCard {
   title: string
   image: string
   description: string
@@ -33,7 +33,7 @@ interface AboutCard {
 export class AboutContent {
   constructor(
     public sectionTitle: string = '',
-    public aboutCards: AboutCard[] = []
+    public aboutCard: AboutCard[] = []
   ) {}
 }
 
