@@ -6,7 +6,8 @@ import { Footer, Header, HeaderProvider } from '../layout'
 import { Home } from '../sections'
 
 export async function getStaticProps() {
-  const { attributes: homeContent } = await require('../../content/home.md')
+  const { attributes: homeContent } =
+    await require('../../content/sections/home.md')
   const { attributes: logoContent } =
     await require('../../content/components/logo.md')
   const { attributes: navLinksContent } =
