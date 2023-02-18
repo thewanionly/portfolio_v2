@@ -72,7 +72,7 @@ const footer: FooterContent = {
 }
 
 export const mockedContent: Content = {
-  home: {
+  hero: {
     avatar: '',
     greeting: 'Hi there',
     fullName: 'Elloani Ross Pitogo',
