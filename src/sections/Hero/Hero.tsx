@@ -5,12 +5,12 @@ import { useContentContext } from '../../common/context'
 import { container, highlightText } from '../../common/styles/utilities'
 
 const S = {
-  Home: styled.section`
+  Hero: styled.section`
     padding: 13rem 0 16rem;
     background-color: ${({ theme: { colors } }) => colors.secondary};
     color: ${({ theme: { colors } }) => colors.headingLight};
   `,
-  HomeContainer: styled.div`
+  HeroContainer: styled.div`
     ${container}
 
     display: flex;
@@ -19,43 +19,43 @@ const S = {
     margin-top: 6rem;
     text-align: center;
   `,
-  HomeTitle: styled.h1`
+  HeroTitle: styled.h1`
     text-transform: uppercase;
   `,
-  HomeTitleSecondary: styled.span`
+  HeroTitleSecondary: styled.span`
     display: block;
     letter-spacing: 0.5rem;
     font-size: ${({ theme: { fontSizes } }) => fontSizes.fontSizeSm};
     color: ${({ theme: { colors } }) => colors.bodyLighter};
   `,
-  HomeTitlePrimary: styled.span`
+  HeroTitlePrimary: styled.span`
     display: block;
     letter-spacing: 0.3rem;
     font-size: inherit;
     line-height: inherit;
     font-weight: inherit;
   `,
-  HomeSubtitle: styled.div``,
-  HomeNicknameText: styled.p`
+  HeroSubtitle: styled.div``,
+  HeroNicknameText: styled.p`
     color: ${({ theme: { colors } }) => colors.bodyLight};
     line-height: 2.5rem;
   `,
-  HomeDescriptionText: styled.p`
+  HeroDescriptionText: styled.p`
     color: ${({ theme: { colors } }) => colors.bodyLight};
     line-height: 2.5rem;
     max-width: 48rem;
     margin: 0 auto;
   `,
-  HomeTextHighlight: styled.strong`
+  HeroTextHighlight: styled.strong`
     ${highlightText}
   `,
-  HomeCTAButtonGroup: styled.div`
+  HeroCTAButtonGroup: styled.div`
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
     gap: 2rem;
   `,
-  HomeCTAButton: styled(Button)`
+  HeroCTAButton: styled(Button)`
     flex: 1;
     flex-basis: 45%;
     max-width: 100%;
@@ -94,9 +94,9 @@ const renderDescription = (description: string, highlightedWords: string[]) => {
     if (Object.keys(highLightedWordMap).includes(rawWord)) {
       const actualText = word.replace(rawWord, highLightedWordMap[rawWord])
       return (
-        <S.HomeTextHighlight key={rawWord}>
+        <S.HeroTextHighlight key={rawWord}>
           {addSpace ? `${actualText} ` : actualText}
-        </S.HomeTextHighlight>
+        </S.HeroTextHighlight>
       )
     }
 
@@ -104,9 +104,9 @@ const renderDescription = (description: string, highlightedWords: string[]) => {
   })
 }
 
-export const Home = () => {
+export const Hero = () => {
   const {
-    content: { home, components },
+    content: { hero, components },
   } = useContentContext()
 
   const {
@@ -117,42 +117,42 @@ export const Home = () => {
     highlightedWords,
     projectsCTA,
     contactsCTA,
-  } = home
+  } = hero
 
   const { socialLinks } = components
 
   return (
-    <S.Home>
-      <S.HomeContainer>
-        <S.HomeTitle>
-          <S.HomeTitleSecondary>{greeting} I am</S.HomeTitleSecondary>
-          <S.HomeTitlePrimary>{fullName}</S.HomeTitlePrimary>
-        </S.HomeTitle>
-        <S.HomeSubtitle>
-          <S.HomeNicknameText>
+    <S.Hero>
+      <S.HeroContainer>
+        <S.HeroTitle>
+          <S.HeroTitleSecondary>{greeting} I am</S.HeroTitleSecondary>
+          <S.HeroTitlePrimary>{fullName}</S.HeroTitlePrimary>
+        </S.HeroTitle>
+        <S.HeroSubtitle>
+          <S.HeroNicknameText>
             {`${nicknameText.nicknameIntro} `}
-            <S.HomeTextHighlight>
+            <S.HeroTextHighlight>
               {`${nicknameText.nicknameValue}.`}
-            </S.HomeTextHighlight>
-          </S.HomeNicknameText>
-          <S.HomeDescriptionText data-testid="description">
+            </S.HeroTextHighlight>
+          </S.HeroNicknameText>
+          <S.HeroDescriptionText data-testid="description">
             {renderDescription(description, highlightedWords)}
-          </S.HomeDescriptionText>
-        </S.HomeSubtitle>
-        <S.HomeCTAButtonGroup>
-          <S.HomeCTAButton asLink href="#projects">
+          </S.HeroDescriptionText>
+        </S.HeroSubtitle>
+        <S.HeroCTAButtonGroup>
+          <S.HeroCTAButton asLink href="#projects">
             {projectsCTA}
-          </S.HomeCTAButton>
-          <S.HomeCTAButton
+          </S.HeroCTAButton>
+          <S.HeroCTAButton
             asLink
             href="#contact"
             variant={ButtonVariant.OUTLINED}
           >
             {contactsCTA}
-          </S.HomeCTAButton>
-        </S.HomeCTAButtonGroup>
+          </S.HeroCTAButton>
+        </S.HeroCTAButtonGroup>
         <SocialIcons icons={socialLinks} />
-      </S.HomeContainer>
-    </S.Home>
+      </S.HeroContainer>
+    </S.Hero>
   )
 }

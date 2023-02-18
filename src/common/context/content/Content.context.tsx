@@ -4,7 +4,7 @@ import {
   ComponentsContent,
   Content,
   FooterContent,
-  HomeContent,
+  HeroContent,
 } from './Content.types'
 
 type ContentProviderPops = {
@@ -19,7 +19,7 @@ type ContentContextValue = {
 type ContentSetterFn = (data: Content) => void
 
 const initialContent = {
-  home: new HomeContent(),
+  hero: new HeroContent(),
   about: new AboutContent(),
   components: new ComponentsContent(),
   footer: new FooterContent(),

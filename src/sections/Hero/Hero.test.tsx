@@ -1,6 +1,6 @@
 import { render, screen } from '../../common/tests'
 import { mockedContent } from '../../common/tests/mocks'
-import { Home } from './Home'
+import { Hero } from './Hero'
 
 jest.mock('../../common/context', () => ({
   useContentContext: () => ({
@@ -9,16 +9,16 @@ jest.mock('../../common/context', () => ({
 }))
 
 const setup = () => {
-  render(<Home />)
+  render(<Hero />)
 }
 
-describe('Home section', () => {
+describe('Hero section', () => {
   describe('Layout', () => {
     it('displays a greeting text', () => {
       setup()
 
       const greetingText = screen.getByText(
-        new RegExp(mockedContent.home.greeting)
+        new RegExp(mockedContent.hero.greeting)
       )
 
       expect(greetingText).toBeInTheDocument()
@@ -28,7 +28,7 @@ describe('Home section', () => {
       setup()
 
       const fullNameText = screen.getByRole('heading', {
-        name: new RegExp(mockedContent.home.fullName),
+        name: new RegExp(mockedContent.hero.fullName),
         level: 1,
       })
 
@@ -39,10 +39,10 @@ describe('Home section', () => {
       setup()
 
       const nickNameIntro = screen.getByText(
-        new RegExp(mockedContent.home.nicknameText.nicknameIntro)
+        new RegExp(mockedContent.hero.nicknameText.nicknameIntro)
       )
       const nickNameValue = screen.getByText(
-        new RegExp(mockedContent.home.nicknameText.nicknameValue)
+        new RegExp(mockedContent.hero.nicknameText.nicknameValue)
       )
 
       expect(nickNameIntro).toBeInTheDocument()
@@ -55,7 +55,7 @@ describe('Home section', () => {
       const descriptionContainer = screen.getByTestId('description')
 
       expect(descriptionContainer.textContent).toBe(
-        mockedContent.home.description
+        mockedContent.hero.description
       )
     })
 
@@ -64,7 +64,7 @@ describe('Home section', () => {
 
       expect(
         screen.getByRole('link', {
-          name: new RegExp(mockedContent.home.projectsCTA),
+          name: new RegExp(mockedContent.hero.projectsCTA),
         })
       )
     })
@@ -74,7 +74,7 @@ describe('Home section', () => {
 
       expect(
         screen.getByRole('link', {
-          name: new RegExp(mockedContent.home.contactsCTA),
+          name: new RegExp(mockedContent.hero.contactsCTA),
         })
       )
     })
@@ -96,7 +96,7 @@ describe('Home section', () => {
 
       expect(
         screen.getByRole('link', {
-          name: new RegExp(mockedContent.home.projectsCTA),
+          name: new RegExp(mockedContent.hero.projectsCTA),
         })
       ).toHaveAttribute('href', '#projects')
     })
@@ -106,7 +106,7 @@ describe('Home section', () => {
 
       expect(
         screen.getByRole('link', {
-          name: new RegExp(mockedContent.home.contactsCTA),
+          name: new RegExp(mockedContent.hero.contactsCTA),
         })
       ).toHaveAttribute('href', '#contact')
     })
