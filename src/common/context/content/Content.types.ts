@@ -23,8 +23,18 @@ export class HeroContent {
 }
 
 /** About types */
+interface AboutCard {
+  title: string
+  image: string
+  description: string
+  highlightedWords: string[]
+}
+
 export class AboutContent {
-  constructor(public title: string = '') {}
+  constructor(
+    public sectionTitle: string = '',
+    public aboutCards: AboutCard[] = []
+  ) {}
 }
 
 /** Components types */
