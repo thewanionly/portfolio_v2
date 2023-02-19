@@ -19,3 +19,8 @@ export const container = css`
 export const highlightText = css`
   color: ${({ theme: { colors } }) => colors.primary};
 `
+
+export const sectionTitle = css`
+  text-align: center;
+  letter-spacing: 0.15rem;
+`
