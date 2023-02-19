@@ -46,7 +46,7 @@ export const About = () => {
   } = useContentContext()
 
   return (
-    <S.About>
+    <S.About id="about">
       <S.AboutContainer>
         <S.AboutTitle>{about.sectionTitle}</S.AboutTitle>
         <S.AboutContent>

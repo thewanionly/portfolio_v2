@@ -32,12 +32,14 @@ describe('About', () => {
           name: title,
         })
         const aboutCardImage = screen.getByAltText(title)
-        const aboutCardDescription = screen.getByText(description)
+        const aboutCardDescription = screen.getByTestId(
+          `about-card-description-${title}`
+        )
 
         expect(aboutCardTitle).toBeInTheDocument()
         expect(aboutCardImage).toBeInTheDocument()
         expect(aboutCardImage).toHaveAttribute('src', image)
-        expect(aboutCardDescription).toBeInTheDocument()
+        expect(aboutCardDescription).toHaveTextContent(description)
       })
     })
   })
