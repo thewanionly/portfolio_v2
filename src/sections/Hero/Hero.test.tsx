@@ -54,7 +54,7 @@ describe('Hero section', () => {
 
       const descriptionContainer = screen.getByTestId('description')
 
-      expect(descriptionContainer.textContent).toBe(
+      expect(descriptionContainer).toHaveTextContent(
         mockedContent.hero.description
       )
     })

@@ -37,6 +37,6 @@ export const renderDescription = (
       )
     }
 
-    return <span key={word}>{addSpace ? `${word} ` : word}</span>
+    return addSpace ? `${word} ` : word
   })
 }

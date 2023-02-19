@@ -76,6 +76,20 @@ collections:
                 name: 'highlightedWords'
                 widget: 'list'
                 hint: 'Words in the description field that should be highlighted'
+          - label: 'Download CV area'
+            name: 'downloadCV'
+            widget: 'object'
+            fields:
+              - {
+                  label: 'Download CV description',
+                  name: 'description',
+                  widget: 'text',
+                }
+              - {
+                  label: 'Download CV button CTA',
+                  name: 'buttonCTAText',
+                  widget: 'string',
+                }
   - name: 'components'
     label: 'Components'
     files:

@@ -30,10 +30,19 @@ export interface AboutCard {
   highlightedWords: string[]
 }
 
+interface DownloadCV {
+  description: string
+  buttonCTAText: string
+}
+
 export class AboutContent {
   constructor(
     public sectionTitle: string = '',
-    public aboutCard: AboutCard[] = []
+    public aboutCard: AboutCard[] = [],
+    public downloadCV: DownloadCV = {
+      description: '',
+      buttonCTAText: '',
+    }
   ) {}
 }
 

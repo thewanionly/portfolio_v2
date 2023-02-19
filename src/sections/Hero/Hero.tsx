@@ -87,7 +87,7 @@ export const Hero = () => {
   const { socialLinks } = components
 
   return (
-    <S.Hero>
+    <S.Hero id="home">
       <S.HeroContainer>
         <S.HeroTitle>
           <S.HeroTitleSecondary>{greeting} I am</S.HeroTitleSecondary>
