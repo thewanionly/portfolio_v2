@@ -42,5 +42,25 @@ describe('About', () => {
         expect(aboutCardDescription).toHaveTextContent(description)
       })
     })
+
+    it('displays Download CV description', () => {
+      setup()
+
+      const downloadCVDescription = screen.getByText(
+        mockedContent.about.downloadCV.description
+      )
+
+      expect(downloadCVDescription).toBeInTheDocument()
+    })
+
+    it('displays Download CV CTA button link', () => {
+      setup()
+
+      const downloadCVbuttonCTA = screen.getByRole('button', {
+        name: mockedContent.about.downloadCV.buttonCTAText,
+      })
+
+      expect(downloadCVbuttonCTA).toBeInTheDocument()
+    })
   })
 })
