@@ -1,9 +1,8 @@
-import Image from 'next/image'
 import styled from 'styled-components'
 
 import { useContentContext } from '../../common/context'
-import { AboutCard } from '../../common/context/content'
-import { container } from '../../common/styles/utilities'
+import { container, sectionTitle } from '../../common/styles/utilities'
+import { AboutCard } from './AboutCard'
 
 const S = {
   About: styled.section`
@@ -12,36 +11,33 @@ const S = {
   AboutContainer: styled.div`
     ${container}
   `,
-  AboutTitle: styled.h4``,
-  AboutCard: styled.div`
-    border-radius: 0.8rem;
-    text-align: center;
-  `,
-  AboutCardTitle: styled.h6``,
-  AboutCardImageContainer: styled.div`
-    user-select: none;
-    margin: 0 auto 3rem;
+  AboutTitle: styled.h4`
+    ${sectionTitle}
 
-    height: 11rem;
-    position: relative;
-  `,
-}
+    margin-bottom: 5rem;
 
-const AboutCard = ({
-  title,
-  image,
-  description,
-}: // highlightedWords,
-AboutCard) => {
-  return (
-    <S.AboutCard key={title}>
-      <S.AboutCardTitle>{title}</S.AboutCardTitle>
-      <S.AboutCardImageContainer>
-        <Image src={image} alt={title} fill />
-      </S.AboutCardImageContainer>
-      <p>{description}</p>
-    </S.AboutCard>
-  )
+    @media only screen and ${({ theme: { breakPoints } }) =>
+        breakPoints.tabletLandscape} {
+      margin-bottom: 10rem;
+    }
+  `,
+  AboutContent: styled.div`
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 2rem;
+  `,
+  AboutCard: styled(AboutCard)`
+    flex: 1;
+    flex-basis: 50rem;
+
+    @media only screen and ${({ theme: { breakPoints } }) =>
+        breakPoints.tabletPortrait} {
+      flex-basis: 32%;
+      min-width: 30rem;
+      max-width: 50%;
+    }
+  `,
 }
 
 export const About = () => {
@@ -53,9 +49,11 @@ export const About = () => {
     <S.About>
       <S.AboutContainer>
         <S.AboutTitle>{about.sectionTitle}</S.AboutTitle>
-        {about.aboutCard.map((aboutCard) => (
-          <AboutCard key={aboutCard.title} {...aboutCard} />
-        ))}
+        <S.AboutContent>
+          {about.aboutCard.map((aboutCard) => (
+            <S.AboutCard key={aboutCard.title} {...aboutCard} />
+          ))}
+        </S.AboutContent>
       </S.AboutContainer>
     </S.About>
   )
