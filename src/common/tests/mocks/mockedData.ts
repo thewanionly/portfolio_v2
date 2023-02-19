@@ -101,6 +101,10 @@ export const mockedContent: Content = {
         highlightedWords: ['amet', 'dolor'],
       },
     ],
+    downloadCV: {
+      description: 'Click below to download my CV',
+      buttonCTAText: 'Download CV',
+    },
   },
   components: {
     logo,

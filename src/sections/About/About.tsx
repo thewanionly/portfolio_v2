@@ -1,5 +1,6 @@
 import styled from 'styled-components'
 
+import { Button } from '../../common/components'
 import { useContentContext } from '../../common/context'
 import { container, sectionTitle } from '../../common/styles/utilities'
 import { AboutCard } from './AboutCard'
@@ -38,6 +39,9 @@ const S = {
       max-width: 50%;
     }
   `,
+  AboutCTA: styled.div``,
+  AboutCTADescription: styled.p``,
+  AboutCTAButton: styled(Button)``,
 }
 
 export const About = () => {
@@ -46,7 +50,7 @@ export const About = () => {
   } = useContentContext()
 
   return (
-    <S.About>
+    <S.About id="about">
       <S.AboutContainer>
         <S.AboutTitle>{about.sectionTitle}</S.AboutTitle>
         <S.AboutContent>
@@ -54,6 +58,12 @@ export const About = () => {
             <S.AboutCard key={aboutCard.title} {...aboutCard} />
           ))}
         </S.AboutContent>
+        <S.AboutCTA>
+          <S.AboutCTADescription>
+            {about.downloadCV.description}
+          </S.AboutCTADescription>
+          <S.AboutCTAButton>{about.downloadCV.buttonCTAText}</S.AboutCTAButton>
+        </S.AboutCTA>
       </S.AboutContainer>
     </S.About>
   )
