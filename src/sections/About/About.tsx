@@ -1,3 +1,4 @@
+import Link from 'next/link'
 import styled from 'styled-components'
 
 import { Button } from '../../common/components'
@@ -44,6 +45,9 @@ const S = {
   AboutCTAButton: styled(Button)``,
 }
 
+const getFileName = (fileUrl: string) =>
+  fileUrl?.split('/').pop()?.split('.').shift()
+
 export const About = () => {
   const {
     content: { about },
@@ -62,7 +66,13 @@ export const About = () => {
           <S.AboutCTADescription>
             {about.downloadCV.description}
           </S.AboutCTADescription>
-          <S.AboutCTAButton>{about.downloadCV.buttonCTAText}</S.AboutCTAButton>
+          <S.AboutCTAButton
+            asLink
+            href={about.downloadCV.cvFile}
+            download={getFileName(about.downloadCV.cvFile)}
+          >
+            {about.downloadCV.buttonCTAText}
+          </S.AboutCTAButton>
         </S.AboutCTA>
       </S.AboutContainer>
     </S.About>
