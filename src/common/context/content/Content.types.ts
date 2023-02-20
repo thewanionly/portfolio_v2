@@ -33,6 +33,7 @@ export interface AboutCard {
 interface DownloadCV {
   description: string
   buttonCTAText: string
+  cvFile: string
 }
 
 export class AboutContent {
@@ -42,6 +43,7 @@ export class AboutContent {
     public downloadCV: DownloadCV = {
       description: '',
       buttonCTAText: '',
+      cvFile: '',
     }
   ) {}
 }

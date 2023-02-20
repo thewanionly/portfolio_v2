@@ -90,6 +90,7 @@ collections:
                   name: 'buttonCTAText',
                   widget: 'string',
                 }
+              - { label: 'CV file', name: 'cvFile', widget: 'file' }
   - name: 'components'
     label: 'Components'
     files:

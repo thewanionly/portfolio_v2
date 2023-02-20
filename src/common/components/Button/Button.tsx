@@ -110,6 +110,7 @@ type ButtonProps = {
   children?: React.ReactNode
   className?: string
   color?: ButtonColor
+  download?: string
   disabled?: boolean
   href?: string
   label?: string
@@ -122,6 +123,7 @@ export const Button = ({
   children,
   className = '',
   color = ButtonColor.PRIMARY,
+  download,
   disabled = false,
   href = '',
   label,
@@ -140,6 +142,7 @@ export const Button = ({
           href: !disabled ? href : '',
           role: 'link',
           ['aria-disabled']: disabled,
+          download,
         }),
   }
 
