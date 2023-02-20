@@ -94,7 +94,7 @@ collections:
                   label: 'CV file',
                   name: 'cvFile',
                   widget: 'file',
-                  media_folder: 'public/files',
+                  media_folder: '/public/files',
                 }
   - name: 'components'
     label: 'Components'
