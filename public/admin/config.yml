@@ -90,7 +90,12 @@ collections:
                   name: 'buttonCTAText',
                   widget: 'string',
                 }
-              - { label: 'CV file', name: 'cvFile', widget: 'file' }
+              - {
+                  label: 'CV file',
+                  name: 'cvFile',
+                  widget: 'file',
+                  media_folder: 'public/files',
+                }
   - name: 'components'
     label: 'Components'
     files:
