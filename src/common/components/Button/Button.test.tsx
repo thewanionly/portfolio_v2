@@ -158,6 +158,19 @@ describe('Button', () => {
       expect(link).toHaveAttribute('href', href)
     })
 
+    it('contains a string equivalent to the `download` prop', () => {
+      const buttonLabel = 'Click me'
+      const href = '/downloads/Sample File name.pdf'
+      const download = 'Sample File name'
+      render(
+        <Button asLink label={buttonLabel} href={href} download={download} />
+      )
+
+      const link = screen.getByRole('link', { name: buttonLabel })
+
+      expect(link).toHaveAttribute('download', download)
+    })
+
     it('disables the link when `disabled` prop is set to true', () => {
       render(<Button asLink href="#test" label="Disabled button" disabled />)
 

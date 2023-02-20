@@ -104,6 +104,7 @@ export const mockedContent: Content = {
     downloadCV: {
       description: 'Click below to download my CV',
       buttonCTAText: 'Download CV',
+      cvFile: 'assets/files/CV - Pitogo, Elloani Ross.pdf',
     },
   },
   components: {

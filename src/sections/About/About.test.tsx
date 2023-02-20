@@ -56,11 +56,24 @@ describe('About', () => {
     it('displays Download CV CTA button link', () => {
       setup()
 
-      const downloadCVbuttonCTA = screen.getByRole('button', {
+      const downloadCVbuttonCTA = screen.getByRole('link', {
         name: mockedContent.about.downloadCV.buttonCTAText,
       })
 
       expect(downloadCVbuttonCTA).toBeInTheDocument()
+    })
+
+    it('contains link to download my CV in Download CV CTA button link', () => {
+      setup()
+
+      const downloadCVbuttonCTA = screen.getByRole('link', {
+        name: mockedContent.about.downloadCV.buttonCTAText,
+      })
+
+      expect(downloadCVbuttonCTA).toHaveAttribute(
+        'href',
+        mockedContent.about.downloadCV.cvFile
+      )
     })
   })
 })
