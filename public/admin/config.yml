@@ -96,6 +96,24 @@ collections:
                   widget: 'file',
                   media_folder: '/public/files',
                 }
+      - label: 'Skills'
+        name: 'skills'
+        file: 'content/sections/skills.md'
+        fields:
+          - label: 'Section title'
+            name: 'sectionTitle'
+            widget: 'string'
+          - label: 'Skills groups'
+            name: 'skillsGroup'
+            widget: 'list'
+            fields:
+              - { label: 'Description', name: 'description', widget: 'text' }
+              - label: 'Skills list'
+                name: 'skillsList'
+                widget: 'list'
+                fields:
+                  - { label: 'Label', name: 'label', widget: 'string' }
+                  - { label: 'Icon name', name: 'name', widget: 'string' }
   - name: 'components'
     label: 'Components'
     files:

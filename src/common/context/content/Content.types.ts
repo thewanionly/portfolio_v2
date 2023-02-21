@@ -48,6 +48,24 @@ export class AboutContent {
   ) {}
 }
 
+/** Skills types */
+interface SkillsItem {
+  label: string
+  name: IconName
+}
+
+export interface SkillsGroup {
+  description: string
+  skillsList: SkillsItem[]
+}
+
+export class SkillsContent {
+  constructor(
+    public sectionTitle: string = '',
+    public skillsGroup: SkillsGroup[] = []
+  ) {}
+}
+
 /** Components types */
 export interface NavLink {
   label: string
@@ -93,6 +111,7 @@ export class FooterContent {
 export interface Content {
   hero: HeroContent
   about: AboutContent
+  skills: SkillsContent
   components: ComponentsContent
   footer: FooterContent
 }

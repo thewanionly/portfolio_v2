@@ -107,6 +107,20 @@ export const mockedContent: Content = {
       cvFile: 'assets/files/CV - Pitogo, Elloani Ross.pdf',
     },
   },
+  skills: {
+    sectionTitle: 'Skills',
+    skillsGroup: [
+      {
+        description: 'Here are my skills',
+        skillsList: [
+          {
+            label: 'ReactJS',
+            name: IconName.GITHUB,
+          },
+        ],
+      },
+    ],
+  },
   components: {
     logo,
     navLinks,
