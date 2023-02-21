@@ -3,6 +3,7 @@ import styled from 'styled-components'
 import { Button } from '../../common/components'
 import { useContentContext } from '../../common/context'
 import { container, sectionTitle } from '../../common/styles/utilities'
+import { getValidAssetPath } from '../../common/utilities'
 import { AboutCard } from './AboutCard'
 
 const S = {
@@ -39,9 +40,19 @@ const S = {
       max-width: 50%;
     }
   `,
-  AboutCTA: styled.div``,
+  AboutCTA: styled.div`
+    margin-top: 7rem;
+    text-align: center;
+    color: ${({ theme: { colors } }) => colors.bodyDark};
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 2rem;
+  `,
   AboutCTADescription: styled.p``,
-  AboutCTAButton: styled(Button)``,
+  AboutCTAButton: styled(Button)`
+    min-width: 29rem;
+  `,
 }
 
 const getFileName = (fileUrl: string) =>
@@ -67,7 +78,7 @@ export const About = () => {
           </S.AboutCTADescription>
           <S.AboutCTAButton
             asLink
-            href={about.downloadCV.cvFile}
+            href={getValidAssetPath(about.downloadCV.cvFile)}
             download={getFileName(about.downloadCV.cvFile)}
           >
             {about.downloadCV.buttonCTAText}

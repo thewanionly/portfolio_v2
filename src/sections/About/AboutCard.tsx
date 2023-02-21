@@ -12,14 +12,14 @@ const S = {
   AboutCard: styled.div`
     min-width: 34rem;
     max-width: 50rem;
-    padding: 4rem 3.5rem;
+    padding: 2.5rem 2rem;
     background-color: ${({ theme: { colors } }) => colors.aboutCardBg};
     border-radius: 0.8rem;
     text-align: center;
   `,
   AboutCardTitle: styled.h6`
     letter-spacing: 0.1rem;
-    margin-bottom: 6rem;
+    margin-bottom: 3rem;
     color: ${({ theme: { colors } }) => colors.primary};
   `,
   AboutCardImageContainer: styled.div`
