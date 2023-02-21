@@ -5,6 +5,7 @@ import {
   Content,
   FooterContent,
   HeroContent,
+  SkillsContent,
 } from './Content.types'
 
 type ContentProviderPops = {
@@ -21,6 +22,7 @@ type ContentSetterFn = (data: Content) => void
 const initialContent = {
   hero: new HeroContent(),
   about: new AboutContent(),
+  skills: new SkillsContent(),
   components: new ComponentsContent(),
   footer: new FooterContent(),
 }
