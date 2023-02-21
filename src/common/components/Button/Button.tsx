@@ -141,6 +141,7 @@ export const Button = ({
           as: S.Link,
           href: !disabled ? href : '',
           role: 'link',
+          target: '_blank',
           ['aria-disabled']: disabled,
           download,
         }),
