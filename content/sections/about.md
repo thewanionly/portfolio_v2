@@ -47,5 +47,5 @@ downloadCV:
   description: You can view more details about me including my full work
     experience and educational background in my CV.
   buttonCTAText: Download my CV
-  cvFile: /public/files/cv-pitogo-elloani-ross.pdf
+  cvFile: /public/files/cv-elloani-ross-pitogo.pdf
 ---
