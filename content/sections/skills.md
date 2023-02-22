@@ -11,5 +11,7 @@ skillsGroup:
         icon: img/typescript.svg
       - label: HTML5
         icon: img/html5.svg
+      - label: NextJS
+        icon: img/nextjs.svg
   - description: "I'm also proficient in the following technologies:"
 ---
