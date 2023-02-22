@@ -115,7 +115,7 @@ export const mockedContent: Content = {
         skillsList: [
           {
             label: 'ReactJS',
-            name: IconName.GITHUB,
+            icon: 'react.svg',
           },
         ],
       },

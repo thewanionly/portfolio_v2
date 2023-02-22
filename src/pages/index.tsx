@@ -4,6 +4,7 @@ import { useEffect } from 'react'
 import { Content, useContentContext } from '../common/context'
 import { Footer, Header, HeaderProvider } from '../layout'
 import { Hero, About } from '../sections'
+import { Skills } from '../sections/Skills'
 
 export async function getStaticProps() {
   const { attributes: heroContent } =
@@ -84,6 +85,7 @@ export default function Index({ content }: IndexProps) {
         </HeaderProvider>
         <Hero />
         <About />
+        <Skills />
         <Footer />
       </main>
     </>
