@@ -15,5 +15,7 @@ skillsGroup:
         icon: img/html5.svg
       - label: CSS3
         icon: img/css3.svg
+      - label: SASS/SCSS
+        icon: img/sass.svg
   - description: "I'm also proficient in the following technologies:"
 ---
