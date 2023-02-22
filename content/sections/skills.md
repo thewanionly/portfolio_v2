@@ -33,4 +33,8 @@ skillsGroup:
         icon: img/git.svg
       - label: SVN
         icon: img/svn.svg
+      - label: GraphQL
+        icon: img/graphql.svg
+      - label: Apollo
+        icon: img/apollo.svg
 ---
