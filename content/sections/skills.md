@@ -29,4 +29,8 @@ skillsGroup:
         icon: img/testinglibrary.svg
       - label: Storybook
         icon: img/storybook.svg
+      - label: Git
+        icon: img/git.svg
+      - label: SVN
+        icon: img/svn.svg
 ---
