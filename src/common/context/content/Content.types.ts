@@ -51,7 +51,7 @@ export class AboutContent {
 /** Skills types */
 interface SkillsItem {
   label: string
-  name: IconName
+  icon: string
 }
 
 export interface SkillsGroup {
