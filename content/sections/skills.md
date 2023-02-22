@@ -19,5 +19,7 @@ skillsGroup:
         icon: img/sass.svg
       - label: styled-components
         icon: img/styled-components.svg
+      - label: Redux
+        icon: img/redux.svg
   - description: "I'm also proficient in the following technologies:"
 ---
