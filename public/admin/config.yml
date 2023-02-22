@@ -113,7 +113,7 @@ collections:
                 widget: 'list'
                 fields:
                   - { label: 'Label', name: 'label', widget: 'string' }
-                  - { label: 'Icon name', name: 'name', widget: 'string' }
+                  - { label: 'Icon', name: 'icon', widget: 'image' }
   - name: 'components'
     label: 'Components'
     files:
