@@ -25,4 +25,8 @@ skillsGroup:
     skillsList:
       - label: Jest
         icon: img/jest.svg
+      - label: React Testing Library
+        icon: img/testinglibrary.svg
+      - label: Storybook
+        icon: img/storybook.svg
 ---
