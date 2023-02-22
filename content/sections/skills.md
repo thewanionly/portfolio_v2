@@ -22,4 +22,7 @@ skillsGroup:
       - label: Redux
         icon: img/redux.svg
   - description: "I'm also proficient in the following technologies:"
+    skillsList:
+      - label: Jest
+        icon: img/jest.svg
 ---
