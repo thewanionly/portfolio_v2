@@ -10,7 +10,7 @@ skillsGroup:
       - label: TypeScript
         icon: img/typescript.svg
       - label: NextJS
-        icon: img/nextjs.svg
+        icon: img/styled-components.svg
       - label: HTML5
         icon: img/html5.svg
       - label: CSS3
