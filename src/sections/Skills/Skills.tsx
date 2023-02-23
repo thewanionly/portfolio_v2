@@ -1,8 +1,8 @@
 import styled from 'styled-components'
-import Image from 'next/image'
 
 import { useContentContext } from '../../common/context'
 import { container, sectionTitle } from '../../common/styles/utilities'
+import { SkillsGroup } from './SkillsGroup'
 
 const S = {
   Skills: styled.section`
@@ -30,7 +30,7 @@ const S = {
     justify-content: center;
     gap: 12rem;
   `,
-  SkillsGroup: styled.div`
+  SkillsGroup: styled(SkillsGroup)`
     flex: 1;
     min-width: 34rem;
     max-width: 50rem;
@@ -41,34 +41,6 @@ const S = {
       min-width: 28rem;
       max-width: 50%;
     }
-  `,
-  SkillsGroupDescription: styled.p`
-    color: ${({ theme: { colors } }) => colors.bodyLight};
-    line-height: 2.5rem;
-    margin-bottom: 6rem;
-  `,
-  SkillsGroupSkillsList: styled.ul`
-    display: flex;
-    flex-wrap: wrap;
-    gap: 6rem;
-    align-items: center;
-    justify-content: center;
-  `,
-  SkillsGroupSkillItemContainer: styled.figure`
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 1.5rem;
-    flex-basis: 27%;
-    color: ${({ theme: { colors } }) => colors.bodyLight};
-  `,
-  SkillsGroupIconContainer: styled.div`
-    height: 24px;
-    width: 24px;
-    position: relative;
-  `,
-  SkillsGroupIconLabel: styled.figcaption`
-    font-size: ${({ theme: { fontSizes } }) => fontSizes.fontSizeXs};
   `,
 }
 
@@ -85,21 +57,11 @@ export const Skills = () => {
         <S.SkillsTitle>{sectionTitle}</S.SkillsTitle>
         <S.SkillsContent>
           {skillsGroup.map(({ description, skillsList }) => (
-            <S.SkillsGroup key={description}>
-              <S.SkillsGroupDescription>{description}</S.SkillsGroupDescription>
-              <S.SkillsGroupSkillsList>
-                {skillsList.map(({ label, icon }) => (
-                  <li key={label}>
-                    <S.SkillsGroupSkillItemContainer>
-                      <S.SkillsGroupIconContainer>
-                        <Image src={icon} alt={label} fill />
-                      </S.SkillsGroupIconContainer>
-                      <S.SkillsGroupIconLabel>{label}</S.SkillsGroupIconLabel>
-                    </S.SkillsGroupSkillItemContainer>
-                  </li>
-                ))}
-              </S.SkillsGroupSkillsList>
-            </S.SkillsGroup>
+            <S.SkillsGroup
+              key={description}
+              description={description}
+              skillsList={skillsList}
+            />
           ))}
         </S.SkillsContent>
       </S.SkillsContainer>
