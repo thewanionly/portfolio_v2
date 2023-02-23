@@ -49,14 +49,14 @@ export class AboutContent {
 }
 
 /** Skills types */
-interface SkillsItem {
+export interface SkillItem {
   label: string
   icon: string
 }
 
 export interface SkillsGroup {
   description: string
-  skillsList: SkillsItem[]
+  skillsList: SkillItem[]
 }
 
 export class SkillsContent {

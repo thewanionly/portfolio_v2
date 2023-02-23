@@ -63,25 +63,27 @@ export const About = () => {
     content: { about },
   } = useContentContext()
 
+  const { sectionTitle, aboutCard, downloadCV } = about
+
   return (
     <S.About id="about">
       <S.AboutContainer>
-        <S.AboutTitle>{about.sectionTitle}</S.AboutTitle>
+        <S.AboutTitle>{sectionTitle}</S.AboutTitle>
         <S.AboutContent>
-          {about.aboutCard.map((aboutCard) => (
+          {aboutCard.map((aboutCard) => (
             <S.AboutCard key={aboutCard.title} {...aboutCard} />
           ))}
         </S.AboutContent>
         <S.AboutCTA>
           <S.AboutCTADescription>
-            {about.downloadCV.description}
+            {downloadCV.description}
           </S.AboutCTADescription>
           <S.AboutCTAButton
             asLink
-            href={getValidAssetPath(about.downloadCV.cvFile)}
-            download={getFileName(about.downloadCV.cvFile)}
+            href={getValidAssetPath(downloadCV.cvFile)}
+            download={getFileName(downloadCV.cvFile)}
           >
-            {about.downloadCV.buttonCTAText}
+            {downloadCV.buttonCTAText}
           </S.AboutCTAButton>
         </S.AboutCTA>
       </S.AboutContainer>
