@@ -1,13 +1,13 @@
 ---
 navLinks:
   - label: Home
-    link: "#"
+    link: ''
   - label: About
-    link: "#about"
-  - link: "#skills"
+    link: '#about'
+  - link: '#skills'
     label: Skills
-  - link: "#projects"
+  - link: '#projects'
     label: Projects
-  - link: "#contact"
+  - link: '#contact'
     label: Contact
 ---
