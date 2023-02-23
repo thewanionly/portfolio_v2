@@ -1,5 +1,6 @@
+import { useEffect, useRef } from 'react'
 import Head from 'next/head'
-import { useEffect } from 'react'
+import { useRouter } from 'next/router'
 
 import { Content, useContentContext } from '../common/context'
 import { Footer, Header, HeaderProvider } from '../layout'
@@ -44,11 +45,21 @@ interface IndexProps {
 }
 
 export default function Index({ content }: IndexProps) {
+  const isFirstRender = useRef(true)
   const { initializeContent } = useContentContext()
+  const router = useRouter()
 
   useEffect(() => {
     initializeContent(content)
   }, [content, initializeContent])
+
+  useEffect(() => {
+    if (isFirstRender.current) {
+      router.push(router.asPath)
+
+      isFirstRender.current = false
+    }
+  }, [router])
 
   return (
     <>

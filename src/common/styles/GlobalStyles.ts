@@ -11,7 +11,7 @@ const GlobalStyles = createGlobalStyle`
 
   html {
     box-sizing: border-box;
-    scroll-behavior: smooth;
+    scroll-behavior: smooth !important;
     font-size: 43.75%; //1rem = 7px 7px/16px = 43.75%
 
     @media only screen and ${({ theme: { breakPoints } }) =>
