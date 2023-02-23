@@ -38,5 +38,5 @@ skillsGroup:
       - label: GraphQL
         icon: img/graphql.svg
       - label: Apollo
-        icon: img/apollo.svg
+        icon: img/css3.svg
 ---
