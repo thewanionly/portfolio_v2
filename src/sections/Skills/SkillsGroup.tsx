@@ -4,7 +4,7 @@ import Image from 'next/image'
 import {
   SkillsGroup as SkillsGroupType,
   SkillItem as SkillItemType,
-} from '../../common/context/content'
+} from 'common/context/content'
 
 const S = {
   SkillsGroup: styled.div``,

@@ -1,8 +1,8 @@
 import styled from 'styled-components'
 import Image from 'next/image'
 
-import { AboutCard as AboutCardType } from '../../common/context/content'
-import { renderDescription } from '../../common/utilities'
+import { AboutCard as AboutCardType } from 'common/context/content'
+import { renderDescription } from 'common/utilities'
 
 interface AboutCardProps extends AboutCardType {
   className?: string
