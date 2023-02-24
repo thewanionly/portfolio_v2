@@ -4,8 +4,7 @@ import { useRouter } from 'next/router'
 
 import { Content, useContentContext } from '../common/context'
 import { Footer, Header, HeaderProvider } from '../layout'
-import { Hero, About } from '../sections'
-import { Skills } from '../sections/Skills'
+import { Hero, About, Skills } from '../sections'
 
 export async function getStaticProps() {
   const { attributes: heroContent } =
