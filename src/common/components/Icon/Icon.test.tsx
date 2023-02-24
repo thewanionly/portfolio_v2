@@ -1,4 +1,5 @@
-import { render, screen } from '../../../common/tests'
+import { render, screen } from 'common/tests'
+
 import { Icon, IconName } from './Icon'
 
 describe('Icon', () => {

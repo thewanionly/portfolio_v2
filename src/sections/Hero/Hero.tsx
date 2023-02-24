@@ -1,9 +1,10 @@
 import styled from 'styled-components'
-import { Button, ButtonVariant } from '../../common/components'
-import { SocialIcons } from '../../common/components/SocialIcons'
-import { useContentContext } from '../../common/context'
-import { container, highlightText } from '../../common/styles/utilities'
-import { renderDescription } from '../../common/utilities'
+
+import { Button, ButtonVariant } from 'common/components'
+import { SocialIcons } from 'common/components/SocialIcons'
+import { useContentContext } from 'common/context'
+import { container, highlightText } from 'common/styles/utilities'
+import { renderDescription } from 'common/utilities'
 
 const S = {
   Hero: styled.section`

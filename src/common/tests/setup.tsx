@@ -1,7 +1,7 @@
 import { ReactElement } from 'react'
 import { render, RenderOptions, RenderResult } from '@testing-library/react'
 
-import { GlobalStyles, Theme } from '../styles'
+import { GlobalStyles, Theme } from 'common/styles'
 
 type RootWrapperProps = {
   children?: React.ReactNode

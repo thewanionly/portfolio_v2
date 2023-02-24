@@ -1,7 +1,8 @@
 import styled from 'styled-components'
 
-import { useContentContext } from '../../common/context'
-import { container, sectionTitle } from '../../common/styles/utilities'
+import { useContentContext } from 'common/context'
+import { container, sectionTitle } from 'common/styles/utilities'
+
 import { SkillsGroup } from './SkillsGroup'
 
 const S = {

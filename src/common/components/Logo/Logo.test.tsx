@@ -1,5 +1,6 @@
-import { render, screen } from '../../tests'
-import { mockedContent } from '../../tests/mocks'
+import { render, screen } from 'common/tests'
+import { mockedContent } from 'common/tests/mocks'
+
 import { Logo } from './Logo'
 
 const { defaultAltText, src } = mockedContent.components.logo

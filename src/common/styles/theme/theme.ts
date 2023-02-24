@@ -1,5 +1,5 @@
 import { rgba } from 'polished'
-import { BREAKPOINTS, COLORS, TYPOGRAPHY } from '../variables'
+import { BREAKPOINTS, COLORS, TYPOGRAPHY } from 'common/styles/variables'
 
 export const theme = {
   colors: {

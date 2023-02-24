@@ -1,4 +1,4 @@
-import { IconName } from '../../components'
+import { IconName } from 'common/components'
 
 /** Hero types */
 interface NicknameText {

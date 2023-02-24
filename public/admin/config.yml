@@ -9,7 +9,7 @@ collections:
     files:
       - label: 'Hero'
         name: 'hero'
-        file: 'content/sections/hero.md'
+        file: 'src/content/sections/hero.md'
         fields:
           - label: 'Display picture'
             name: 'avatar'
@@ -60,7 +60,7 @@ collections:
             }
       - label: 'About'
         name: 'about'
-        file: 'content/sections/about.md'
+        file: 'src/content/sections/about.md'
         fields:
           - label: 'Section title'
             name: 'sectionTitle'
@@ -98,7 +98,7 @@ collections:
                 }
       - label: 'Skills'
         name: 'skills'
-        file: 'content/sections/skills.md'
+        file: 'src/content/sections/skills.md'
         fields:
           - label: 'Section title'
             name: 'sectionTitle'
@@ -119,7 +119,7 @@ collections:
     files:
       - label: 'Logo'
         name: 'logo'
-        file: 'content/components/logo.md'
+        file: 'src/content/components/logo.md'
         fields:
           - label: 'Logo image'
             name: 'src'
@@ -129,7 +129,7 @@ collections:
             widget: 'string'
       - label: 'Nav Links'
         name: 'navLinks'
-        file: 'content/components/navLinks.md'
+        file: 'src/content/components/navLinks.md'
         fields:
           - label: 'Nav links list'
             name: 'navLinks'
@@ -139,7 +139,7 @@ collections:
               - { label: 'Link URL', name: 'link', widget: 'string' }
       - label: 'Social Links'
         name: 'socialLinks'
-        file: 'content/components/socialLinks.md'
+        file: 'src/content/components/socialLinks.md'
         fields:
           - label: 'Social links list'
             name: 'socialLinks'
@@ -165,7 +165,7 @@ collections:
     files:
       - label: 'Footer'
         name: 'footer'
-        file: 'content/layout/footer.md'
+        file: 'src/content/layout/footer.md'
         fields:
           - label: 'Footer quote'
             name: 'footerQuote'

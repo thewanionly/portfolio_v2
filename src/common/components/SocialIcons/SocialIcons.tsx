@@ -1,7 +1,8 @@
 import Link from 'next/link'
 import styled from 'styled-components'
-import { SocialLink } from '../../context'
-import { Icon } from '../Icon'
+
+import { SocialLink } from 'common/context'
+import { Icon } from 'common/components/Icon'
 
 const S = {
   SocialIconsGroup: styled.ul`

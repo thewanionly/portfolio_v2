@@ -1,6 +1,8 @@
 import userEvent from '@testing-library/user-event'
-import { render, screen, waitFor } from '../../../common/tests'
-import { theme } from '../../styles'
+
+import { render, screen, waitFor } from 'common/tests'
+import { theme } from 'common/styles'
+
 import { Button, ButtonColor, ButtonVariant } from './Button'
 
 describe('Button', () => {

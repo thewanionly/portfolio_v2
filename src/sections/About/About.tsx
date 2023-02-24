@@ -1,9 +1,10 @@
 import styled from 'styled-components'
 
-import { Button } from '../../common/components'
-import { useContentContext } from '../../common/context'
-import { container, sectionTitle } from '../../common/styles/utilities'
-import { getValidAssetPath } from '../../common/utilities'
+import { Button } from 'common/components'
+import { useContentContext } from 'common/context'
+import { container, sectionTitle } from 'common/styles/utilities'
+import { getValidAssetPath } from 'common/utilities'
+
 import { AboutCard } from './AboutCard'
 
 const S = {
