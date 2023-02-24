@@ -7,20 +7,19 @@ import { Footer, Header, HeaderProvider } from 'layout'
 import { Hero, About, Skills } from 'sections'
 
 export async function getStaticProps() {
-  const { attributes: heroContent } =
-    await require('../../content/sections/hero.md')
+  const { attributes: heroContent } = await require('content/sections/hero.md')
   const { attributes: aboutContent } =
-    await require('../../content/sections/about.md')
+    await require('content/sections/about.md')
   const { attributes: skillsContent } =
-    await require('../../content/sections/skills.md')
+    await require('content/sections/skills.md')
   const { attributes: logoContent } =
-    await require('../../content/components/logo.md')
+    await require('content/components/logo.md')
   const { attributes: navLinksContent } =
-    await require('../../content/components/navLinks.md')
+    await require('content/components/navLinks.md')
   const { attributes: socialLinksContent } =
-    await require('../../content/components/socialLinks.md')
+    await require('content/components/socialLinks.md')
   const { attributes: footerContent } =
-    await require('../../content/layout/footer.md')
+    await require('content/layout/footer.md')
 
   return {
     props: {
