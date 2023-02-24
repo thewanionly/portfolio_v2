@@ -2,9 +2,9 @@ import { useEffect, useRef } from 'react'
 import Head from 'next/head'
 import { useRouter } from 'next/router'
 
-import { Content, useContentContext } from '../common/context'
-import { Footer, Header, HeaderProvider } from '../layout'
-import { Hero, About, Skills } from '../sections'
+import { Content, useContentContext } from 'common/context'
+import { Footer, Header, HeaderProvider } from 'layout'
+import { Hero, About, Skills } from 'sections'
 
 export async function getStaticProps() {
   const { attributes: heroContent } =

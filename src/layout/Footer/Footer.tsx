@@ -1,9 +1,9 @@
 import styled from 'styled-components'
 
-import { Logo, NavBar } from '../../common/components'
-import { SocialIcons } from '../../common/components/SocialIcons'
-import { useContentContext } from '../../common/context'
-import { container } from '../../common/styles/utilities'
+import { Logo, NavBar } from 'common/components'
+import { SocialIcons } from 'common/components/SocialIcons'
+import { useContentContext } from 'common/context'
+import { container } from 'common/styles/utilities'
 
 const S = {
   Footer: styled.footer`

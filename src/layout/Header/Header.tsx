@@ -1,8 +1,8 @@
 import styled, { css } from 'styled-components'
 
-import { Logo, NavBar } from '../../common/components'
-import { useContentContext } from '../../common/context'
-import { container } from '../../common/styles/utilities'
+import { Logo, NavBar } from 'common/components'
+import { useContentContext } from 'common/context'
+import { container } from 'common/styles/utilities'
 
 import { useHeaderContext } from './Header.context'
 import { HeaderNavToggle } from './HeaderNavToggle'

@@ -1,8 +1,9 @@
-import { render, screen } from '../../common/tests'
-import { footerLogo, mockedContent } from '../../common/tests/mocks'
+import { render, screen } from 'common/tests'
+import { footerLogo, mockedContent } from 'common/tests/mocks'
+
 import { Footer } from './Footer'
 
-jest.mock('../../common/context', () => ({
+jest.mock('common/context', () => ({
   useContentContext: () => ({
     content: mockedContent,
   }),

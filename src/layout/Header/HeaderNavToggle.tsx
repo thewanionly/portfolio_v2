@@ -1,4 +1,5 @@
 import styled, { css } from 'styled-components'
+
 import { useHeaderContext } from './Header.context'
 
 const StyledHeaderNavToggleIcon = styled.span<WithCloseIcon>`
