@@ -109,7 +109,7 @@ const S = {
   `,
 }
 
-const Footer = () => {
+export const Footer = () => {
   const {
     content: { components, footer },
   } = useContentContext()
@@ -145,5 +145,3 @@ const Footer = () => {
     </S.Footer>
   )
 }
-
-export default Footer

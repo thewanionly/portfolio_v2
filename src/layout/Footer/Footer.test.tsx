@@ -1,6 +1,6 @@
 import { render, screen } from '../../common/tests'
 import { footerLogo, mockedContent } from '../../common/tests/mocks'
-import Footer from './Footer'
+import { Footer } from './Footer'
 
 jest.mock('../../common/context', () => ({
   useContentContext: () => ({

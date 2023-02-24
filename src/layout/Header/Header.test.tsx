@@ -2,7 +2,7 @@ import userEvent from '@testing-library/user-event'
 
 import { render, screen } from '../../common/tests'
 import { headerLogo, mockedContent } from '../../common/tests/mocks'
-import Header from './Header'
+import { Header } from './Header'
 import { HeaderProvider } from './Header.context'
 
 jest.mock('../../common/context', () => ({

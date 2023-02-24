@@ -1,6 +1,6 @@
 import { createGlobalStyle } from 'styled-components'
 
-const GlobalStyles = createGlobalStyle`
+export const GlobalStyles = createGlobalStyle`
  *,
   *::before,
   *::after {
@@ -143,5 +143,3 @@ const GlobalStyles = createGlobalStyle`
     color: unset;
   }
 `
-
-export default GlobalStyles

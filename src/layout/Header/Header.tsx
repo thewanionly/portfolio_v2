@@ -126,7 +126,7 @@ type WithIsMenu = {
   isMenu: boolean
 }
 
-const Header = () => {
+export const Header = () => {
   const { isNavMenuOpen } = useHeaderContext()
   const { content } = useContentContext()
 
@@ -148,5 +148,3 @@ const Header = () => {
     </S.Header>
   )
 }
-
-export default Header
