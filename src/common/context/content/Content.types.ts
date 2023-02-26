@@ -66,6 +66,24 @@ export class SkillsContent {
   ) {}
 }
 
+/** Projects types */
+export interface ProjectItem {
+  title: string
+  image: string
+  description: string
+  highlightedWords: string[]
+  techStack: string[]
+  viewProjectCTA: string
+  viewSourceCodeCTA: string
+}
+
+export class ProjectsContent {
+  constructor(
+    public sectionTitle: string = '',
+    public projectsList: ProjectItem[] = []
+  ) {}
+}
+
 /** Components types */
 export interface NavLink {
   label: string
@@ -112,6 +130,7 @@ export interface Content {
   hero: HeroContent
   about: AboutContent
   skills: SkillsContent
+  projects: ProjectsContent
   components: ComponentsContent
   footer: FooterContent
 }
