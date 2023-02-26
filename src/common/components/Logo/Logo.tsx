@@ -26,7 +26,7 @@ export const Logo = ({
   className = '',
   onClick,
 }: LogoProps) => (
-  <Link className={className} href="#" onClick={onClick}>
+  <Link className={className} href="" onClick={onClick}>
     <S.LogoContainer>
       <Image src={src} alt={altText} fill />
     </S.LogoContainer>

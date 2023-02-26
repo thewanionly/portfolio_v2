@@ -24,12 +24,12 @@ describe('Logo', () => {
   })
 
   describe('Interaction', () => {
-    it(`contains link to "#" in the Logo`, () => {
+    it(`contains blank link in the Logo`, () => {
       setup()
 
       const logo = screen.getByRole('link', { name: defaultAltText })
 
-      expect(logo).toHaveAttribute('href', '#')
+      expect(logo).toHaveAttribute('href', '')
     })
   })
 

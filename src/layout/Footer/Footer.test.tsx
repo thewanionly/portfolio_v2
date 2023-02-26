@@ -66,12 +66,12 @@ describe('Footer', () => {
   })
 
   describe('Interaction', () => {
-    it(`contains link to "#" in the Footer Logo`, () => {
+    it(`contains blank link in the Footer Logo`, () => {
       setup()
 
       expect(
         screen.getByRole('link', { name: footerLogo.alt })
-      ).toHaveAttribute('href', '#')
+      ).toHaveAttribute('href', '')
     })
 
     it('contains appropriate links in each of the social links', () => {

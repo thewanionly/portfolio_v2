@@ -88,14 +88,14 @@ describe('Header', () => {
       return { closeMenu }
     }
 
-    it(`contains link to "#" in the Header Logo`, () => {
+    it(`contains blank link in the Header Logo`, () => {
       setup()
 
       const headerLogoEl = screen.getByRole('link', {
         name: headerLogo.alt,
       })
 
-      expect(headerLogoEl).toHaveAttribute('href', '#')
+      expect(headerLogoEl).toHaveAttribute('href', '')
     })
 
     it(`opens the nav menu when hamburger menu icon is clicked`, async () => {

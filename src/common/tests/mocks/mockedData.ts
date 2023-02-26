@@ -25,7 +25,7 @@ export const footerLogo = {
 const navLinks: NavLink[] = [
   {
     label: 'Home',
-    link: '#',
+    link: '',
   },
   {
     label: 'About',
