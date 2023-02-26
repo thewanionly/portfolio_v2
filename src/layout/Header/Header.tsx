@@ -127,7 +127,7 @@ type WithIsMenu = {
 }
 
 export const Header = () => {
-  const { isNavMenuOpen } = useHeaderContext()
+  const { isNavMenuOpen, closeNavMenu } = useHeaderContext()
   const { content } = useContentContext()
 
   const { navLinks, logo } = content?.components
@@ -136,11 +136,20 @@ export const Header = () => {
     <S.Header>
       <S.HeaderContainer>
         <HeaderNavToggle />
-        <S.HeaderLogo altText="Header logo" src={logo.src} />
+        <S.HeaderLogo
+          altText="Header logo"
+          src={logo.src}
+          onClick={closeNavMenu}
+        />
         <S.HeaderNavBar isMenu={isNavMenuOpen}>
           <S.HeaderNavBarList isMenu={isNavMenuOpen}>
             {navLinks.map(({ label, link }) => (
-              <S.HeaderNavBarListItem key={label} href={link} label={label} />
+              <S.HeaderNavBarListItem
+                key={label}
+                href={link}
+                label={label}
+                onClick={closeNavMenu}
+              />
             ))}
           </S.HeaderNavBarList>
         </S.HeaderNavBar>

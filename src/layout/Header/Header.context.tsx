@@ -7,11 +7,13 @@ type HeaderProviderPops = {
 type HeaderContextValue = {
   isNavMenuOpen: boolean
   toggleNavMenu: () => void
+  closeNavMenu: () => void
 }
 
 const initialHeaderContextValue = {
   isNavMenuOpen: false,
   toggleNavMenu: () => null,
+  closeNavMenu: () => null,
 }
 
 export const HeaderContext = createContext<HeaderContextValue>(
@@ -25,6 +27,10 @@ export const HeaderProvider = ({
 }: HeaderProviderPops): JSX.Element => {
   const [isNavMenuOpen, setIsNavMenuOpen] = useState(false)
 
+  const closeNavMenu = useCallback(() => {
+    setIsNavMenuOpen(false)
+  }, [])
+
   const toggleNavMenu = useCallback(() => {
     setIsNavMenuOpen((prevValue) => !prevValue)
   }, [])
@@ -32,6 +38,7 @@ export const HeaderProvider = ({
   const value = {
     isNavMenuOpen,
     toggleNavMenu,
+    closeNavMenu,
   }
 
   return (
