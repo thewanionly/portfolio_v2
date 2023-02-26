@@ -115,6 +115,7 @@ type ButtonProps = {
   href?: string
   label?: string
   onClick?: (event: React.MouseEvent<HTMLButtonElement>) => void
+  openLinkInNewTab?: boolean
   variant?: ButtonVariant
 }
 
@@ -128,6 +129,7 @@ export const Button = ({
   href = '',
   label,
   onClick,
+  openLinkInNewTab = false,
   variant = ButtonVariant.CONTAINED,
 }: ButtonProps) => {
   const buttonProps = {
@@ -141,7 +143,7 @@ export const Button = ({
           as: S.Link,
           href: !disabled ? href : '',
           role: 'link',
-          target: '_blank',
+          target: openLinkInNewTab ? '_blank' : '',
           ['aria-disabled']: disabled,
           download,
         }),

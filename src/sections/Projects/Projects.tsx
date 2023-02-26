@@ -32,7 +32,7 @@ export const Projects = () => {
   const { sectionTitle } = projects
 
   return (
-    <S.Projects id="#projects">
+    <S.Projects id="projects">
       <S.ProjectsContainer>
         <S.ProjectsTitle>{sectionTitle}</S.ProjectsTitle>
       </S.ProjectsContainer>

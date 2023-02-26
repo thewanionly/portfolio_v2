@@ -82,6 +82,7 @@ export const About = () => {
           <S.AboutCTAButton
             asLink
             href={getValidAssetPath(downloadCV.cvFile)}
+            openLinkInNewTab
             download={getFileName(downloadCV.cvFile)}
           >
             {downloadCV.buttonCTAText}
