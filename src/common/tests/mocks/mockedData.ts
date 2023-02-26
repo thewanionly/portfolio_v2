@@ -7,6 +7,78 @@ import {
   SocialLink,
 } from 'common/context'
 
+/** Projects mock */
+export const projectsListWithOneItem = [
+  {
+    title: 'World Countries',
+    image: 'img/apollo.svg',
+    description: 'World countries project',
+    highlightedWords: ['countries', 'project'],
+    techStack: ['React', 'TypeScript'],
+    viewProjectLink: 'https://wani-world-countries.netlify.app/',
+    viewSourceCodeLink: 'https://github.com/thewanionly/rest-countries-v2',
+  },
+]
+
+export const projectsListWithTwoItems = [
+  {
+    title: 'World Countries',
+    image: 'img/apollo.svg',
+    description: 'World countries project',
+    highlightedWords: ['countries', 'project'],
+    techStack: ['React', 'TypeScript'],
+    viewProjectLink: 'https://wani-world-countries.netlify.app/',
+    viewSourceCodeLink: 'https://github.com/thewanionly/rest-countries-v2',
+  },
+  {
+    title: 'Clock App',
+    image: 'img/svn.svg',
+    description: 'Clock App project',
+    highlightedWords: ['Clock', 'project'],
+    techStack: ['TypeScript'],
+    viewProjectLink: 'https://wani-clock-app.netlify.app/',
+    viewSourceCodeLink: 'https://github.com/thewanionly/clock-app',
+  },
+]
+
+export const projectsListWithThreeItems = [
+  {
+    title: 'World Countries',
+    image: 'img/apollo.svg',
+    description: 'World countries project',
+    highlightedWords: ['countries', 'project'],
+    techStack: ['React', 'TypeScript'],
+    viewProjectLink: 'https://wani-world-countries.netlify.app/',
+    viewSourceCodeLink: 'https://github.com/thewanionly/rest-countries-v2',
+  },
+  {
+    title: 'Clock App',
+    image: 'img/svn.svg',
+    description: 'Clock App project',
+    highlightedWords: ['Clock', 'project'],
+    techStack: ['TypeScript'],
+    viewProjectLink: 'https://wani-clock-app.netlify.app/',
+    viewSourceCodeLink: 'https://github.com/thewanionly/clock-app',
+  },
+  {
+    title: 'Dictionary App',
+    image: 'img/nextjs.svg',
+    description: 'Dictionary app project',
+    highlightedWords: ['Dictionary', 'project'],
+    techStack: ['React'],
+    viewProjectLink: 'https://wani-dictionary-app.netlify.app/',
+    viewSourceCodeLink: 'https://github.com/thewanionly/dictionary-app',
+  },
+]
+
+const projects = {
+  sectionTitle: 'Projects',
+  projectsList: projectsListWithThreeItems,
+  viewProjectCTA: 'View Project',
+  viewSourceCodeCTA: 'View Source Code',
+}
+
+/** Components mock */
 const logo: Logo = {
   defaultAltText: 'Logo',
   src: 'img/logo.svg',
@@ -63,6 +135,7 @@ const socialLinks: SocialLink[] = [
   },
 ]
 
+/** Footer mock */
 const footer: FooterContent = {
   footerQuote: 'Work smart',
   copyrightText: {
@@ -71,6 +144,7 @@ const footer: FooterContent = {
   },
 }
 
+/** Mocked content */
 export const mockedContent: Content = {
   hero: {
     avatar: '',
@@ -121,40 +195,7 @@ export const mockedContent: Content = {
       },
     ],
   },
-  projects: {
-    sectionTitle: 'Projects',
-    projectsList: [
-      {
-        title: 'World Countries',
-        image: 'img/apollo.svg',
-        description: 'World countries project',
-        highlightedWords: ['countries', 'project'],
-        techStack: ['React', 'TypeScript'],
-        viewProjectLink: 'https://wani-world-countries.netlify.app/',
-        viewSourceCodeLink: 'https://github.com/thewanionly/rest-countries-v2',
-      },
-      {
-        title: 'Clock App',
-        image: 'img/svn.svg',
-        description: 'Clock App project',
-        highlightedWords: ['Clock', 'project'],
-        techStack: ['TypeScript'],
-        viewProjectLink: 'https://wani-clock-app.netlify.app/',
-        viewSourceCodeLink: 'https://github.com/thewanionly/clock-app',
-      },
-      {
-        title: 'Dictionary App',
-        image: 'img/nextjs.svg',
-        description: 'Dictionary app project',
-        highlightedWords: ['Dictionary', 'project'],
-        techStack: ['React'],
-        viewProjectLink: 'https://wani-dictionary-app.netlify.app/',
-        viewSourceCodeLink: 'https://github.com/thewanionly/dictionary-app',
-      },
-    ],
-    viewProjectCTA: 'View Project',
-    viewSourceCodeCTA: 'View Source Code',
-  },
+  projects,
   components: {
     logo,
     navLinks,

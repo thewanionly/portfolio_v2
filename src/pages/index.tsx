@@ -4,7 +4,7 @@ import { useRouter } from 'next/router'
 
 import { Content, useContentContext } from 'common/context'
 import { Footer, Header, HeaderProvider } from 'layout'
-import { Hero, About, Skills } from 'sections'
+import { Hero, About, Skills, Projects } from 'sections'
 
 export async function getStaticProps() {
   const { attributes: heroContent } = await require('content/sections/hero.md')
@@ -98,6 +98,7 @@ export default function Index({ content }: IndexProps) {
         <Hero />
         <About />
         <Skills />
+        <Projects />
         <Footer />
       </main>
     </>
