@@ -130,24 +130,10 @@ export const mockedContent: Content = {
         description: 'Lorem ipsum project',
         highlightedWords: ['ipsum', 'project'],
         techStack: ['React', 'TypeScript'],
-        viewProjectCTA: 'View Project',
-        viewSourceCodeCTA: 'View Source Code',
       },
     ],
-  },
-  projects: {
-    sectionTitle: 'Projects',
-    projectsList: [
-      {
-        title: 'World Countries',
-        image: 'img/apollo.svg',
-        description: 'Lorem ipsum project',
-        highlightedWords: ['ipsum', 'project'],
-        techStack: ['React', 'TypeScript'],
-        viewProjectCTA: 'View Project',
-        viewSourceCodeCTA: 'View Source Code',
-      },
-    ],
+    viewProjectCTA: 'View Project',
+    viewSourceCodeCTA: 'View Source Code',
   },
   components: {
     logo,

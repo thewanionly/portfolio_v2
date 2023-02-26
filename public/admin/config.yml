@@ -136,18 +136,18 @@ collections:
                 name: 'techStack'
                 widget: 'list'
                 hint: 'List of technology tools used in creating this project'
-              - {
-                  label: 'View project website CTA text',
-                  name: 'viewProjectCTA',
-                  widget: 'string',
-                  hint: 'Displayed in a primary button',
-                }
-              - {
-                  label: 'View project source code CTA text',
-                  name: 'viewSourceCodeCTA',
-                  widget: 'string',
-                  hint: 'Displayed in a secondary button',
-                }
+          - {
+              label: 'View project website CTA text',
+              name: 'viewProjectCTA',
+              widget: 'string',
+              hint: 'Displayed in a primary button in each of the projects',
+            }
+          - {
+              label: 'View project source code CTA text',
+              name: 'viewSourceCodeCTA',
+              widget: 'string',
+              hint: 'Displayed in a secondary button in each of the projects',
+            }
   - name: 'components'
     label: 'Components'
     files:
