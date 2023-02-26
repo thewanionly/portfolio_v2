@@ -63,6 +63,31 @@ describe('Header', () => {
   })
 
   describe('Interaction', () => {
+    const openNavMenu = async () => {
+      // Check if nav links does not exist
+      mockedContent.components.navLinks.forEach(({ label }) => {
+        expect(
+          screen.queryByRole('link', { name: label })
+        ).not.toBeInTheDocument()
+      })
+
+      // Click hamburger menu icon
+      userEvent.click(screen.getByRole('button', { name: 'open nav menu' }))
+
+      // Check if close menu icon is displayed
+      const closeMenu = await screen.findByRole('button', {
+        name: 'close nav menu',
+      })
+      expect(closeMenu).toBeInTheDocument()
+
+      // Check if nav links are displayed
+      mockedContent.components.navLinks.forEach(({ label }) => {
+        expect(screen.getByRole('link', { name: label })).toBeInTheDocument()
+      })
+
+      return { closeMenu }
+    }
+
     it(`contains link to "#" in the Header Logo`, () => {
       setup()
 
@@ -76,41 +101,13 @@ describe('Header', () => {
     it(`opens the nav menu when hamburger menu icon is clicked`, async () => {
       setup()
 
-      // Check if nav links does not exist
-      mockedContent.components.navLinks.forEach(({ label }) => {
-        expect(
-          screen.queryByRole('link', { name: label })
-        ).not.toBeInTheDocument()
-      })
-
-      // Click hamburger menu icon
-      userEvent.click(screen.getByRole('button', { name: 'open nav menu' }))
-
-      // Check if close menu icon is displayed
-      expect(
-        await screen.findByRole('button', {
-          name: 'close nav menu',
-        })
-      ).toBeInTheDocument()
-
-      // Check if nav links are displayed
-      mockedContent.components.navLinks.forEach(({ label }) => {
-        expect(screen.getByRole('link', { name: label })).toBeInTheDocument()
-      })
+      await openNavMenu()
     })
 
     it(`closes the nav menu when close icon is clicked`, async () => {
-      // TODO: Resolve act warnings
       setup()
 
-      // Click hamburger menu icon
-      userEvent.click(screen.getByRole('button', { name: 'open nav menu' }))
-
-      // Check if close menu icon is displayed
-      const closeMenu = await screen.findByRole('button', {
-        name: 'close nav menu',
-      })
-      expect(closeMenu).toBeInTheDocument()
+      const { closeMenu } = await openNavMenu()
 
       // Close the nav menu
       userEvent.click(closeMenu)
@@ -122,49 +119,34 @@ describe('Header', () => {
     })
 
     it(`closes the nav menu when any of the navigation links is clicked`, async () => {
-      // TODO: Resolve act warnings
       setup()
 
-      // Click hamburger menu icon
-      userEvent.click(screen.getByRole('button', { name: 'open nav menu' }))
+      await openNavMenu()
+
+      // Click on the first link
+      const firstNavLink = screen.getByRole('link', {
+        name: mockedContent.components.navLinks[0].label,
+      })
+      userEvent.click(firstNavLink)
+
+      // Check if open nav menu icon is displayed
       expect(
-        await screen.findByRole('button', {
-          name: 'close nav menu',
-        })
+        await screen.findByRole('button', { name: 'open nav menu' })
       ).toBeInTheDocument()
-
-      // Click on Home link
-      userEvent.click(await screen.findByRole('link', { name: 'Home' }))
-
-      // Checks if open nav menu icon is displayed
-      expect(
-        screen.queryByRole('button', { name: 'open nav menu' })
-      ).not.toBeInTheDocument()
     })
 
     it(`closes the nav menu when logo is clicked`, async () => {
-      // TODO: Resolve act warnings
       setup()
 
-      // Click hamburger menu icon
-      userEvent.click(screen.getByRole('button', { name: 'open nav menu' }))
-      expect(
-        await screen.findByRole('button', {
-          name: 'close nav menu',
-        })
-      ).toBeInTheDocument()
+      await openNavMenu()
 
       // Click on Logo
-      userEvent.click(
-        await screen.findByRole('link', {
-          name: headerLogo.alt,
-        })
-      )
+      userEvent.click(screen.getByRole('link', { name: headerLogo.alt }))
 
-      // Checks if open nav menu icon is displayed
+      // Check if open nav menu icon is displayed
       expect(
-        screen.queryByRole('button', { name: 'open nav menu' })
-      ).not.toBeInTheDocument()
+        await screen.findByRole('button', { name: 'open nav menu' })
+      ).toBeInTheDocument()
     })
   })
 })

@@ -30,6 +30,7 @@ type NavBarListItemProps = {
   className?: string
   href: string
   label: string
+  onClick?: () => void
 }
 
 export const NavBar = ({ className, children }: NavBarProps) => (
@@ -40,9 +41,14 @@ const NavBarList = ({ className, children }: NavBarListProps) => (
   <S.NavBarList className={className}>{children}</S.NavBarList>
 )
 
-const NavBarListItem = ({ className, href, label }: NavBarListItemProps) => (
+const NavBarListItem = ({
+  className,
+  href,
+  label,
+  onClick,
+}: NavBarListItemProps) => (
   <li>
-    <S.NavBarLink className={className} href={href}>
+    <S.NavBarLink className={className} href={href} onClick={onClick}>
       {label}
     </S.NavBarLink>
   </li>

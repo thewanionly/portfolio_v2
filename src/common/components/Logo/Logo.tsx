@@ -17,10 +17,16 @@ type LogoProps = {
   src: string
   altText?: string
   className?: string
+  onClick?: () => void
 }
 
-export const Logo = ({ src, altText = 'Logo', className = '' }: LogoProps) => (
-  <Link className={className} href="#">
+export const Logo = ({
+  src,
+  altText = 'Logo',
+  className = '',
+  onClick,
+}: LogoProps) => (
+  <Link className={className} href="#" onClick={onClick}>
     <S.LogoContainer>
       <Image src={src} alt={altText} fill />
     </S.LogoContainer>
