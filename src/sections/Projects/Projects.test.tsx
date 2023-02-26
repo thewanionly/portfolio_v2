@@ -1,19 +1,60 @@
 import userEvent from '@testing-library/user-event'
 
 import { render, screen, waitFor } from 'common/tests'
-import { mockedContent } from 'common/tests/mocks'
+import {
+  mockedContent,
+  projectsListWithOneItem,
+  projectsListWithTwoItems,
+} from 'common/tests/mocks'
 
 import { Projects } from './Projects'
 
+import { Content, ProjectItem } from 'common/context'
+import * as commonContext from 'common/context'
+
+/*
+ * Mock setup START
+ * Setup mock this way so it can be overridden per test
+ * Many thanks to this blog: https://mikeborozdin.com/post/changing-jest-mocks-between-tests/
+ */
+const mockedCommonContext = commonContext as {
+  useContentContext: () => { content: Content }
+}
+
+const defaultMock = {
+  content: mockedContent,
+}
+
 jest.mock('common/context', () => ({
-  useContentContext: () => ({
-    content: mockedContent,
-  }),
+  __esModule: true,
+  useContentContext: jest.fn(() => defaultMock),
 }))
+
+const overrideMock = (projectsListOverride: ProjectItem[]) => {
+  mockedCommonContext.useContentContext = () => ({
+    content: {
+      ...mockedContent,
+      projects: {
+        ...mockedContent.projects,
+        projectsList: projectsListOverride,
+      },
+    },
+  })
+}
+
+const resetToDefaultMock = () => {
+  mockedCommonContext.useContentContext = () => defaultMock
+}
+/* Mock setup END */
 
 const setup = () => {
   render(<Projects />)
 }
+
+beforeEach(() => {
+  // reset mock back to default
+  resetToDefaultMock()
+})
 
 describe('Projects', () => {
   describe('Layout', () => {
@@ -77,7 +118,8 @@ describe('Projects', () => {
     })
 
     xit('does not display arrow icons if there is only one project', () => {
-      // TODO: Setup mock projects content with only 1 project
+      // Setup mock projects content with only 1 project
+      overrideMock(projectsListWithOneItem)
       setup()
 
       expect(
@@ -89,7 +131,8 @@ describe('Projects', () => {
     })
 
     xit('displays a disabled left arrow icon and enabled right arrow icon if there are more than one project', () => {
-      // TODO: Setup mock projects content with 2 projects
+      // Setup mock projects content with 2 projects
+      overrideMock(projectsListWithTwoItems)
       setup()
 
       const leftArrowIcon = screen.getByRole('button', {
@@ -196,7 +239,8 @@ describe('Projects', () => {
     })
 
     xit('displays an enabled left arrow icon and disabled right arrow icon in the second project if there are only 2 projects', async () => {
-      // TODO: Setup mock projects content with 2 projects
+      // Setup mock projects content with 2 projects
+      overrideMock(projectsListWithTwoItems)
       setup()
 
       await goToSecondProject()
