@@ -114,6 +114,40 @@ collections:
                 fields:
                   - { label: 'Label', name: 'label', widget: 'string' }
                   - { label: 'Icon', name: 'icon', widget: 'image' }
+      - label: 'Projects'
+        name: 'projects'
+        file: 'src/content/sections/projects.md'
+        fields:
+          - label: 'Section title'
+            name: 'sectionTitle'
+            widget: 'string'
+          - label: 'List of projects'
+            name: 'projectsList'
+            widget: 'list'
+            fields:
+              - { label: 'Title', name: 'title', widget: 'string' }
+              - { label: 'Image', name: 'image', widget: 'image' }
+              - { label: 'Description', name: 'description', widget: 'text' }
+              - label: 'Important words in the description'
+                name: 'highlightedWords'
+                widget: 'list'
+                hint: 'Words in the description field that should be highlighted'
+              - label: 'Technology stack'
+                name: 'techStack'
+                widget: 'list'
+                hint: 'List of technology tools used in creating this project'
+              - {
+                  label: 'View project website CTA text',
+                  name: 'viewProjectCTA',
+                  widget: 'string',
+                  hint: 'Displayed in a primary button',
+                }
+              - {
+                  label: 'View project source code CTA text',
+                  name: 'viewSourceCodeCTA',
+                  widget: 'string',
+                  hint: 'Displayed in a secondary button',
+                }
   - name: 'components'
     label: 'Components'
     files:
