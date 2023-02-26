@@ -63,7 +63,9 @@ describe('About', () => {
 
       expect(downloadCVbuttonCTA).toBeInTheDocument()
     })
+  })
 
+  describe('Interactions', () => {
     it('contains link to download my CV in Download CV CTA button link', () => {
       setup()
 
