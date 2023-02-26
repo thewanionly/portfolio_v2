@@ -73,6 +73,8 @@ export interface ProjectItem {
   description: string
   highlightedWords: string[]
   techStack: string[]
+  viewProjectLink: string
+  viewSourceCodeLink: string
 }
 
 export class ProjectsContent {
