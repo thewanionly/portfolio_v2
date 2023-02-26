@@ -73,14 +73,14 @@ export interface ProjectItem {
   description: string
   highlightedWords: string[]
   techStack: string[]
-  viewProjectCTA: string
-  viewSourceCodeCTA: string
 }
 
 export class ProjectsContent {
   constructor(
     public sectionTitle: string = '',
-    public projectsList: ProjectItem[] = []
+    public projectsList: ProjectItem[] = [],
+    public viewProjectCTA: string = '',
+    public viewSourceCodeCTA: string = ''
   ) {}
 }
 

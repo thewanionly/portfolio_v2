@@ -2,7 +2,9 @@
 sectionTitle: Projects
 projectsList:
   - title: World Countries
-    description: This project is a solution to Frontend Mentor's REST Countries API
+    image: img/world-countries.png
+    description:
+      This project is a solution to Frontend Mentor's REST Countries API
       with color theme switcher challenge. This is built with ReactJS with
       TypeScript as primary tech stack. I've adopted a Test-Driven Development
       (TDD) approach in building this project using Jest and React Testing
@@ -30,7 +32,6 @@ projectsList:
       - Jest
       - React Testing Library
       - REST API
-    viewProjectCTA: View project
-    viewSourceCodeCTA: View source code
-    image: img/world-countries.png
+viewProjectCTA: View project
+viewSourceCodeCTA: View source code
 ---

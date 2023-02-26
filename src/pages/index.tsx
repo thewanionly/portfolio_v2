@@ -12,6 +12,8 @@ export async function getStaticProps() {
     await require('content/sections/about.md')
   const { attributes: skillsContent } =
     await require('content/sections/skills.md')
+  const { attributes: projectsContent } =
+    await require('content/sections/projects.md')
   const { attributes: logoContent } =
     await require('content/components/logo.md')
   const { attributes: navLinksContent } =
@@ -27,6 +29,7 @@ export async function getStaticProps() {
         hero: heroContent,
         about: aboutContent,
         skills: skillsContent,
+        projects: projectsContent,
         components: {
           logo: logoContent,
           ...navLinksContent,
