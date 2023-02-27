@@ -68,7 +68,9 @@ describe('Projects', () => {
       expect(projectsSectionTitle).toBeInTheDocument()
     })
 
-    xit('displays first project with title, image, description, tech stack tags, displays View Project CTA button link, and View Source Code CTA button link', () => {
+    it('displays first project with title, image, description, tech stack tags, View Project CTA button link, and View Source Code CTA button link', () => {
+      // Setup mock projects content with only 1 project
+      overrideMock(projectsListWithOneItem)
       setup()
 
       const { title, image, description, techStack } =
@@ -108,13 +110,6 @@ describe('Projects', () => {
         name: new RegExp(mockedContent.projects.viewSourceCodeCTA),
       })
       expect(viewSourceCodeLinkButton).toBeInTheDocument()
-
-      // Check if second project is not displayed (checking the title would be enough)
-      expect(
-        screen.queryByRole('heading', {
-          name: mockedContent.projects.projectsList[1].title,
-        })
-      ).not.toBeInTheDocument()
     })
 
     xit('does not display arrow icons if there is only one project', () => {
@@ -179,7 +174,9 @@ describe('Projects', () => {
       ).toBeInTheDocument()
     }
 
-    xit(`contains appropriate link in the View Project CTA button link`, () => {
+    it(`contains appropriate link in the View Project CTA button link`, () => {
+      // Setup mock projects content with only 1 project
+      overrideMock(projectsListWithOneItem)
       setup()
 
       const viewProjectLinkButton = screen.getByRole('link', {
@@ -192,7 +189,9 @@ describe('Projects', () => {
       )
     })
 
-    xit(`contains appropriate link in the View Source Code CTA button link`, () => {
+    it(`contains appropriate link in the View Source Code CTA button link`, () => {
+      // Setup mock projects content with only 1 project
+      overrideMock(projectsListWithOneItem)
       setup()
 
       const viewSourceCodeLinkButton = screen.getByRole('link', {
