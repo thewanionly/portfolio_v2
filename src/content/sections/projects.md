@@ -33,6 +33,29 @@ projectsList:
       - REST API
     viewProjectLink: https://wani-world-countries.netlify.app/
     viewSourceCodeLink: https://github.com/thewanionly/rest-countries-v2
+  - title: World Clock
+    description: A simple clock application built with ReactJS. You can select a
+      city and it will display the current time in that city. This application
+      is built using TDD (Test Driven Development) approach using Jest and React
+      Testing Library.
+    viewSourceCodeLink: https://github.com/thewanionly/world-clock
+    viewProjectLink: https://wani-world-clock.netlify.app/
+    techStack:
+      - ReactJS
+      - JavaScript
+      - HTML5
+      - CSS3
+      - SASS/SCSS
+      - Jest
+      - React Testing Library
+      - REST API
+    highlightedWords:
+      - clock application
+      - ReactJS
+      - TDD (Test Driven Development)
+      - Jest
+      - React Testing Library
+    image: img/world-clock.png
 viewProjectCTA: View project
 viewSourceCodeCTA: View source code
 ---
