@@ -40,6 +40,7 @@ export const theme = {
     navBtnBg: rgba(COLORS.black, 0.6),
     bodyDark: rgba(COLORS.black, 0.5),
     toastBoxShadow: rgba(COLORS.black, 0.2),
+    projectImageShadow: rgba(COLORS.black, 0.16),
 
     error: COLORS.red,
   },

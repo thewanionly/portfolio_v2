@@ -6,10 +6,11 @@ import { ProjectItem as ProjectItemType } from 'common/context'
 
 const S = {
   ProjectItem: styled.div`
-    overflow: hidden;
     text-align: center;
   `,
   ProjectItemImageContainer: styled.div`
+    box-shadow: ${({ theme: { colors } }) => colors.projectImageShadow} 0px 1px
+      4px;
     flex: 1;
     margin-bottom: 3rem;
     display: flex;
