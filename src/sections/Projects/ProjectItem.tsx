@@ -8,29 +8,14 @@ const S = {
   ProjectItem: styled.div`
     overflow: hidden;
     text-align: center;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 3rem;
-
-    @media only screen and ${({ theme: { breakPoints } }) =>
-        breakPoints.tabletLandscape} {
-      flex-direction: row;
-      align-items: flex-start;
-      gap: 6rem;
-    }
-
-    @media only screen and ${({ theme: { breakPoints } }) =>
-        breakPoints.desktop} {
-      gap: 8rem;
-    }
   `,
   ProjectItemImageContainer: styled.div`
     flex: 1;
+    margin-bottom: 3rem;
     display: flex;
     align-items: flex-start;
 
-    width: min(55rem, 80vw);
+    width: 100%;
     aspect-ratio: 16 / 9;
     position: relative;
 
@@ -40,41 +25,24 @@ const S = {
     }
   `,
   ProjectItemImage: styled(Image)`
-    object-fit: contain;
+    object-fit: cover;
   `,
   ProjectItemDetails: styled.div`
     flex: 1;
     flex-basis: 50%;
-
-    @media only screen and ${({ theme: { breakPoints } }) =>
-        breakPoints.tabletLandscape} {
-      text-align: start;
-    }
+    text-align: start;
   `,
   ProjectItemTitle: styled.h6`
     color: ${({ theme: { colors } }) => colors.headingDark};
     letter-spacing: 0.15rem;
-    margin-bottom: 3rem;
-  `,
-
-  ProjectItemDescription: styled.p`
-    color: ${({ theme: { colors } }) => colors.bodyDark};
-    line-height: 2.5rem;
-    margin-bottom: 1.75rem;
+    margin-bottom: 1.5rem;
   `,
   ProjectItemTechStackContainer: styled.div`
-    margin-bottom: 4rem;
-
     display: flex;
     flex-wrap: wrap;
-    justify-content: center;
-
+    justify-content: flex-start;
     gap: 1rem;
-
-    @media only screen and ${({ theme: { breakPoints } }) =>
-        breakPoints.tabletLandscape} {
-      justify-content: flex-start;
-    }
+    margin-bottom: 3rem;
   `,
   ProjectItemTechStackItem: styled.span`
     padding: 0.3rem 0.75rem;
@@ -98,12 +66,12 @@ const S = {
     flex: 1;
     flex-basis: 45%;
     max-width: 100%;
-    min-width: 29rem;
+    min-width: 25rem;
 
     @media only screen and ${({ theme: { breakPoints } }) =>
         breakPoints.tabletPortrait} {
-      min-width: 25rem;
-      max-width: 30rem;
+      min-width: 22rem;
+      max-width: 100%;
     }
 
     @media only screen and ${({ theme: { breakPoints } }) =>
@@ -114,29 +82,27 @@ const S = {
 }
 
 type ProjectItemProps = {
+  className?: string
   viewProjectCTA: string
   viewSourceCodeCTA: string
 } & ProjectItemType
 
 export const ProjectItem = ({
+  className = '',
   title,
   image,
-  description,
   techStack,
   viewProjectLink,
   viewSourceCodeLink,
   viewProjectCTA,
   viewSourceCodeCTA,
 }: ProjectItemProps) => (
-  <S.ProjectItem>
+  <S.ProjectItem className={className}>
     <S.ProjectItemImageContainer>
       <S.ProjectItemImage src={image} alt={title} fill />
     </S.ProjectItemImageContainer>
     <S.ProjectItemDetails>
       <S.ProjectItemTitle>{title}</S.ProjectItemTitle>
-      <S.ProjectItemDescription data-testid={`project-description-${title}`}>
-        {description}
-      </S.ProjectItemDescription>
       <S.ProjectItemTechStackContainer
         data-testid={`project-techStack-${title}`}
       >
