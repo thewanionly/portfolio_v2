@@ -40,6 +40,7 @@ declare module 'styled-components' {
       navBtnBg: string
       bodyDark: string
       toastBoxShadow: string
+      projectImageShadow: string
 
       error: string
     }

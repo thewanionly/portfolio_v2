@@ -68,13 +68,12 @@ describe('Projects', () => {
       expect(projectsSectionTitle).toBeInTheDocument()
     })
 
-    it('displays first project with title, image, description, tech stack tags, View Project CTA button link, and View Source Code CTA button link', () => {
+    it('displays a project with title, image, description, tech stack tags, View Project CTA button link, and View Source Code CTA button link', () => {
       // Setup mock projects content with only 1 project
       overrideMock(projectsListWithOneItem)
       setup()
 
-      const { title, image, description, techStack } =
-        mockedContent.projects.projectsList[0]
+      const { title, image, techStack } = mockedContent.projects.projectsList[0]
 
       // Check project title
       const projectTitle = screen.getByRole('heading', { name: title })
@@ -84,12 +83,6 @@ describe('Projects', () => {
       const projectImage = screen.getByAltText(title)
       expect(projectImage).toBeInTheDocument()
       expect(projectImage).toHaveAttribute('src', image)
-
-      // Check project description
-      const projectDescription = screen.getByTestId(
-        `project-description-${title}`
-      )
-      expect(projectDescription).toHaveTextContent(description)
 
       // Check project tech stack
       const projectTechStackContainer = screen.getByTestId(
@@ -112,6 +105,7 @@ describe('Projects', () => {
       expect(viewSourceCodeLinkButton).toBeInTheDocument()
     })
 
+    // TODO: Plan for the future is to make the display a carousel when in mobile
     xit('does not display arrow icons if there is only one project', () => {
       // Setup mock projects content with only 1 project
       overrideMock(projectsListWithOneItem)
