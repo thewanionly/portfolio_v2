@@ -1,0 +1,46 @@
+import styled from 'styled-components'
+
+import { useContentContext } from 'common/context'
+import { container, sectionTitle } from 'common/styles/utilities'
+
+const S = {
+  Contact: styled.section`
+    padding: 8rem 0;
+    background-color: ${({ theme: { colors } }) => colors.secondary};
+    text-align: center;
+  `,
+  ContactContainer: styled.div`
+    ${container}
+
+    max-width: 75rem;
+  `,
+  ContactTitle: styled.h4`
+    ${sectionTitle}
+
+    color:  ${({ theme: { colors } }) => colors.headingLight};
+    margin-bottom: 5rem;
+  `,
+  ContactMessage: styled.p`
+    max-width: 60rem;
+    margin: auto;
+    margin-bottom: 6rem;
+    color: ${({ theme: { colors } }) => colors.bodyLighter};
+  `,
+}
+
+export const Contact = () => {
+  const {
+    content: { contact },
+  } = useContentContext()
+
+  const { sectionTitle, message } = contact
+
+  return (
+    <S.Contact id="contact">
+      <S.ContactContainer>
+        <S.ContactTitle>{sectionTitle}</S.ContactTitle>
+        <S.ContactMessage>{message}</S.ContactMessage>
+      </S.ContactContainer>
+    </S.Contact>
+  )
+}
