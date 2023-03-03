@@ -86,6 +86,15 @@ export class ProjectsContent {
   ) {}
 }
 
+/** Contact types */
+export class ContactContent {
+  constructor(
+    public sectionTitle: string = '',
+    public message: string = '',
+    public submitBtnLabel: string = ''
+  ) {}
+}
+
 /** Components types */
 export interface NavLink {
   label: string
@@ -133,6 +142,7 @@ export interface Content {
   about: AboutContent
   skills: SkillsContent
   projects: ProjectsContent
+  contact: ContactContent
   components: ComponentsContent
   footer: FooterContent
 }
