@@ -4,7 +4,7 @@ import { useRouter } from 'next/router'
 
 import { Content, useContentContext } from 'common/context'
 import { Footer, Header, HeaderProvider } from 'layout'
-import { Hero, About, Skills, Projects } from 'sections'
+import { Hero, About, Skills, Projects, Contact } from 'sections'
 
 export async function getStaticProps() {
   const { attributes: heroContent } = await require('content/sections/hero.md')
@@ -14,6 +14,8 @@ export async function getStaticProps() {
     await require('content/sections/skills.md')
   const { attributes: projectsContent } =
     await require('content/sections/projects.md')
+  const { attributes: contactContent } =
+    await require('content/sections/contact.md')
   const { attributes: logoContent } =
     await require('content/components/logo.md')
   const { attributes: navLinksContent } =
@@ -30,6 +32,7 @@ export async function getStaticProps() {
         about: aboutContent,
         skills: skillsContent,
         projects: projectsContent,
+        contact: contactContent,
         components: {
           logo: logoContent,
           ...navLinksContent,
@@ -99,6 +102,7 @@ export default function Index({ content }: IndexProps) {
         <About />
         <Skills />
         <Projects />
+        <Contact />
         <Footer />
       </main>
     </>

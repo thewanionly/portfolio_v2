@@ -39,11 +39,11 @@ const S = {
   `,
   HeroSubtitle: styled.div``,
   HeroNicknameText: styled.p`
-    color: ${({ theme: { colors } }) => colors.bodyLight};
+    color: ${({ theme: { colors } }) => colors.bodyLighter};
     line-height: 2.5rem;
   `,
   HeroDescriptionText: styled.p`
-    color: ${({ theme: { colors } }) => colors.bodyLight};
+    color: ${({ theme: { colors } }) => colors.bodyLighter};
     line-height: 2.5rem;
     max-width: 48rem;
     margin: 0 auto;

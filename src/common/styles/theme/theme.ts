@@ -22,7 +22,7 @@ export const theme = {
     bodyLightBg: COLORS.white,
     headerDividerBg: rgba(COLORS.white, 0.1),
     navToggle: COLORS.white,
-    navLink: COLORS.white,
+    navLink: rgba(COLORS.white, 0.5),
     headingLight: COLORS.white,
     navBtn: COLORS.white,
     icon: COLORS.white,
@@ -36,7 +36,7 @@ export const theme = {
 
     bodyDarkBg: COLORS.black,
     headingDark: COLORS.black,
-    tag: COLORS.black,
+    tag: rgba(COLORS.black, 0.6),
     navBtnBg: rgba(COLORS.black, 0.6),
     bodyDark: rgba(COLORS.black, 0.5),
     toastBoxShadow: rgba(COLORS.black, 0.2),
