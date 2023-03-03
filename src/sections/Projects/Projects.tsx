@@ -26,15 +26,10 @@ const S = {
   `,
   ProjectsList: styled.div`
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(max(47%, 45rem), 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(max(47%, 36rem), 1fr));
     column-gap: 3rem;
     row-gap: 7rem;
     justify-items: center;
-
-    @media only screen and ${({ theme: { breakPoints } }) =>
-        breakPoints.tabletPortrait} {
-      grid-template-columns: repeat(auto-fit, minmax(max(47%, 36rem), 1fr));
-    }
   `,
   ProjectItem: styled(ProjectItem)`
     min-width: 36rem;
