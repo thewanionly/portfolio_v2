@@ -9,7 +9,7 @@ import {
 const S = {
   SkillsGroup: styled.div``,
   SkillsGroupDescription: styled.p`
-    color: ${({ theme: { colors } }) => colors.bodyLight};
+    color: ${({ theme: { colors } }) => colors.bodyLighter};
     line-height: 2.5rem;
     margin-bottom: 6rem;
   `,
@@ -26,7 +26,7 @@ const S = {
     align-items: center;
     gap: 1.5rem;
     flex-basis: 27%;
-    color: ${({ theme: { colors } }) => colors.bodyLight};
+    color: ${({ theme: { colors } }) => colors.bodyLighter};
   `,
   SkillItemIconContainer: styled.div`
     height: 24px;
