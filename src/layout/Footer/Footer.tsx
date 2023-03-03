@@ -10,6 +10,30 @@ const S = {
     background-color: ${({ theme: { colors } }) => colors.secondary};
     padding: 4rem 0;
     text-align: center;
+    position: relative;
+
+    &::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: calc((100% - min(120rem, 90%)) / 2);
+      width: 90%;
+      max-width: 120rem;
+      background-color: ${({ theme: { colors } }) => colors.headerDividerBg};
+      height: 0.1rem;
+
+      @media only screen and ${({ theme: { breakPoints } }) =>
+          breakPoints.tabletPortrait} {
+        left: calc((100% - min(120rem, 80%)) / 2);
+        width: 80%;
+      }
+
+      @media only screen and ${({ theme: { breakPoints } }) =>
+          breakPoints.desktop} {
+        left: calc((100% - min(120rem, 75%)) / 2);
+        width: 75%;
+      }
+    }
 
     @media only screen and ${({ theme: { breakPoints } }) =>
         breakPoints.tabletPortrait} {
