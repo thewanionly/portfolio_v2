@@ -158,6 +158,19 @@ collections:
               widget: 'string',
               hint: 'Displayed in a secondary button in each of the projects',
             }
+      - label: 'Contact'
+        name: 'contact'
+        file: 'src/content/sections/contact.md'
+        fields:
+          - label: 'Section title'
+            name: 'sectionTitle'
+            widget: 'string'
+          - label: 'Message'
+            name: 'message'
+            widget: 'text'
+          - label: 'Submit button label'
+            name: 'submitBtnLabel'
+            widget: 'string'
   - name: 'components'
     label: 'Components'
     files:

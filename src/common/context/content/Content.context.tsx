@@ -2,6 +2,7 @@ import { createContext, useCallback, useContext, useState } from 'react'
 import {
   AboutContent,
   ComponentsContent,
+  ContactContent,
   Content,
   FooterContent,
   HeroContent,
@@ -25,6 +26,7 @@ const initialContent = {
   about: new AboutContent(),
   skills: new SkillsContent(),
   projects: new ProjectsContent(),
+  contact: new ContactContent(),
   components: new ComponentsContent(),
   footer: new FooterContent(),
 }

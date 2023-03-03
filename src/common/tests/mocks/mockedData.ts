@@ -1,9 +1,11 @@
 import { IconName } from 'common/components'
 import {
+  ContactContent,
   Content,
   FooterContent,
   Logo,
   NavLink,
+  ProjectsContent,
   SocialLink,
 } from 'common/context'
 
@@ -71,11 +73,18 @@ export const projectsListWithThreeItems = [
   },
 ]
 
-const projects = {
+const projects: ProjectsContent = {
   sectionTitle: 'Projects',
   projectsList: projectsListWithThreeItems,
   viewProjectCTA: 'View Project',
   viewSourceCodeCTA: 'View Source Code',
+}
+
+/** Contact mock */
+const contact: ContactContent = {
+  sectionTitle: 'Contact me',
+  message: 'Please contact me',
+  submitBtnLabel: 'Send message',
 }
 
 /** Components mock */
@@ -196,6 +205,7 @@ export const mockedContent: Content = {
     ],
   },
   projects,
+  contact,
   components: {
     logo,
     navLinks,
