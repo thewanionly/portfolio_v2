@@ -12,7 +12,7 @@ const S = {
     box-shadow: ${({ theme: { colors } }) => colors.projectImageShadow} 0px 1px
       4px;
     flex: 1;
-    margin-bottom: 3rem;
+    margin-bottom: 2rem;
     display: flex;
     align-items: flex-start;
 
@@ -36,14 +36,14 @@ const S = {
   ProjectItemTitle: styled.h6`
     color: ${({ theme: { colors } }) => colors.headingDark};
     letter-spacing: 0.15rem;
-    margin-bottom: 1.5rem;
+    margin-bottom: 1rem;
   `,
   ProjectItemTechStackContainer: styled.div`
     display: flex;
     flex-wrap: wrap;
     justify-content: flex-start;
     gap: 1rem;
-    margin-bottom: 3rem;
+    margin-bottom: 2rem;
   `,
   ProjectItemTechStackItem: styled.span`
     padding: 0.3rem 0.75rem;
