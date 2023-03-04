@@ -4,9 +4,7 @@ import { footerLogo, mockedContent } from 'common/tests/mocks'
 import { Footer } from './Footer'
 
 jest.mock('common/context', () => ({
-  useContentContext: () => ({
-    content: mockedContent,
-  }),
+  useContentContext: () => mockedContent,
 }))
 
 const setup = () => {

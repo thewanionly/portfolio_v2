@@ -4,9 +4,7 @@ import { mockedContent } from 'common/tests/mocks'
 import { Hero } from './Hero'
 
 jest.mock('common/context', () => ({
-  useContentContext: () => ({
-    content: mockedContent,
-  }),
+  useContentContext: () => mockedContent,
 }))
 
 const setup = () => {

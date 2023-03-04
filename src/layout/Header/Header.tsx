@@ -127,10 +127,10 @@ type WithIsMenu = {
 }
 
 export const Header = () => {
+  const {
+    components: { navLinks, logo },
+  } = useContentContext()
   const { isNavMenuOpen, closeNavMenu } = useHeaderContext()
-  const { content } = useContentContext()
-
-  const { navLinks, logo } = content?.components
 
   return (
     <S.Header>

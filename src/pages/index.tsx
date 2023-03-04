@@ -2,7 +2,7 @@ import { useEffect, useRef } from 'react'
 import Head from 'next/head'
 import { useRouter } from 'next/router'
 
-import { Content, useContentContext } from 'common/context'
+import { Content, ContentContext } from 'common/context'
 import { Footer, Header, HeaderProvider } from 'layout'
 import { Hero, About, Skills, Projects, Contact } from 'sections'
 
@@ -50,12 +50,7 @@ interface IndexProps {
 
 export default function Index({ content }: IndexProps) {
   const isFirstRender = useRef(true)
-  const { initializeContent } = useContentContext()
   const router = useRouter()
-
-  useEffect(() => {
-    initializeContent(content)
-  }, [content, initializeContent])
 
   useEffect(() => {
     if (isFirstRender.current) {
@@ -95,15 +90,17 @@ export default function Index({ content }: IndexProps) {
         <link rel="manifest" href="/favicon/site.webmanifest" />
       </Head>
       <main>
-        <HeaderProvider>
-          <Header />
-        </HeaderProvider>
-        <Hero />
-        <About />
-        <Skills />
-        <Projects />
-        <Contact />
-        <Footer />
+        <ContentContext.Provider value={content}>
+          <HeaderProvider>
+            <Header />
+          </HeaderProvider>
+          <Hero />
+          <About />
+          <Skills />
+          <Projects />
+          <Contact />
+          <Footer />
+        </ContentContext.Provider>
       </main>
     </>
   )

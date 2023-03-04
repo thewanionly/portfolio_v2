@@ -72,20 +72,17 @@ const S = {
 
 export const Hero = () => {
   const {
-    content: { hero, components },
+    hero: {
+      fullName,
+      greeting,
+      nicknameText,
+      description,
+      highlightedWords,
+      projectsCTA,
+      contactsCTA,
+    },
+    components: { socialLinks },
   } = useContentContext()
-
-  const {
-    fullName,
-    greeting,
-    nicknameText,
-    description,
-    highlightedWords,
-    projectsCTA,
-    contactsCTA,
-  } = hero
-
-  const { socialLinks } = components
 
   return (
     <S.Hero id="home">

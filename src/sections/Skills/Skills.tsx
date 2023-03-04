@@ -47,10 +47,8 @@ const S = {
 
 export const Skills = () => {
   const {
-    content: { skills },
+    skills: { sectionTitle, skillsGroup },
   } = useContentContext()
-
-  const { sectionTitle, skillsGroup } = skills
 
   return (
     <S.Skills id="skills">

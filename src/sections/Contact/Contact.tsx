@@ -30,10 +30,8 @@ const S = {
 
 export const Contact = () => {
   const {
-    content: { contact },
+    contact: { sectionTitle, message },
   } = useContentContext()
-
-  const { sectionTitle, message } = contact
 
   return (
     <S.Contact id="contact">
