@@ -61,10 +61,8 @@ const getFileName = (fileUrl: string) =>
 
 export const About = () => {
   const {
-    content: { about },
+    about: { sectionTitle, aboutCard, downloadCV },
   } = useContentContext()
-
-  const { sectionTitle, aboutCard, downloadCV } = about
 
   return (
     <S.About id="about">

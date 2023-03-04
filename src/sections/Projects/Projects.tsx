@@ -39,11 +39,8 @@ const S = {
 
 export const Projects = () => {
   const {
-    content: { projects },
+    projects: { sectionTitle, projectsList, viewProjectCTA, viewSourceCodeCTA },
   } = useContentContext()
-
-  const { sectionTitle, projectsList, viewProjectCTA, viewSourceCodeCTA } =
-    projects
 
   return (
     <S.Projects id="projects">

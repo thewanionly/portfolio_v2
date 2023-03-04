@@ -7,9 +7,7 @@ import { Header } from './Header'
 import { HeaderProvider } from './Header.context'
 
 jest.mock('common/context', () => ({
-  useContentContext: () => ({
-    content: mockedContent,
-  }),
+  useContentContext: () => mockedContent,
 }))
 
 const setup = () => {

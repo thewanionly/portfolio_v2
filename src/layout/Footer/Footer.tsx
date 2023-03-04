@@ -135,12 +135,9 @@ const S = {
 
 export const Footer = () => {
   const {
-    content: { components, footer },
+    footer: { footerQuote, copyrightText },
+    components: { logo, navLinks, socialLinks },
   } = useContentContext()
-
-  const { footerQuote, copyrightText } = footer
-
-  const { logo, navLinks, socialLinks } = components
 
   return (
     <S.Footer>

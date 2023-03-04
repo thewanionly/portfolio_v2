@@ -18,12 +18,10 @@ import * as commonContext from 'common/context'
  * Many thanks to this blog: https://mikeborozdin.com/post/changing-jest-mocks-between-tests/
  */
 const mockedCommonContext = commonContext as {
-  useContentContext: () => { content: Content }
+  useContentContext: () => Content
 }
 
-const defaultMock = {
-  content: mockedContent,
-}
+const defaultMock = mockedContent
 
 jest.mock('common/context', () => ({
   __esModule: true,
@@ -32,12 +30,10 @@ jest.mock('common/context', () => ({
 
 const overrideMock = (projectsListOverride: ProjectItem[]) => {
   mockedCommonContext.useContentContext = () => ({
-    content: {
-      ...mockedContent,
-      projects: {
-        ...mockedContent.projects,
-        projectsList: projectsListOverride,
-      },
+    ...mockedContent,
+    projects: {
+      ...mockedContent.projects,
+      projectsList: projectsListOverride,
     },
   })
 }
