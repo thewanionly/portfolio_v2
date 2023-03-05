@@ -114,6 +114,12 @@ collections:
                 fields:
                   - { label: 'Label', name: 'label', widget: 'string' }
                   - { label: 'Icon', name: 'icon', widget: 'image' }
+                  - {
+                      label: 'Icon placeholder (blur)',
+                      name: 'blurIcon',
+                      widget: 'string',
+                      hint: 'Placeholder of an image to be placed as value for `blurDataUrl`',
+                    }
       - label: 'Projects'
         name: 'projects'
         file: 'src/content/sections/projects.md'
@@ -127,6 +133,12 @@ collections:
             fields:
               - { label: 'Title', name: 'title', widget: 'string' }
               - { label: 'Image', name: 'image', widget: 'image' }
+              - {
+                  label: 'Image placeholder (blur)',
+                  name: 'blurImage',
+                  widget: 'string',
+                  hint: 'Placeholder of an image to be placed as value for `blurDataUrl`',
+                }
               - { label: 'Description', name: 'description', widget: 'text' }
               - label: 'Important words in the description'
                 name: 'highlightedWords'

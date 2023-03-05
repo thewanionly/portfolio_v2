@@ -92,6 +92,7 @@ export const ProjectItem = ({
   className = '',
   title,
   image,
+  blurImage,
   techStack,
   viewProjectLink,
   viewSourceCodeLink,
@@ -100,7 +101,13 @@ export const ProjectItem = ({
 }: ProjectItemProps) => (
   <S.ProjectItem className={className}>
     <S.ProjectItemImageContainer>
-      <S.ProjectItemImage src={image} alt={title} fill />
+      <S.ProjectItemImage
+        src={image}
+        alt={title}
+        fill
+        placeholder={blurImage ? 'blur' : undefined}
+        blurDataURL={blurImage}
+      />
     </S.ProjectItemImageContainer>
     <S.ProjectItemDetails>
       <S.ProjectItemTitle>{title}</S.ProjectItemTitle>
