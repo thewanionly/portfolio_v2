@@ -143,7 +143,11 @@ export const Footer = () => {
     <S.Footer>
       <S.FooterContainer>
         <S.FooterTopArea>
-          <S.FooterLogo altText="Footer logo" src={logo.src} />
+          <S.FooterLogo
+            altText="Footer logo"
+            src={logo.src}
+            blurSrc={logo.blurImage}
+          />
           <S.FooterNavBar>
             <S.FooterNavBarList>
               {navLinks.map(({ label, link }) => (

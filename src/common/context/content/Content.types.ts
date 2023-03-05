@@ -26,6 +26,7 @@ export class HeroContent {
 export interface AboutCard {
   title: string
   image: string
+  blurImage?: string
   description: string
   highlightedWords: string[]
 }
@@ -104,7 +105,11 @@ export interface NavLink {
 }
 
 export class Logo {
-  constructor(public defaultAltText: string = '', public src: string = '') {}
+  constructor(
+    public defaultAltText: string = '',
+    public src: string = '',
+    public blurImage?: string
+  ) {}
 }
 
 export interface SocialLink {

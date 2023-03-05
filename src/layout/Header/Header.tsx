@@ -139,6 +139,7 @@ export const Header = () => {
         <S.HeaderLogo
           altText="Header logo"
           src={logo.src}
+          blurSrc={logo.blurImage}
           onClick={closeNavMenu}
         />
         <S.HeaderNavBar isMenu={isNavMenuOpen}>
