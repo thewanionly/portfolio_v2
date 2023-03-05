@@ -52,6 +52,7 @@ export class AboutContent {
 export interface SkillItem {
   label: string
   icon: string
+  blurIcon?: string
 }
 
 export interface SkillsGroup {
@@ -70,6 +71,7 @@ export class SkillsContent {
 export interface ProjectItem {
   title: string
   image: string
+  blurImage?: string
   description: string
   highlightedWords: string[]
   techStack: string[]

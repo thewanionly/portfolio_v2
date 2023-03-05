@@ -46,7 +46,7 @@ export const AboutCard = ({
     <S.AboutCard className={className}>
       <S.AboutCardTitle>{title}</S.AboutCardTitle>
       <S.AboutCardImageContainer>
-        <Image src={image} alt={title} fill />
+        <Image src={image} alt={title} fill priority />
       </S.AboutCardImageContainer>
       <S.AboutCardDescription data-testid={`about-card-description-${title}`}>
         {renderDescription(description, highlightedWords)}

@@ -9,21 +9,13 @@ const S = {
     text-align: center;
   `,
   ProjectItemImageContainer: styled.div`
+    flex: 1;
     box-shadow: ${({ theme: { colors } }) => colors.projectImageShadow} 0px 1px
       4px;
-    flex: 1;
-    margin-bottom: 2rem;
-    display: flex;
-    align-items: flex-start;
-
     width: 100%;
     aspect-ratio: 16 / 9;
     position: relative;
-
-    @media only screen and ${({ theme: { breakPoints } }) =>
-        breakPoints.tabletLandscape} {
-      flex-basis: 40rem;
-    }
+    margin-bottom: 2rem;
   `,
   ProjectItemImage: styled(Image)`
     object-fit: cover;
@@ -92,6 +84,7 @@ export const ProjectItem = ({
   className = '',
   title,
   image,
+  blurImage,
   techStack,
   viewProjectLink,
   viewSourceCodeLink,
@@ -100,7 +93,13 @@ export const ProjectItem = ({
 }: ProjectItemProps) => (
   <S.ProjectItem className={className}>
     <S.ProjectItemImageContainer>
-      <S.ProjectItemImage src={image} alt={title} fill />
+      <S.ProjectItemImage
+        src={image}
+        alt={title}
+        fill
+        placeholder={blurImage ? 'blur' : undefined}
+        blurDataURL={blurImage}
+      />
     </S.ProjectItemImageContainer>
     <S.ProjectItemDetails>
       <S.ProjectItemTitle>{title}</S.ProjectItemTitle>

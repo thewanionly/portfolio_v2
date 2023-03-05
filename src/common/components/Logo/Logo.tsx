@@ -28,7 +28,7 @@ export const Logo = ({
 }: LogoProps) => (
   <Link className={className} href="" onClick={onClick}>
     <S.LogoContainer>
-      <Image src={src} alt={altText} fill />
+      <Image src={src} alt={altText} fill priority />
     </S.LogoContainer>
   </Link>
 )

@@ -42,10 +42,16 @@ interface SkillsGroupProps extends SkillsGroupType {
   className?: string
 }
 
-const SkillItem = ({ icon, label }: SkillItemType) => (
+const SkillItem = ({ icon, blurIcon, label }: SkillItemType) => (
   <S.SkillItemContainer>
     <S.SkillItemIconContainer>
-      <Image src={icon} alt={label} fill />
+      <Image
+        src={icon}
+        alt={label}
+        fill
+        placeholder={blurIcon ? 'blur' : undefined}
+        blurDataURL={blurIcon}
+      />
     </S.SkillItemIconContainer>
     <S.SkillItemIconLabel>{label}</S.SkillItemIconLabel>
   </S.SkillItemContainer>
@@ -59,9 +65,9 @@ export const SkillsGroup = ({
   <S.SkillsGroup className={className}>
     <S.SkillsGroupDescription>{description}</S.SkillsGroupDescription>
     <S.SkillsGroupSkillsList>
-      {skillsList.map(({ label, icon }) => (
+      {skillsList.map(({ label, icon, blurIcon }) => (
         <li key={label}>
-          <SkillItem label={label} icon={icon} />
+          <SkillItem label={label} icon={icon} blurIcon={blurIcon} />
         </li>
       ))}
     </S.SkillsGroupSkillsList>
