@@ -16,6 +16,13 @@ collections:
             widget: 'image'
             required: false
           - {
+              label: 'Image placeholder (blur)',
+              name: 'blurImage',
+              widget: 'string',
+              hint: 'Placeholder of an image to be placed as value for `blurDataUrl`',
+              required: false,
+            }
+          - {
               label: 'Greeting text',
               name: 'greeting',
               widget: 'string',
@@ -71,6 +78,12 @@ collections:
             fields:
               - { label: 'Title', name: 'title', widget: 'string' }
               - { label: 'Image', name: 'image', widget: 'image' }
+              - {
+                  label: 'Image placeholder (blur)',
+                  name: 'blurImage',
+                  widget: 'string',
+                  hint: 'Placeholder of an image to be placed as value for `blurDataUrl`',
+                }
               - { label: 'Description', name: 'description', widget: 'text' }
               - label: 'Important words in the description'
                 name: 'highlightedWords'
@@ -193,6 +206,12 @@ collections:
           - label: 'Logo image'
             name: 'src'
             widget: 'image'
+          - {
+              label: 'Image placeholder (blur)',
+              name: 'blurImage',
+              widget: 'string',
+              hint: 'Placeholder of an image to be placed as value for `blurDataUrl`',
+            }
           - label: 'Default alt text'
             name: 'defaultAltText'
             widget: 'string'

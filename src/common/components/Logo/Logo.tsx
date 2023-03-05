@@ -15,6 +15,7 @@ const S = {
 
 type LogoProps = {
   src: string
+  blurSrc?: string
   altText?: string
   className?: string
   onClick?: () => void
@@ -22,13 +23,21 @@ type LogoProps = {
 
 export const Logo = ({
   src,
+  blurSrc,
   altText = 'Logo',
   className = '',
   onClick,
 }: LogoProps) => (
   <Link className={className} href="" onClick={onClick}>
     <S.LogoContainer>
-      <Image src={src} alt={altText} fill priority />
+      <Image
+        src={src}
+        alt={altText}
+        fill
+        placeholder={blurSrc ? 'blur' : undefined}
+        blurDataURL={blurSrc}
+        priority
+      />
     </S.LogoContainer>
   </Link>
 )

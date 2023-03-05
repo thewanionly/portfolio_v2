@@ -39,6 +39,7 @@ export const AboutCard = ({
   className = '',
   title,
   image,
+  blurImage,
   description,
   highlightedWords,
 }: AboutCardProps) => {
@@ -46,7 +47,14 @@ export const AboutCard = ({
     <S.AboutCard className={className}>
       <S.AboutCardTitle>{title}</S.AboutCardTitle>
       <S.AboutCardImageContainer>
-        <Image src={image} alt={title} fill priority />
+        <Image
+          src={image}
+          alt={title}
+          fill
+          placeholder={blurImage ? 'blur' : undefined}
+          blurDataURL={blurImage}
+          priority
+        />
       </S.AboutCardImageContainer>
       <S.AboutCardDescription data-testid={`about-card-description-${title}`}>
         {renderDescription(description, highlightedWords)}
