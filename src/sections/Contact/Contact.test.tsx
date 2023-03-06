@@ -30,5 +30,13 @@ describe('Contact', () => {
 
       expect(contactMessage).toBeInTheDocument()
     })
+
+    it('displays contact form', () => {
+      setup()
+
+      const contactForm = screen.getByRole('form', { name: /contact form/i })
+
+      expect(contactForm).toBeInTheDocument()
+    })
   })
 })

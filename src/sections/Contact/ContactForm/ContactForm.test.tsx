@@ -19,7 +19,9 @@ describe('ContactForm', () => {
 
       // Act
       setup()
-      const fieldElement = screen.getByRole('textbox', { name: fieldLabel })
+      const fieldElement = screen.getByRole('textbox', {
+        name: new RegExp(fieldLabel),
+      })
 
       // Assert
       expect(fieldElement).toBeInTheDocument()
@@ -31,7 +33,9 @@ describe('ContactForm', () => {
 
       // Act
       setup()
-      const fieldElement = screen.getByRole('textbox', { name: fieldLabel })
+      const fieldElement = screen.getByRole('textbox', {
+        name: new RegExp(fieldLabel),
+      })
 
       // Assert
       expect(fieldElement).toBeInTheDocument()
@@ -43,7 +47,9 @@ describe('ContactForm', () => {
 
       // Act
       setup()
-      const fieldElement = screen.getByRole('textbox', { name: fieldLabel })
+      const fieldElement = screen.getByRole('textbox', {
+        name: new RegExp(fieldLabel),
+      })
 
       // Assert
       expect(fieldElement).toBeInTheDocument()
@@ -55,7 +61,9 @@ describe('ContactForm', () => {
 
       // Act
       setup()
-      const fieldElement = screen.getByRole('textbox', { name: fieldLabel })
+      const fieldElement = screen.getByRole('textbox', {
+        name: new RegExp(fieldLabel),
+      })
 
       // Assert
       expect(fieldElement).toBeInTheDocument()

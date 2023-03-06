@@ -117,6 +117,7 @@ type ButtonProps = {
   onClick?: (event: React.MouseEvent<HTMLButtonElement>) => void
   openLinkInNewTab?: boolean
   variant?: ButtonVariant
+  type?: 'submit' | 'button' | 'reset'
 }
 
 export const Button = ({
@@ -131,6 +132,7 @@ export const Button = ({
   onClick,
   openLinkInNewTab = false,
   variant = ButtonVariant.CONTAINED,
+  type = 'button',
 }: ButtonProps) => {
   const buttonProps = {
     className,
@@ -138,7 +140,7 @@ export const Button = ({
     variant,
     disabled,
     ...(!asLink
-      ? { onClick }
+      ? { onClick, type }
       : {
           as: S.Link,
           href: !disabled ? href : '',

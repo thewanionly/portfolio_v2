@@ -27,6 +27,9 @@ const S = {
     margin-bottom: 6rem;
     color: ${({ theme: { colors } }) => colors.bodyLighter};
   `,
+  ContactForm: styled(ContactForm)`
+    margin-top: 2.5rem;
+  `,
 }
 
 export const Contact = () => {
@@ -39,7 +42,7 @@ export const Contact = () => {
       <S.ContactContainer>
         <S.ContactTitle>{sectionTitle}</S.ContactTitle>
         <S.ContactMessage>{message}</S.ContactMessage>
-        <ContactForm />
+        <S.ContactForm />
       </S.ContactContainer>
     </S.Contact>
   )
