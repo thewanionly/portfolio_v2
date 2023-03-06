@@ -2,6 +2,7 @@ import styled from 'styled-components'
 
 import { useContentContext } from 'common/context'
 import { container, sectionTitle } from 'common/styles/utilities'
+import { ContactForm } from './ContactForm'
 
 const S = {
   Contact: styled.section`
@@ -38,6 +39,7 @@ export const Contact = () => {
       <S.ContactContainer>
         <S.ContactTitle>{sectionTitle}</S.ContactTitle>
         <S.ContactMessage>{message}</S.ContactMessage>
+        <ContactForm />
       </S.ContactContainer>
     </S.Contact>
   )
