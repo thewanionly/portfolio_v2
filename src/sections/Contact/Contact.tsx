@@ -2,6 +2,7 @@ import styled from 'styled-components'
 
 import { useContentContext } from 'common/context'
 import { container, sectionTitle } from 'common/styles/utilities'
+import { ContactForm } from './ContactForm'
 
 const S = {
   Contact: styled.section`
@@ -26,6 +27,9 @@ const S = {
     margin-bottom: 6rem;
     color: ${({ theme: { colors } }) => colors.bodyLighter};
   `,
+  ContactForm: styled(ContactForm)`
+    margin-top: 2.5rem;
+  `,
 }
 
 export const Contact = () => {
@@ -38,6 +42,7 @@ export const Contact = () => {
       <S.ContactContainer>
         <S.ContactTitle>{sectionTitle}</S.ContactTitle>
         <S.ContactMessage>{message}</S.ContactMessage>
+        <S.ContactForm />
       </S.ContactContainer>
     </S.Contact>
   )

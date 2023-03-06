@@ -123,7 +123,6 @@ export const GlobalStyles = createGlobalStyle`
   button {
     cursor: pointer;
     border: none;
-    outline: none;
   }
 
   img {
