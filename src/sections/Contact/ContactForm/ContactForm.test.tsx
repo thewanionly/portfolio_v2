@@ -1,6 +1,6 @@
 import userEvent from '@testing-library/user-event'
 
-import { render, screen } from 'common/tests'
+import { render, screen, waitFor } from 'common/tests'
 import { mockedContent } from 'common/tests/mocks'
 
 import { ContactForm } from './ContactForm'
@@ -119,6 +119,53 @@ describe('ContactForm', () => {
       expect(
         await screen.findByText('Email field is required')
       ).toBeInTheDocument()
+    })
+
+    it('displays an invalid format error message in Email field when it was touched and then blurred leaving it with a value with invalid format', async () => {
+      // Arrange
+      setup()
+      const fieldLabel = 'Email'
+      const invalidFormatValue = 't@g.c'
+
+      // Act
+      const fieldElement = screen.getByRole('textbox', {
+        name: new RegExp(fieldLabel),
+      })
+      await userEvent.type(fieldElement, invalidFormatValue)
+      userEvent.click(document.body)
+
+      // Assert
+      expect(
+        await screen.findByText('Email field has invalid format')
+      ).toBeInTheDocument()
+    })
+
+    it('hides the invalid format error message in Email field after changing from invalid format to valid format', async () => {
+      // Arrange
+      setup()
+      const fieldLabel = 'Email'
+      const invalidFormatValue = 't@g.c'
+      const validFormatValue = 't@g.co'
+
+      // Act
+      const fieldElement = screen.getByRole('textbox', {
+        name: new RegExp(fieldLabel),
+      })
+      await userEvent.type(fieldElement, invalidFormatValue)
+      userEvent.click(document.body)
+      expect(
+        await screen.findByText('Email field has invalid format')
+      ).toBeInTheDocument()
+
+      await userEvent.clear(fieldElement)
+      await userEvent.type(fieldElement, validFormatValue)
+
+      // Assert
+      expect(
+        await waitFor(() =>
+          screen.queryByText('Email field has invalid format')
+        )
+      ).not.toBeInTheDocument()
     })
 
     it('displays a required error message in Subject field when it was touched and then blurred leaving it with an empty value', async () => {

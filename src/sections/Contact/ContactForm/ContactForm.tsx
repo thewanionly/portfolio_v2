@@ -90,6 +90,8 @@ type ContactFormProps = {
   className?: string
 }
 
+const EMAIL_ADDRESS_VALIDATION_REGEX = /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/i
+
 export const ContactForm = ({ className }: ContactFormProps): ReactElement => {
   const {
     contact: { submitBtnLabel },
@@ -110,6 +112,9 @@ export const ContactForm = ({ className }: ContactFormProps): ReactElement => {
 
     if (!values.email) {
       errors.email = 'Email field is required'
+    } else if (!EMAIL_ADDRESS_VALIDATION_REGEX.test(values.email)) {
+      // Email RegEx validation
+      errors.email = 'Email field has invalid format'
     }
 
     if (!values.subject) {
@@ -138,17 +143,20 @@ export const ContactForm = ({ className }: ContactFormProps): ReactElement => {
         validate={handleValidate}
         onSubmit={handleSubmit}
       >
-        {({ errors }) => (
+        {({ errors, touched }) => (
           <S.ContactForm aria-label="Contact form">
             <S.ContactFormFieldContainer className="name">
-              <S.ContactFormFieldLabel htmlFor="name" $hasError={!!errors.name}>
+              <S.ContactFormFieldLabel
+                htmlFor="name"
+                $hasError={!!(errors.name && touched.name)}
+              >
                 Name *
               </S.ContactFormFieldLabel>
               <S.ContactFormField
                 id="name"
                 name="name"
                 placeholder="Enter your name..."
-                $hasError={!!errors.name}
+                $hasError={!!(errors.name && touched.name)}
                 aria-required
               />
               <S.ContactFormFieldErrorMessage name="name" component="p" />
@@ -156,7 +164,7 @@ export const ContactForm = ({ className }: ContactFormProps): ReactElement => {
             <S.ContactFormFieldContainer className="email">
               <S.ContactFormFieldLabel
                 htmlFor="email"
-                $hasError={!!errors.email}
+                $hasError={!!(errors.email && touched.email)}
               >
                 Email *
               </S.ContactFormFieldLabel>
@@ -165,7 +173,7 @@ export const ContactForm = ({ className }: ContactFormProps): ReactElement => {
                 name="email"
                 type="email"
                 placeholder="Enter your e-mail address..."
-                $hasError={!!errors.email}
+                $hasError={!!(errors.email && touched.email)}
                 aria-required
               />
               <S.ContactFormFieldErrorMessage name="email" component="p" />
@@ -173,7 +181,7 @@ export const ContactForm = ({ className }: ContactFormProps): ReactElement => {
             <S.ContactFormFieldContainer>
               <S.ContactFormFieldLabel
                 htmlFor="subject"
-                $hasError={!!errors.subject}
+                $hasError={!!(errors.subject && touched.subject)}
               >
                 Subject *
               </S.ContactFormFieldLabel>
@@ -181,7 +189,7 @@ export const ContactForm = ({ className }: ContactFormProps): ReactElement => {
                 id="subject"
                 name="subject"
                 placeholder="Enter the message subject..."
-                $hasError={!!errors.subject}
+                $hasError={!!(errors.subject && touched.subject)}
                 aria-required
               />
               <S.ContactFormFieldErrorMessage name="subject" component="p" />
@@ -189,7 +197,7 @@ export const ContactForm = ({ className }: ContactFormProps): ReactElement => {
             <S.ContactFormFieldContainer>
               <S.ContactFormFieldLabel
                 htmlFor="message"
-                $hasError={!!errors.message}
+                $hasError={!!(errors.message && touched.message)}
               >
                 Message *
               </S.ContactFormFieldLabel>
@@ -199,7 +207,7 @@ export const ContactForm = ({ className }: ContactFormProps): ReactElement => {
                 component="textarea"
                 rows="15"
                 placeholder="Enter your message..."
-                $hasError={!!errors.message}
+                $hasError={!!(errors.message && touched.message)}
                 aria-required
               />
               <S.ContactFormFieldErrorMessage name="message" component="p" />
