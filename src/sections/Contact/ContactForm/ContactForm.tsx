@@ -1,6 +1,6 @@
 import { ReactElement } from 'react'
 import styled from 'styled-components'
-import { Formik, Form, Field, FormikHelpers } from 'formik'
+import { Formik, Form, Field, FormikHelpers, ErrorMessage } from 'formik'
 
 import { useContentContext } from 'common/context'
 import { Button } from 'common/components'
@@ -31,30 +31,45 @@ const S = {
       }
     }
   `,
-  ContactFormFieldLabel: styled.label`
+  ContactFormFieldLabel: styled.label<HasError>`
     font-weight: ${({ theme: { fontWeights } }) => fontWeights.fontWeightBold};
     font-size: ${({ theme: { fontSizes } }) => fontSizes.fontSizeSm};
     text-align: start;
+    color: ${({ theme: { colors }, $hasError }) =>
+      !$hasError ? colors.bodyLight : colors.error};
   `,
-  ContactFormField: styled(Field)`
+  ContactFormField: styled(Field)<HasError>`
     outline: none;
-    border: none;
     border-radius: 0.5rem;
     background-color: ${({ theme: { colors } }) => colors.formInputBg};
+    border: 1px solid
+      ${({ theme: { colors }, $hasError }) =>
+        !$hasError ? colors.formInputBg : colors.error};
     padding: 1.8rem 2.3rem;
     resize: none;
 
     &:focus,
     &:active {
-      border-color: ${({ theme: { colors } }) => colors.primary};
-      outline: ${({ theme: { colors } }) => colors.primary} solid 2px;
+      border-color: ${({ theme: { colors }, $hasError }) =>
+        !$hasError ? colors.primary : colors.error};
+      outline: ${({ theme: { colors }, $hasError }) =>
+          !$hasError ? colors.primary : colors.error}
+        solid 2px;
       outline-offset: 1px;
     }
+  `,
+  ContactFormFieldErrorMessage: styled(ErrorMessage)`
+    color: ${({ theme: { colors } }) => colors.error};
+    text-align: start;
   `,
   ContactFormSubmitButton: styled(Button)`
     margin-top: 2rem;
     min-width: 29rem;
   `,
+}
+
+type HasError = {
+  $hasError: boolean
 }
 
 interface ContactFormValues {
@@ -75,10 +90,43 @@ type ContactFormProps = {
   className?: string
 }
 
+const EMAIL_ADDRESS_VALIDATION_REGEX = /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/i
+
 export const ContactForm = ({ className }: ContactFormProps): ReactElement => {
   const {
     contact: { submitBtnLabel },
   } = useContentContext()
+
+  const handleValidate = (values: ContactFormValues) => {
+    const errors: ContactFormValues = {
+      name: '',
+      email: '',
+      subject: '',
+      message: '',
+    }
+
+    // Required field validation
+    if (!values.name) {
+      errors.name = 'Name field is required'
+    }
+
+    if (!values.email) {
+      errors.email = 'Email field is required'
+    } else if (!EMAIL_ADDRESS_VALIDATION_REGEX.test(values.email)) {
+      // Email RegEx validation
+      errors.email = 'Email field has invalid format'
+    }
+
+    if (!values.subject) {
+      errors.subject = 'Subject field is required'
+    }
+
+    if (!values.message) {
+      errors.message = 'Message field is required'
+    }
+
+    return Object.values(errors).filter((e) => e).length > 0 ? errors : {}
+  }
 
   const handleSubmit = (
     values: ContactFormValues,
@@ -90,55 +138,85 @@ export const ContactForm = ({ className }: ContactFormProps): ReactElement => {
 
   return (
     <S.ContactFormContainer className={className}>
-      <Formik initialValues={initialValues} onSubmit={handleSubmit}>
-        <S.ContactForm aria-label="Contact form">
-          <S.ContactFormFieldContainer className="name">
-            <S.ContactFormFieldLabel htmlFor="name">
-              Name *
-            </S.ContactFormFieldLabel>
-            <S.ContactFormField
-              id="name"
-              name="name"
-              placeholder="Enter your name..."
-            />
-          </S.ContactFormFieldContainer>
-          <S.ContactFormFieldContainer className="email">
-            <S.ContactFormFieldLabel htmlFor="email">
-              Email *
-            </S.ContactFormFieldLabel>
-            <S.ContactFormField
-              id="email"
-              name="email"
-              type="email"
-              placeholder="Enter your e-mail address..."
-            />
-          </S.ContactFormFieldContainer>
-          <S.ContactFormFieldContainer>
-            <S.ContactFormFieldLabel htmlFor="subject">
-              Subject *
-            </S.ContactFormFieldLabel>
-            <S.ContactFormField
-              id="subject"
-              name="subject"
-              placeholder="Enter the message subject..."
-            />
-          </S.ContactFormFieldContainer>
-          <S.ContactFormFieldContainer>
-            <S.ContactFormFieldLabel htmlFor="message">
-              Message *
-            </S.ContactFormFieldLabel>
-            <S.ContactFormField
-              id="message"
-              name="message"
-              component="textarea"
-              rows="15"
-              placeholder="Enter your message..."
-            />
-          </S.ContactFormFieldContainer>
-          <S.ContactFormSubmitButton type="submit">
-            {submitBtnLabel}
-          </S.ContactFormSubmitButton>
-        </S.ContactForm>
+      <Formik
+        initialValues={initialValues}
+        validate={handleValidate}
+        onSubmit={handleSubmit}
+      >
+        {({ errors, touched }) => (
+          <S.ContactForm aria-label="Contact form">
+            <S.ContactFormFieldContainer className="name">
+              <S.ContactFormFieldLabel
+                htmlFor="name"
+                $hasError={!!(errors.name && touched.name)}
+              >
+                Name *
+              </S.ContactFormFieldLabel>
+              <S.ContactFormField
+                id="name"
+                name="name"
+                placeholder="Enter your name..."
+                $hasError={!!(errors.name && touched.name)}
+                aria-required
+              />
+              <S.ContactFormFieldErrorMessage name="name" component="p" />
+            </S.ContactFormFieldContainer>
+            <S.ContactFormFieldContainer className="email">
+              <S.ContactFormFieldLabel
+                htmlFor="email"
+                $hasError={!!(errors.email && touched.email)}
+              >
+                Email *
+              </S.ContactFormFieldLabel>
+              <S.ContactFormField
+                id="email"
+                name="email"
+                type="email"
+                placeholder="Enter your e-mail address..."
+                $hasError={!!(errors.email && touched.email)}
+                aria-required
+              />
+              <S.ContactFormFieldErrorMessage name="email" component="p" />
+            </S.ContactFormFieldContainer>
+            <S.ContactFormFieldContainer>
+              <S.ContactFormFieldLabel
+                htmlFor="subject"
+                $hasError={!!(errors.subject && touched.subject)}
+              >
+                Subject *
+              </S.ContactFormFieldLabel>
+              <S.ContactFormField
+                id="subject"
+                name="subject"
+                placeholder="Enter the message subject..."
+                $hasError={!!(errors.subject && touched.subject)}
+                aria-required
+              />
+              <S.ContactFormFieldErrorMessage name="subject" component="p" />
+            </S.ContactFormFieldContainer>
+            <S.ContactFormFieldContainer>
+              <S.ContactFormFieldLabel
+                htmlFor="message"
+                $hasError={!!(errors.message && touched.message)}
+              >
+                Message *
+              </S.ContactFormFieldLabel>
+              <S.ContactFormField
+                id="message"
+                name="message"
+                component="textarea"
+                rows="15"
+                placeholder="Enter your message..."
+                $hasError={!!(errors.message && touched.message)}
+                aria-required
+              />
+              <S.ContactFormFieldErrorMessage name="message" component="p" />
+            </S.ContactFormFieldContainer>
+            <S.ContactFormSubmitButton type="submit">
+              {submitBtnLabel}
+            </S.ContactFormSubmitButton>
+          </S.ContactForm>
+        )}
       </Formik>
     </S.ContactFormContainer>
   )
