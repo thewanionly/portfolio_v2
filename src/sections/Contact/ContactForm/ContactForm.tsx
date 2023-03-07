@@ -103,8 +103,21 @@ export const ContactForm = ({ className }: ContactFormProps): ReactElement => {
       message: '',
     }
 
+    // Required field validation
     if (!values.name) {
       errors.name = 'Name field is required'
+    }
+
+    if (!values.email) {
+      errors.email = 'Email field is required'
+    }
+
+    if (!values.subject) {
+      errors.subject = 'Subject field is required'
+    }
+
+    if (!values.message) {
+      errors.message = 'Message field is required'
     }
 
     return Object.values(errors).filter((e) => e).length > 0 ? errors : {}
@@ -136,6 +149,7 @@ export const ContactForm = ({ className }: ContactFormProps): ReactElement => {
                 name="name"
                 placeholder="Enter your name..."
                 $hasError={!!errors.name}
+                aria-required
               />
               <S.ContactFormFieldErrorMessage name="name" component="p" />
             </S.ContactFormFieldContainer>
@@ -151,7 +165,10 @@ export const ContactForm = ({ className }: ContactFormProps): ReactElement => {
                 name="email"
                 type="email"
                 placeholder="Enter your e-mail address..."
+                $hasError={!!errors.email}
+                aria-required
               />
+              <S.ContactFormFieldErrorMessage name="email" component="p" />
             </S.ContactFormFieldContainer>
             <S.ContactFormFieldContainer>
               <S.ContactFormFieldLabel
@@ -164,7 +181,10 @@ export const ContactForm = ({ className }: ContactFormProps): ReactElement => {
                 id="subject"
                 name="subject"
                 placeholder="Enter the message subject..."
+                $hasError={!!errors.subject}
+                aria-required
               />
+              <S.ContactFormFieldErrorMessage name="subject" component="p" />
             </S.ContactFormFieldContainer>
             <S.ContactFormFieldContainer>
               <S.ContactFormFieldLabel
@@ -179,7 +199,10 @@ export const ContactForm = ({ className }: ContactFormProps): ReactElement => {
                 component="textarea"
                 rows="15"
                 placeholder="Enter your message..."
+                $hasError={!!errors.message}
+                aria-required
               />
+              <S.ContactFormFieldErrorMessage name="message" component="p" />
             </S.ContactFormFieldContainer>
             <S.ContactFormSubmitButton type="submit">
               {submitBtnLabel}
