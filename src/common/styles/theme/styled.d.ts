@@ -12,12 +12,14 @@ declare module 'styled-components' {
       secondaryLighter: string
       secondaryLightest: string
       navMenuBg: string
+      spinner: string
 
       formInputBorder: string
       toastBg: string
 
       aboutCardBg: string
       contactSectionBg: string
+      spinnerBg: string
 
       bodyLightBg: string
       headerDividerBg: string
