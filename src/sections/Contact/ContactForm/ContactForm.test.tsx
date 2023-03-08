@@ -85,6 +85,27 @@ describe('ContactForm', () => {
   })
 
   describe('Interactions', () => {
+    it.each`
+      field
+      ${'Name'}
+      ${'Email'}
+      ${'Subject'}
+      ${'Message'}
+    `('displays inputted value in $field field', async ({ field }) => {
+      // Arrange
+      setup()
+      const value = 'test'
+
+      // Act
+      const fieldElement = screen.getByRole('textbox', {
+        name: new RegExp(field),
+      })
+      await userEvent.type(fieldElement, value)
+
+      // Assert
+      expect(fieldElement).toHaveValue(value)
+    })
+
     it('displays a required error message in Name field when it was touched and then blurred leaving it with an empty value', async () => {
       // Arrange
       setup()
