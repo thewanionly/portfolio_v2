@@ -12,12 +12,14 @@ export const theme = {
     secondaryLighter: rgba(COLORS.dark, 0.8),
     secondaryLightest: rgba(COLORS.dark, 0.1),
     navMenuBg: rgba(COLORS.dark, 0.95),
+    spinner: rgba(COLORS.dark, 0.6),
 
     formInputBorder: COLORS.grey,
     toastBg: COLORS.grey,
 
     aboutCardBg: COLORS.greyLight,
     contactSectionBg: COLORS.greyLight,
+    spinnerBg: rgba(COLORS.greyLight, 0.6),
 
     bodyLightBg: COLORS.white,
     headerDividerBg: rgba(COLORS.white, 0.1),

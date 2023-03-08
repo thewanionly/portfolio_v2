@@ -5,6 +5,8 @@ import { Formik, Form, Field, FormikHelpers, ErrorMessage } from 'formik'
 import { useContentContext } from 'common/context'
 import { Button } from 'common/components'
 
+import { Spinner } from './Spinner'
+
 const S = {
   ContactFormContainer: styled.div`
     color: ${({ theme: { colors } }) => colors.bodyLight};
@@ -62,10 +64,26 @@ const S = {
     color: ${({ theme: { colors } }) => colors.error};
     text-align: start;
   `,
-  ContactFormSubmitButton: styled(Button)`
+  ContactFormSubmitButtonContainer: styled.div`
     margin-top: 2rem;
-    min-width: 29rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
   `,
+  ContactFormSubmitButton: styled(Button)<ButtonWithLoading>`
+    min-width: 29rem;
+    opacity: ${({ $isLoading }) => (!$isLoading ? 1 : 0.5)};
+    cursor: ${({ $isLoading }) => (!$isLoading ? 'cursor' : 'wait')};
+  `,
+  ContactFormSubmitSpinner: styled(Spinner)`
+    position: absolute;
+    z-index: 1;
+  `,
+}
+
+type ButtonWithLoading = {
+  $isLoading?: boolean
 }
 
 type HasError = {
@@ -132,8 +150,10 @@ export const ContactForm = ({ className }: ContactFormProps): ReactElement => {
     values: ContactFormValues,
     { setSubmitting }: FormikHelpers<ContactFormValues>
   ) => {
-    console.log(values)
-    setSubmitting(false)
+    setTimeout(() => {
+      console.log(values)
+      setSubmitting(false)
+    }, 2000)
   }
 
   return (
@@ -143,7 +163,7 @@ export const ContactForm = ({ className }: ContactFormProps): ReactElement => {
         validate={handleValidate}
         onSubmit={handleSubmit}
       >
-        {({ errors, touched }) => (
+        {({ errors, touched, isSubmitting }) => (
           <S.ContactForm aria-label="Contact form">
             <S.ContactFormFieldContainer className="name">
               <S.ContactFormFieldLabel
@@ -212,9 +232,18 @@ export const ContactForm = ({ className }: ContactFormProps): ReactElement => {
               />
               <S.ContactFormFieldErrorMessage name="message" component="p" />
             </S.ContactFormFieldContainer>
-            <S.ContactFormSubmitButton type="submit">
-              {submitBtnLabel}
-            </S.ContactFormSubmitButton>
+            <S.ContactFormSubmitButtonContainer>
+              {isSubmitting && (
+                <S.ContactFormSubmitSpinner label="submitting form" />
+              )}
+              <S.ContactFormSubmitButton
+                type="submit"
+                disabled={isSubmitting}
+                $isLoading={isSubmitting}
+              >
+                {submitBtnLabel}
+              </S.ContactFormSubmitButton>
+            </S.ContactFormSubmitButtonContainer>
           </S.ContactForm>
         )}
       </Formik>
