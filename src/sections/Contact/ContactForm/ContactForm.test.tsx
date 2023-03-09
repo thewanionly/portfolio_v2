@@ -1,13 +1,49 @@
 import userEvent from '@testing-library/user-event'
+import { setupServer } from 'msw/node'
+import { rest } from 'msw'
 
-import { render, screen, waitFor } from 'common/tests'
+import {
+  render,
+  screen,
+  waitFor,
+  waitForElementToBeRemoved,
+} from 'common/tests'
 import { mockedContent } from 'common/tests/mocks'
 
 import { ContactForm } from './ContactForm'
+import { ContactFormValues } from './ContactForm.types'
+import { FORMSPREE_API } from './submitForm'
 
 jest.mock('common/context', () => ({
   useContentContext: () => mockedContent,
 }))
+
+// Setup mock server and handlers for the form API
+let requestBody: ContactFormValues
+
+const formSubmitSuccess = rest.post(FORMSPREE_API, async (req, res, ctx) => {
+  requestBody = await req.json<ContactFormValues>()
+
+  return res(ctx.status(200), ctx.json({ ok: true }))
+})
+
+const formSubmitFail = rest.post(FORMSPREE_API, async (req, res, ctx) =>
+  res(ctx.status(422), ctx.json({ error: 'Validation errors' }))
+)
+
+const server = setupServer(formSubmitSuccess)
+
+beforeAll(() => {
+  server.listen()
+})
+
+afterEach(() => {
+  server.resetHandlers()
+})
+
+afterAll(() => {
+  server.close()
+})
 
 const setup = () => {
   render(<ContactForm />)
@@ -251,9 +287,9 @@ describe('ContactForm', () => {
       })
     })
 
-    describe('Form submission', () => {
-      const submitForm = async () => {
-        const fieldValues = {
+    describe('Form submission - clicking Submit button with valid field values', () => {
+      const submitForm = async (): Promise<ContactFormValues> => {
+        const fieldValues: ContactFormValues = {
           name: 'n',
           email: 'e@m.co',
           subject: 's',
@@ -280,9 +316,11 @@ describe('ContactForm', () => {
 
         const buttonElement = screen.getByRole('button', { name: buttonLabel })
         userEvent.click(buttonElement)
+
+        return fieldValues
       }
 
-      it('displays a loading spinner after clicking Submit button with valid field values', async () => {
+      it('displays a loading spinner after form submission', async () => {
         // Arrange
         setup()
         expect(
@@ -297,10 +335,10 @@ describe('ContactForm', () => {
           name: 'submitting form',
         })
         expect(spinner).toBeInTheDocument()
-        // await waitForElementToBeRemoved(spinner)
+        await waitForElementToBeRemoved(spinner)
       })
 
-      it('disables submit button after clicking Submit button with valid field values', async () => {
+      it('disables submit button after form submission', async () => {
         // Arrange
         setup()
         const buttonLabel = mockedContent.contact.submitBtnLabel
@@ -317,6 +355,94 @@ describe('ContactForm', () => {
           name: buttonLabel,
         })
         expect(buttonElement).toBeDisabled()
+      })
+
+      it('sends form data to the form API after form submission', async () => {
+        // Arrange
+        setup()
+
+        // Act
+        const formValues = await submitForm()
+
+        const spinner = await screen.findByRole('status', {
+          name: 'submitting form',
+        })
+        await waitForElementToBeRemoved(spinner)
+
+        // Assert
+        expect(requestBody).toEqual(formValues)
+      })
+
+      it('displays success message after successful form submission', async () => {
+        // Arrange
+        setup()
+
+        // Act
+        submitForm()
+
+        const spinner = await screen.findByRole('status', {
+          name: 'submitting form',
+        })
+        await waitForElementToBeRemoved(spinner)
+
+        // Assert
+        expect(
+          await screen.findByText(mockedContent.contact.successMessage)
+        ).toBeInTheDocument()
+      })
+
+      it('clears the field values after successful form submission', async () => {
+        // Arrange
+        setup()
+
+        // Act
+        submitForm()
+
+        const spinner = await screen.findByRole('status', {
+          name: 'submitting form',
+        })
+        await waitForElementToBeRemoved(spinner)
+
+        // Assert
+        expect(
+          screen.getByRole('textbox', {
+            name: new RegExp('Name'),
+          })
+        ).toHaveValue('')
+        expect(
+          screen.getByRole('textbox', {
+            name: new RegExp('Email'),
+          })
+        ).toHaveValue('')
+        expect(
+          screen.getByRole('textbox', {
+            name: new RegExp('Subject'),
+          })
+        ).toHaveValue('')
+        expect(
+          screen.getByRole('textbox', {
+            name: new RegExp('Message'),
+          })
+        ).toHaveValue('')
+      })
+
+      it('displays error message after failed form submission', async () => {
+        // Arrange
+        server.use(formSubmitFail)
+        setup()
+
+        // Act
+        submitForm()
+
+        const spinner = await screen.findByRole('status', {
+          name: 'submitting form',
+        })
+        await waitForElementToBeRemoved(spinner)
+
+        // Assert
+        expect(
+          await screen.findByText(mockedContent.contact.failMessage)
+        ).toBeInTheDocument()
       })
     })
   })

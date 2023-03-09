@@ -1,11 +1,13 @@
-import { ReactElement } from 'react'
+import { ReactElement, useState } from 'react'
 import styled from 'styled-components'
-import { Formik, Form, Field, FormikHelpers, ErrorMessage } from 'formik'
+import { Formik, Form, Field, ErrorMessage, FormikHelpers } from 'formik'
 
 import { useContentContext } from 'common/context'
 import { Button } from 'common/components'
 
 import { Spinner } from './Spinner'
+import { submitForm } from './submitForm'
+import { ContactFormValues } from './ContactForm.types'
 
 const S = {
   ContactFormContainer: styled.div`
@@ -90,13 +92,6 @@ type HasError = {
   $hasError: boolean
 }
 
-interface ContactFormValues {
-  name: string
-  email: string
-  subject: string
-  message: string
-}
-
 const initialValues: ContactFormValues = {
   name: '',
   email: '',
@@ -111,8 +106,9 @@ type ContactFormProps = {
 const EMAIL_ADDRESS_VALIDATION_REGEX = /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/i
 
 export const ContactForm = ({ className }: ContactFormProps): ReactElement => {
+  const [message, setMessage] = useState('')
   const {
-    contact: { submitBtnLabel },
+    contact: { submitBtnLabel, successMessage, failMessage },
   } = useContentContext()
 
   const handleValidate = (values: ContactFormValues) => {
@@ -146,14 +142,27 @@ export const ContactForm = ({ className }: ContactFormProps): ReactElement => {
     return Object.values(errors).filter((e) => e).length > 0 ? errors : {}
   }
 
-  const handleSubmit = (
+  const handleSubmit = async (
     values: ContactFormValues,
-    { setSubmitting }: FormikHelpers<ContactFormValues>
+    { resetForm }: FormikHelpers<ContactFormValues>
   ) => {
-    setTimeout(() => {
-      console.log(values)
-      setSubmitting(false)
-    }, 2000)
+    try {
+      const { data: responseData } = await submitForm(values)
+
+      if (responseData.ok) {
+        // Success
+        setMessage(successMessage)
+
+        // Reset form
+        resetForm()
+      }
+    } catch (error) {
+      // Don't log error in Jest environment
+      if (!process.env.JEST_WORKER_ID) console.error(failMessage, error)
+
+      // Fail
+      setMessage(failMessage)
+    }
   }
 
   return (
@@ -244,6 +253,7 @@ export const ContactForm = ({ className }: ContactFormProps): ReactElement => {
                 {submitBtnLabel}
               </S.ContactFormSubmitButton>
             </S.ContactFormSubmitButtonContainer>
+            {message && <span>{message}</span>}
           </S.ContactForm>
         )}
       </Formik>
