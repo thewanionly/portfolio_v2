@@ -196,6 +196,12 @@ collections:
           - label: 'Submit button label'
             name: 'submitBtnLabel'
             widget: 'string'
+          - label: 'Form submission success message'
+            name: 'successMessage'
+            widget: 'string'
+          - label: 'Form submission fail message'
+            name: 'failMessage'
+            widget: 'string'
   - name: 'components'
     label: 'Components'
     files:

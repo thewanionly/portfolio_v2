@@ -94,7 +94,9 @@ export class ContactContent {
   constructor(
     public sectionTitle: string = '',
     public message: string = '',
-    public submitBtnLabel: string = ''
+    public submitBtnLabel: string = '',
+    public successMessage: string = '',
+    public failMessage: string = ''
   ) {}
 }
 

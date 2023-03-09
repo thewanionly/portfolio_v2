@@ -108,7 +108,7 @@ const EMAIL_ADDRESS_VALIDATION_REGEX = /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/i
 export const ContactForm = ({ className }: ContactFormProps): ReactElement => {
   const [message, setMessage] = useState('')
   const {
-    contact: { submitBtnLabel },
+    contact: { submitBtnLabel, successMessage, failMessage },
   } = useContentContext()
 
   const handleValidate = (values: ContactFormValues) => {
@@ -151,19 +151,17 @@ export const ContactForm = ({ className }: ContactFormProps): ReactElement => {
 
       if (responseData.ok) {
         // Success
-        setMessage(
-          `Your message have been sent. I'll get back to you as soon as possible. Thank you.`
-        )
+        setMessage(successMessage)
 
         // Reset form
         resetForm()
       }
     } catch (error) {
       // Don't log error in Jest environment
-      if (!process.env.JEST_WORKER_ID) console.error(error)
+      if (!process.env.JEST_WORKER_ID) console.error(failMessage, error)
 
       // Fail
-      setMessage(`There's a problem sending your message. Please try again.`)
+      setMessage(failMessage)
     }
   }
 

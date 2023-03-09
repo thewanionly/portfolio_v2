@@ -387,9 +387,7 @@ describe('ContactForm', () => {
 
         // Assert
         expect(
-          await screen.findByText(
-            `Your message have been sent. I'll get back to you as soon as possible. Thank you.`
-          )
+          await screen.findByText(mockedContent.contact.successMessage)
         ).toBeInTheDocument()
       })
 
@@ -443,9 +441,7 @@ describe('ContactForm', () => {
 
         // Assert
         expect(
-          await screen.findByText(
-            `There's a problem sending your message. Please try again.`
-          )
+          await screen.findByText(mockedContent.contact.failMessage)
         ).toBeInTheDocument()
       })
     })
