@@ -1,13 +1,44 @@
 import userEvent from '@testing-library/user-event'
+import { setupServer } from 'msw/node'
+import { rest } from 'msw'
 
-import { render, screen, waitFor } from 'common/tests'
+import {
+  render,
+  screen,
+  waitFor,
+  waitForElementToBeRemoved,
+} from 'common/tests'
 import { mockedContent } from 'common/tests/mocks'
 
 import { ContactForm } from './ContactForm'
+import { ContactFormValues } from './ContactForm.types'
 
 jest.mock('common/context', () => ({
   useContentContext: () => mockedContent,
 }))
+
+// Setup mock server for the form API
+let requestBody: ContactFormValues
+
+const server = setupServer(
+  rest.post('https://formspree.io/f/xpzbvlvq', async (req, res, ctx) => {
+    requestBody = await req.json<ContactFormValues>()
+
+    return res(ctx.status(200))
+  })
+)
+
+beforeAll(() => {
+  server.listen()
+})
+
+afterEach(() => {
+  server.resetHandlers()
+})
+
+afterAll(() => {
+  server.close()
+})
 
 const setup = () => {
   render(<ContactForm />)
@@ -251,9 +282,9 @@ describe('ContactForm', () => {
       })
     })
 
-    describe('Form submission', () => {
-      const submitForm = async () => {
-        const fieldValues = {
+    describe('Form submission - clicking Submit button with valid field values', () => {
+      const submitForm = async (): Promise<ContactFormValues> => {
+        const fieldValues: ContactFormValues = {
           name: 'n',
           email: 'e@m.co',
           subject: 's',
@@ -280,9 +311,11 @@ describe('ContactForm', () => {
 
         const buttonElement = screen.getByRole('button', { name: buttonLabel })
         userEvent.click(buttonElement)
+
+        return fieldValues
       }
 
-      it('displays a loading spinner after clicking Submit button with valid field values', async () => {
+      it('displays a loading spinner after form submission', async () => {
         // Arrange
         setup()
         expect(
@@ -300,7 +333,7 @@ describe('ContactForm', () => {
         // await waitForElementToBeRemoved(spinner)
       })
 
-      it('disables submit button after clicking Submit button with valid field values', async () => {
+      it('disables submit button after form submission', async () => {
         // Arrange
         setup()
         const buttonLabel = mockedContent.contact.submitBtnLabel
@@ -317,6 +350,24 @@ describe('ContactForm', () => {
           name: buttonLabel,
         })
         expect(buttonElement).toBeDisabled()
+      })
+
+      it('sends form data to the form API after form submission', async () => {
+        // Arrange
+        setup()
+
+        // Act
+        const formValues = await submitForm()
+
+        const spinner = await screen.findByRole('status', {
+          name: 'submitting form',
+        })
+        await waitForElementToBeRemoved(spinner)
+
+        console.log(requestBody)
+
+        // Assert
+        expect(requestBody).toEqual(formValues)
       })
     })
   })

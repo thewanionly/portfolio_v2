@@ -1,11 +1,13 @@
 import { ReactElement } from 'react'
 import styled from 'styled-components'
-import { Formik, Form, Field, FormikHelpers, ErrorMessage } from 'formik'
+import { Formik, Form, Field, ErrorMessage } from 'formik'
 
 import { useContentContext } from 'common/context'
 import { Button } from 'common/components'
 
 import { Spinner } from './Spinner'
+import { submitForm } from './submitForm'
+import { ContactFormValues } from './ContactForm.types'
 
 const S = {
   ContactFormContainer: styled.div`
@@ -90,13 +92,6 @@ type HasError = {
   $hasError: boolean
 }
 
-interface ContactFormValues {
-  name: string
-  email: string
-  subject: string
-  message: string
-}
-
 const initialValues: ContactFormValues = {
   name: '',
   email: '',
@@ -146,14 +141,14 @@ export const ContactForm = ({ className }: ContactFormProps): ReactElement => {
     return Object.values(errors).filter((e) => e).length > 0 ? errors : {}
   }
 
-  const handleSubmit = (
-    values: ContactFormValues,
-    { setSubmitting }: FormikHelpers<ContactFormValues>
-  ) => {
-    setTimeout(() => {
-      console.log(values)
-      setSubmitting(false)
-    }, 2000)
+  const handleSubmit = async (values: ContactFormValues) => {
+    try {
+      const response = await submitForm(values)
+
+      console.log('response', response.data)
+    } catch (error) {
+      console.error(error)
+    }
   }
 
   return (
