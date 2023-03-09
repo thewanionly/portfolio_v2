@@ -12,21 +12,26 @@ import { mockedContent } from 'common/tests/mocks'
 
 import { ContactForm } from './ContactForm'
 import { ContactFormValues } from './ContactForm.types'
+import { FORMSPREE_API } from './submitForm'
 
 jest.mock('common/context', () => ({
   useContentContext: () => mockedContent,
 }))
 
-// Setup mock server for the form API
+// Setup mock server and handlers for the form API
 let requestBody: ContactFormValues
 
-const server = setupServer(
-  rest.post('https://formspree.io/f/xpzbvlvq', async (req, res, ctx) => {
-    requestBody = await req.json<ContactFormValues>()
+const formSubmitSuccess = rest.post(FORMSPREE_API, async (req, res, ctx) => {
+  requestBody = await req.json<ContactFormValues>()
 
-    return res(ctx.status(200))
-  })
+  return res(ctx.status(200), ctx.json({ ok: true }))
+})
+
+const formSubmitFail = rest.post(FORMSPREE_API, async (req, res, ctx) =>
+  res(ctx.status(422), ctx.json({ error: 'Validation errors' }))
 )
+
+const server = setupServer(formSubmitSuccess)
 
 beforeAll(() => {
   server.listen()
@@ -330,7 +335,7 @@ describe('ContactForm', () => {
           name: 'submitting form',
         })
         expect(spinner).toBeInTheDocument()
-        // await waitForElementToBeRemoved(spinner)
+        await waitForElementToBeRemoved(spinner)
       })
 
       it('disables submit button after form submission', async () => {
@@ -364,10 +369,84 @@ describe('ContactForm', () => {
         })
         await waitForElementToBeRemoved(spinner)
 
-        console.log(requestBody)
-
         // Assert
         expect(requestBody).toEqual(formValues)
+      })
+
+      it('displays success message after successful form submission', async () => {
+        // Arrange
+        setup()
+
+        // Act
+        submitForm()
+
+        const spinner = await screen.findByRole('status', {
+          name: 'submitting form',
+        })
+        await waitForElementToBeRemoved(spinner)
+
+        // Assert
+        expect(
+          await screen.findByText(
+            `Your message have been sent. I'll get back to you as soon as possible. Thank you.`
+          )
+        ).toBeInTheDocument()
+      })
+
+      it('clears the field values after successful form submission', async () => {
+        // Arrange
+        setup()
+
+        // Act
+        submitForm()
+
+        const spinner = await screen.findByRole('status', {
+          name: 'submitting form',
+        })
+        await waitForElementToBeRemoved(spinner)
+
+        // Assert
+        expect(
+          screen.getByRole('textbox', {
+            name: new RegExp('Name'),
+          })
+        ).toHaveValue('')
+        expect(
+          screen.getByRole('textbox', {
+            name: new RegExp('Email'),
+          })
+        ).toHaveValue('')
+        expect(
+          screen.getByRole('textbox', {
+            name: new RegExp('Subject'),
+          })
+        ).toHaveValue('')
+        expect(
+          screen.getByRole('textbox', {
+            name: new RegExp('Message'),
+          })
+        ).toHaveValue('')
+      })
+
+      it('displays error message after failed form submission', async () => {
+        // Arrange
+        server.use(formSubmitFail)
+        setup()
+
+        // Act
+        submitForm()
+
+        const spinner = await screen.findByRole('status', {
+          name: 'submitting form',
+        })
+        await waitForElementToBeRemoved(spinner)
+
+        // Assert
+        expect(
+          await screen.findByText(
+            `There's a problem sending your message. Please try again.`
+          )
+        ).toBeInTheDocument()
       })
     })
   })

@@ -1,6 +1,6 @@
-import { ReactElement } from 'react'
+import { ReactElement, useState } from 'react'
 import styled from 'styled-components'
-import { Formik, Form, Field, ErrorMessage } from 'formik'
+import { Formik, Form, Field, ErrorMessage, FormikHelpers } from 'formik'
 
 import { useContentContext } from 'common/context'
 import { Button } from 'common/components'
@@ -106,6 +106,7 @@ type ContactFormProps = {
 const EMAIL_ADDRESS_VALIDATION_REGEX = /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/i
 
 export const ContactForm = ({ className }: ContactFormProps): ReactElement => {
+  const [message, setMessage] = useState('')
   const {
     contact: { submitBtnLabel },
   } = useContentContext()
@@ -141,13 +142,28 @@ export const ContactForm = ({ className }: ContactFormProps): ReactElement => {
     return Object.values(errors).filter((e) => e).length > 0 ? errors : {}
   }
 
-  const handleSubmit = async (values: ContactFormValues) => {
+  const handleSubmit = async (
+    values: ContactFormValues,
+    { resetForm }: FormikHelpers<ContactFormValues>
+  ) => {
     try {
-      const response = await submitForm(values)
+      const { data: responseData } = await submitForm(values)
 
-      console.log('response', response.data)
+      if (responseData.ok) {
+        // Success
+        setMessage(
+          `Your message have been sent. I'll get back to you as soon as possible. Thank you.`
+        )
+
+        // Reset form
+        resetForm()
+      }
     } catch (error) {
-      console.error(error)
+      // Don't log error in Jest environment
+      if (!process.env.JEST_WORKER_ID) console.error(error)
+
+      // Fail
+      setMessage(`There's a problem sending your message. Please try again.`)
     }
   }
 
@@ -239,6 +255,7 @@ export const ContactForm = ({ className }: ContactFormProps): ReactElement => {
                 {submitBtnLabel}
               </S.ContactFormSubmitButton>
             </S.ContactFormSubmitButtonContainer>
+            {message && <span>{message}</span>}
           </S.ContactForm>
         )}
       </Formik>

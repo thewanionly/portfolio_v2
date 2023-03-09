@@ -1,8 +1,8 @@
 import axios from 'axios'
 
-import { ContactFormValues } from './ContactForm.types'
+import { ContactFormValues, FormSpreeResponse } from './ContactForm.types'
 
 export const FORMSPREE_API = 'https://formspree.io/f/xpzbvlvq'
 
 export const submitForm = (formValues: ContactFormValues) =>
-  axios.post(FORMSPREE_API, formValues)
+  axios.post<FormSpreeResponse>(FORMSPREE_API, formValues)
