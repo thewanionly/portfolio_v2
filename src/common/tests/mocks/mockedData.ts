@@ -85,8 +85,8 @@ const contact: ContactContent = {
   sectionTitle: 'Contact me',
   message: 'Please contact me',
   submitBtnLabel: 'Send message',
-  successMessage: 'Success',
-  failMessage: 'Fail',
+  successMessage: 'Message sent successfully',
+  failMessage: 'Message failed to send',
 }
 
 /** Components mock */
