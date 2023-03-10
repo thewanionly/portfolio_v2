@@ -1,6 +1,8 @@
-import { ReactElement, useState } from 'react'
+import type { ReactElement } from 'react'
+import { useEffect } from 'react'
 import styled from 'styled-components'
 import { Formik, Form, Field, ErrorMessage, FormikHelpers } from 'formik'
+import toast, { Toaster } from 'react-hot-toast'
 
 import { useContentContext } from 'common/context'
 import { Button } from 'common/components'
@@ -106,7 +108,6 @@ type ContactFormProps = {
 const EMAIL_ADDRESS_VALIDATION_REGEX = /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/i
 
 export const ContactForm = ({ className }: ContactFormProps): ReactElement => {
-  const [message, setMessage] = useState('')
   const {
     contact: { submitBtnLabel, successMessage, failMessage },
   } = useContentContext()
@@ -151,7 +152,7 @@ export const ContactForm = ({ className }: ContactFormProps): ReactElement => {
 
       if (responseData.ok) {
         // Success
-        setMessage(successMessage)
+        toast.success(successMessage)
 
         // Reset form
         resetForm()
@@ -161,12 +162,25 @@ export const ContactForm = ({ className }: ContactFormProps): ReactElement => {
       if (!process.env.JEST_WORKER_ID) console.error(failMessage, error)
 
       // Fail
-      setMessage(failMessage)
+      toast.error(failMessage)
     }
   }
 
+  useEffect(() => {
+    return () => {
+      // Ensure to remove toaster when component unmounts.
+      // This is primarily added for the test cases - to ensure toaster is unmounted before the next test starts.
+      toast.remove()
+    }
+  }, [])
+
   return (
     <S.ContactFormContainer className={className}>
+      <Toaster
+        toastOptions={{
+          duration: 5000,
+        }}
+      />
       <Formik
         initialValues={initialValues}
         validate={handleValidate}
@@ -253,7 +267,6 @@ export const ContactForm = ({ className }: ContactFormProps): ReactElement => {
                 {submitBtnLabel}
               </S.ContactFormSubmitButton>
             </S.ContactFormSubmitButtonContainer>
-            {message && <span>{message}</span>}
           </S.ContactForm>
         )}
       </Formik>
