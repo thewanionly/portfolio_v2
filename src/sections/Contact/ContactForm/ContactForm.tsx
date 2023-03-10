@@ -5,7 +5,8 @@ import { Formik, Form, Field, ErrorMessage, FormikHelpers } from 'formik'
 import toast, { Toaster } from 'react-hot-toast'
 
 import { useContentContext } from 'common/context'
-import { Button } from 'common/components'
+import { Button, Icon, IconName } from 'common/components'
+import { theme } from 'common/styles'
 
 import { Spinner } from './Spinner'
 import { submitForm } from './submitForm'
@@ -83,6 +84,10 @@ const S = {
   ContactFormSubmitSpinner: styled(Spinner)`
     position: absolute;
     z-index: 1;
+  `,
+  ToasterErrorIcon: styled(Icon)`
+    width: 2.4rem;
+    height: 2.4rem;
   `,
 }
 
@@ -178,7 +183,29 @@ export const ContactForm = ({ className }: ContactFormProps): ReactElement => {
     <S.ContactFormContainer className={className}>
       <Toaster
         toastOptions={{
-          duration: 5000,
+          duration: 4000,
+          style: {
+            color: theme.colors.toast,
+          },
+          success: {
+            style: {
+              background: theme.colors.primary,
+            },
+            iconTheme: {
+              primary: theme.colors.primary,
+              secondary: theme.colors.toast,
+            },
+          },
+          error: {
+            style: {
+              background: theme.colors.error,
+            },
+            iconTheme: {
+              primary: theme.colors.error,
+              secondary: theme.colors.toast,
+            },
+            icon: <S.ToasterErrorIcon name={IconName.ERROR_CIRCLE} />,
+          },
         }}
       />
       <Formik
