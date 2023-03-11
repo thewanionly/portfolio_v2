@@ -108,41 +108,41 @@ type ContactFormProps = {
 
 const EMAIL_ADDRESS_VALIDATION_REGEX = /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/i
 
+const handleValidate = (values: ContactFormValues) => {
+  const errors: ContactFormValues = {
+    name: '',
+    email: '',
+    subject: '',
+    message: '',
+  }
+
+  // Required field validation
+  if (!values.name) {
+    errors.name = 'Name field is required'
+  }
+
+  if (!values.email) {
+    errors.email = 'Email field is required'
+  } else if (!EMAIL_ADDRESS_VALIDATION_REGEX.test(values.email)) {
+    // Email RegEx validation
+    errors.email = 'Email field has invalid format'
+  }
+
+  if (!values.subject) {
+    errors.subject = 'Subject field is required'
+  }
+
+  if (!values.message) {
+    errors.message = 'Message field is required'
+  }
+
+  return Object.values(errors).filter((e) => e).length > 0 ? errors : {}
+}
+
 export const ContactForm = ({ className }: ContactFormProps): ReactElement => {
   const {
     contact: { submitBtnLabel, successMessage, failMessage },
   } = useContentContext()
-
-  const handleValidate = (values: ContactFormValues) => {
-    const errors: ContactFormValues = {
-      name: '',
-      email: '',
-      subject: '',
-      message: '',
-    }
-
-    // Required field validation
-    if (!values.name) {
-      errors.name = 'Name field is required'
-    }
-
-    if (!values.email) {
-      errors.email = 'Email field is required'
-    } else if (!EMAIL_ADDRESS_VALIDATION_REGEX.test(values.email)) {
-      // Email RegEx validation
-      errors.email = 'Email field has invalid format'
-    }
-
-    if (!values.subject) {
-      errors.subject = 'Subject field is required'
-    }
-
-    if (!values.message) {
-      errors.message = 'Message field is required'
-    }
-
-    return Object.values(errors).filter((e) => e).length > 0 ? errors : {}
-  }
 
   const handleSubmit = async (
     values: ContactFormValues,
