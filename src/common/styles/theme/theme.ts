@@ -11,7 +11,7 @@ export const theme = {
     secondary: COLORS.dark,
     secondaryLighter: rgba(COLORS.dark, 0.8),
     secondaryLightest: rgba(COLORS.dark, 0.1),
-    navMenuBg: rgba(COLORS.dark, 0.95),
+    navMenuBg: rgba(COLORS.dark, 0.98),
     spinner: rgba(COLORS.dark, 0.6),
 
     formInputBorder: COLORS.grey,
