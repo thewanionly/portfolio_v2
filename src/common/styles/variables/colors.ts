@@ -11,5 +11,5 @@ export const COLORS = {
   black: '#000',
 
   /* Utility colors */
-  red: '#e74c3c',
+  red: '#E31C25',
 } as const
