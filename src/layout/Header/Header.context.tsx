@@ -1,4 +1,13 @@
-import { createContext, useCallback, useContext, useState } from 'react'
+import {
+  createContext,
+  useCallback,
+  useContext,
+  useEffect,
+  useState,
+} from 'react'
+
+import { useMediaQuery } from 'common/hooks'
+import { theme } from 'common/styles'
 
 type HeaderProviderPops = {
   children: React.ReactNode
@@ -6,12 +15,14 @@ type HeaderProviderPops = {
 
 type HeaderContextValue = {
   isNavMenuOpen: boolean
+  showNavBar: boolean
   toggleNavMenu: () => void
   closeNavMenu: () => void
 }
 
 const initialHeaderContextValue = {
   isNavMenuOpen: false,
+  showNavBar: false,
   toggleNavMenu: () => null,
   closeNavMenu: () => null,
 }
@@ -26,6 +37,12 @@ export const HeaderProvider = ({
   children,
 }: HeaderProviderPops): JSX.Element => {
   const [isNavMenuOpen, setIsNavMenuOpen] = useState(false)
+  const [showNavBar, setShowNavBar] = useState(false)
+  const isTabletLandscape = useMediaQuery(theme.breakPoints.tabletLandscape)
+
+  useEffect(() => {
+    setShowNavBar(isTabletLandscape)
+  }, [isTabletLandscape])
 
   const closeNavMenu = useCallback(() => {
     setIsNavMenuOpen(false)
@@ -37,6 +54,7 @@ export const HeaderProvider = ({
 
   const value = {
     isNavMenuOpen,
+    showNavBar,
     toggleNavMenu,
     closeNavMenu,
   }

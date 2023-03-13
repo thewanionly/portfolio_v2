@@ -2,7 +2,7 @@ import styled, { css } from 'styled-components'
 
 import { useHeaderContext } from './Header.context'
 
-const StyledHeaderNavToggleIcon = styled.span<WithCloseIcon>`
+const StyledHeaderNavToggleIcon = styled.span<HeaderNavToggleProps>`
   position: relative;
 
   &,
@@ -47,7 +47,7 @@ const StyledHeaderNavToggleIcon = styled.span<WithCloseIcon>`
     `}
 `
 
-const StyledHeaderNavToggle = styled.button<WithCloseIcon>`
+const StyledHeaderNavToggle = styled.button<HeaderNavToggleProps>`
   position: absolute;
   background: transparent;
   color: ${({ theme: { colors } }) => colors.navToggle};
@@ -70,26 +70,32 @@ const StyledHeaderNavToggle = styled.button<WithCloseIcon>`
     }
   }
 
-  @media only screen and ${({ theme: { breakPoints } }) =>
-      breakPoints.tabletLandscape} {
-    display: none;
-  }
+  ${({ isMobile }) =>
+    !isMobile &&
+    css`
+      display: none;
+    `}
 `
 
-type WithCloseIcon = {
+type HeaderNavToggleProps = {
   showCloseIcon: boolean
+  isMobile: boolean
 }
 
 export const HeaderNavToggle = () => {
-  const { isNavMenuOpen, toggleNavMenu } = useHeaderContext()
+  const { isNavMenuOpen, showNavBar, toggleNavMenu } = useHeaderContext()
 
   return (
     <StyledHeaderNavToggle
       aria-label={isNavMenuOpen ? 'close nav menu' : 'open nav menu'}
       showCloseIcon={isNavMenuOpen}
+      isMobile={!showNavBar}
       onClick={toggleNavMenu}
     >
-      <StyledHeaderNavToggleIcon showCloseIcon={isNavMenuOpen} />
+      <StyledHeaderNavToggleIcon
+        showCloseIcon={isNavMenuOpen}
+        isMobile={!showNavBar}
+      />
     </StyledHeaderNavToggle>
   )
 }

@@ -64,7 +64,7 @@ const S = {
       margin: 0;
     }
   `,
-  HeaderNavBar: styled(NavBar)<WithIsMenu>`
+  HeaderNavBar: styled(NavBar)<HeaderNavBarProps>`
     visibility: hidden;
     opacity: 0;
     transition: opacity 0.3s ease-out;
@@ -86,22 +86,23 @@ const S = {
         text-align: center;
       `}
 
-    @media only screen and ${({ theme: { breakPoints } }) =>
-      breakPoints.tabletLandscape} {
-      visibility: visible;
-      opacity: 1;
+    ${({ showNavBar }) =>
+      showNavBar &&
+      css`
+        visibility: visible;
+        opacity: 1;
 
-      position: initial;
-      top: 0;
-      left: 0;
-      background-color: transparent;
-      padding: 0;
-      width: auto;
-      height: auto;
-      z-index: 0;
-    }
+        position: initial;
+        top: 0;
+        left: 0;
+        background-color: transparent;
+        padding: 0;
+        width: auto;
+        height: auto;
+        z-index: 0;
+      `}
   `,
-  HeaderNavBarList: styled(NavBar.List)<WithIsMenu>`
+  HeaderNavBarList: styled(NavBar.List)<HeaderNavBarProps>`
     display: none;
 
     ${({ isMenu }) =>
@@ -112,25 +113,27 @@ const S = {
         gap: 2em;
       `}
 
-    @media only screen and ${({ theme: { breakPoints } }) =>
-      breakPoints.tabletLandscape} {
-      display: flex;
-      flex-direction: row;
-      gap: 3.4rem;
-    }
+    ${({ showNavBar }) =>
+      showNavBar &&
+      css`
+        display: flex;
+        flex-direction: row;
+        gap: 3.4rem;
+      `}
   `,
   HeaderNavBarListItem: styled(NavBar.ListItem)``,
 }
 
-type WithIsMenu = {
+type HeaderNavBarProps = {
   isMenu: boolean
+  showNavBar: boolean
 }
 
 export const Header = () => {
   const {
     components: { navLinks, logo },
   } = useContentContext()
-  const { isNavMenuOpen, closeNavMenu } = useHeaderContext()
+  const { isNavMenuOpen, showNavBar, closeNavMenu } = useHeaderContext()
 
   return (
     <S.Header>
@@ -142,8 +145,8 @@ export const Header = () => {
           blurSrc={logo.blurImage}
           onClick={closeNavMenu}
         />
-        <S.HeaderNavBar isMenu={isNavMenuOpen}>
-          <S.HeaderNavBarList isMenu={isNavMenuOpen}>
+        <S.HeaderNavBar isMenu={isNavMenuOpen} showNavBar={showNavBar}>
+          <S.HeaderNavBarList isMenu={isNavMenuOpen} showNavBar={showNavBar}>
             {navLinks.map(({ label, link }) => (
               <S.HeaderNavBarListItem
                 key={label}
