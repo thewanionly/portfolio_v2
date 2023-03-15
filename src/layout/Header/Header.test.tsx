@@ -2,9 +2,49 @@ import userEvent from '@testing-library/user-event'
 
 import { render, screen } from 'common/tests'
 import { headerLogo, mockedContent } from 'common/tests/mocks'
+import { theme } from 'common/styles'
+import * as commonHooks from 'common/hooks'
 
 import { Header } from './Header'
 import { HeaderProvider } from './Header.context'
+
+/*
+ * Mock of common/hooks setup START
+ * Setup mock this way so it can be overridden per test
+ * Many thanks to this blog: https://mikeborozdin.com/post/changing-jest-mocks-between-tests/
+ */
+const mockedCommonHooks = commonHooks as {
+  useMediaQuery: (query: string) => boolean
+}
+
+const defaultIsTabletLandscapeValue = false
+
+const mockedUseMediaQuery = (
+  query: string,
+  isTabletLandscape = defaultIsTabletLandscapeValue
+) => {
+  if (query === theme.breakPoints.tabletLandscape) {
+    return isTabletLandscape
+  }
+
+  return false
+}
+
+jest.mock('common/hooks', () => ({
+  __esModule: true,
+  useMediaQuery: jest.fn((query: string) => mockedUseMediaQuery(query)),
+}))
+
+const overrideIsTabletLandscapeValue = (value: boolean) => {
+  mockedCommonHooks.useMediaQuery = (query: string) =>
+    mockedUseMediaQuery(query, value)
+}
+
+const resetToDefaultIsTabletLandscapeValue = () => {
+  mockedCommonHooks.useMediaQuery = (query: string) =>
+    mockedUseMediaQuery(query)
+}
+/** Mock of common/hooks setup END */
 
 jest.mock('common/context', () => ({
   useContentContext: () => mockedContent,
@@ -18,6 +58,10 @@ const setup = () => {
   )
 }
 
+beforeEach(() => {
+  resetToDefaultIsTabletLandscapeValue()
+})
+
 describe('Header', () => {
   describe('Layout', () => {
     it(`displays logo image`, () => {
@@ -30,7 +74,6 @@ describe('Header', () => {
     })
 
     it(`displays a hamburger menu icon when screen size is smaller than 1024px`, () => {
-      // TODO: Test responsive screen sizes
       setup()
 
       const menuUIcon = screen.getByRole('button', { name: 'open nav menu' })
@@ -38,25 +81,32 @@ describe('Header', () => {
       expect(menuUIcon).toBeInTheDocument()
     })
 
-    xit(`hides the hamburger menu icon when screen size is larger than 1024px`, () => {
+    it(`hides the navigation links when screen size is smaller than 1024px`, () => {
       setup()
 
-      // TODO: Test responsive screen sizes
+      mockedContent.components.navLinks.forEach(({ label }) => {
+        expect(
+          screen.queryByRole('link', { name: label })
+        ).not.toBeInTheDocument()
+      })
     })
 
-    xit(`hides the navigation links when screen size is smaller than 1024px`, () => {
+    it(`hides the hamburger menu icon when screen size is larger than 1024px`, () => {
+      overrideIsTabletLandscapeValue(true)
       setup()
 
-      // TODO: Test responsive screen sizes
-      // setup(screen.getByRole('navigation', { name: }))
-      // expect(screen.getByRole('link', { name: label })).toBeInTheDocument()
+      const menuUIcon = screen.queryByRole('button', { name: 'open nav menu' })
+
+      expect(menuUIcon).not.toBeInTheDocument()
     })
 
-    xit(`displays the navigation links when screen size is larger than 1024px`, () => {
-      // TODO: Test responsive screen sizes
-      // mockedContent.components.navLinks.forEach(({ label }) => {
-      //   expect(screen.getByRole('link', { name: label })).toBeInTheDocument()
-      // })
+    it(`displays the navigation links when screen size is larger than 1024px`, () => {
+      overrideIsTabletLandscapeValue(true)
+      setup()
+
+      mockedContent.components.navLinks.forEach(({ label }) => {
+        expect(screen.getByRole('link', { name: label })).toBeInTheDocument()
+      })
     })
   })
 
