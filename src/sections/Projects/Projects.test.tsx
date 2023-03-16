@@ -1,11 +1,5 @@
-import userEvent from '@testing-library/user-event'
-
-import { render, screen, waitFor } from 'common/tests'
-import {
-  mockedContent,
-  projectsListWithOneItem,
-  projectsListWithTwoItems,
-} from 'common/tests/mocks'
+import { render, screen } from 'common/tests'
+import { mockedContent, projectsListWithOneItem } from 'common/tests/mocks'
 
 import { Projects } from './Projects'
 
@@ -100,70 +94,9 @@ describe('Projects', () => {
       })
       expect(viewSourceCodeLinkButton).toBeInTheDocument()
     })
-
-    // TODO: Plan for the future is to make the display a carousel when in mobile
-    xit('does not display arrow icons if there is only one project', () => {
-      // Setup mock projects content with only 1 project
-      overrideMock(projectsListWithOneItem)
-      setup()
-
-      expect(
-        screen.queryByRole('button', { name: 'view previous project' })
-      ).not.toBeInTheDocument()
-      expect(
-        screen.queryByRole('button', { name: 'view next project' })
-      ).not.toBeInTheDocument()
-    })
-
-    xit('displays a disabled left arrow icon and enabled right arrow icon if there are more than one project', () => {
-      // Setup mock projects content with 2 projects
-      overrideMock(projectsListWithTwoItems)
-      setup()
-
-      const leftArrowIcon = screen.getByRole('button', {
-        name: 'view previous project',
-      })
-      const rightArrowIcon = screen.getByRole('button', {
-        name: 'view next project',
-      })
-
-      expect(leftArrowIcon).toBeDisabled()
-      expect(rightArrowIcon).toBeEnabled()
-    })
   })
 
   describe('Interactions', () => {
-    const goToSecondProject = async () => {
-      // Check if first project is shown
-      expect(
-        screen.getByRole('heading', {
-          name: mockedContent.projects.projectsList[0].title,
-        })
-      ).toBeInTheDocument()
-
-      // Click right arrow icon button
-      const rightArrowIconButton = screen.getByRole('button', {
-        name: 'view next project',
-      })
-      userEvent.click(rightArrowIconButton)
-
-      // Check if first project is not displayed
-      expect(
-        await waitFor(() =>
-          screen.queryByRole('heading', {
-            name: mockedContent.projects.projectsList[0].title,
-          })
-        )
-      ).not.toBeInTheDocument()
-
-      // Check if second project is displayed
-      expect(
-        screen.getByRole('heading', {
-          name: mockedContent.projects.projectsList[1].title,
-        })
-      ).toBeInTheDocument()
-    }
-
     it(`contains appropriate link in the View Project CTA button link`, () => {
       // Setup mock projects content with only 1 project
       overrideMock(projectsListWithOneItem)
@@ -191,96 +124,6 @@ describe('Projects', () => {
         'href',
         mockedContent.projects.projectsList[0].viewSourceCodeLink
       )
-    })
-
-    xit('can go to next project when right arrow icon button is clicked', async () => {
-      setup()
-
-      await goToSecondProject()
-    })
-
-    xit('can go to previous project when left arrow icon button is clicked', async () => {
-      setup()
-
-      await goToSecondProject()
-
-      // Click left arrow icon button
-      const leftArrowIconButton = screen.getByRole('button', {
-        name: 'view previous project',
-      })
-      userEvent.click(leftArrowIconButton)
-
-      // Check if second project is not displayed
-      expect(
-        await waitFor(() =>
-          screen.queryByRole('heading', {
-            name: mockedContent.projects.projectsList[1].title,
-          })
-        )
-      ).not.toBeInTheDocument()
-
-      // Check if first project is displayed
-      expect(
-        screen.getByRole('heading', {
-          name: mockedContent.projects.projectsList[0].title,
-        })
-      ).toBeInTheDocument()
-    })
-
-    xit('displays an enabled left arrow icon and disabled right arrow icon in the second project if there are only 2 projects', async () => {
-      // Setup mock projects content with 2 projects
-      overrideMock(projectsListWithTwoItems)
-      setup()
-
-      await goToSecondProject()
-
-      const leftArrowIcon = screen.getByRole('button', {
-        name: 'view previous project',
-      })
-      const rightArrowIcon = screen.getByRole('button', {
-        name: 'view next project',
-      })
-
-      expect(leftArrowIcon).toBeEnabled()
-      expect(rightArrowIcon).toBeDisabled()
-    })
-
-    xit('displays an enabled left arrow icon and enabled right arrow icon in the second project if there are more than 2 projects', async () => {
-      // By default mocked content has 3 projects
-      setup()
-
-      await goToSecondProject()
-
-      const leftArrowIcon = screen.getByRole('button', {
-        name: 'view previous project',
-      })
-      const rightArrowIcon = screen.getByRole('button', {
-        name: 'view next project',
-      })
-
-      expect(leftArrowIcon).toBeEnabled()
-      expect(rightArrowIcon).toBeEnabled()
-    })
-
-    xit('displays an enabled left arrow icon and disabled right arrow icon in the last project', async () => {
-      // By default mocked content has 3 projects
-      setup()
-
-      await goToSecondProject()
-
-      const rightArrowIcon = screen.getByRole('button', {
-        name: 'view next project',
-      })
-
-      userEvent.click(rightArrowIcon)
-      userEvent.click(rightArrowIcon)
-
-      const leftArrowIcon = screen.getByRole('button', {
-        name: 'view previous project',
-      })
-
-      expect(leftArrowIcon).toBeEnabled()
-      expect(rightArrowIcon).toBeDisabled()
     })
   })
 })
