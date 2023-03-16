@@ -25,14 +25,21 @@ const S = {
     }
   `,
   ProjectsList: styled.div`
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(max(47%, 36rem), 1fr));
-    column-gap: 3rem;
-    row-gap: 7rem;
-    justify-items: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 7rem;
+
+    @media only screen and ${({ theme: { breakPoints } }) =>
+        breakPoints.tabletPortrait} {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(max(47%, 36.5rem), 1fr));
+      gap: 3rem;
+      justify-items: center;
+    }
   `,
   ProjectItem: styled(ProjectItem)`
-    min-width: 36rem;
+    min-width: 36.5rem;
     max-width: 58.5rem;
   `,
 }
