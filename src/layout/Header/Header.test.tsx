@@ -149,7 +149,7 @@ describe('Header', () => {
     it(`opens the nav menu when hamburger menu icon is clicked`, async () => {
       setup()
 
-      await openNavMenu()
+      openNavMenu()
     })
 
     it(`closes the nav menu when close icon is clicked`, async () => {
