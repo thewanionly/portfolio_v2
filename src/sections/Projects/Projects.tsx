@@ -14,7 +14,7 @@ const S = {
 
     position: relative;
   `,
-  ProjectsTitle: styled.h4`
+  ProjectsTitle: styled.h2`
     ${sectionTitle}
 
     margin-bottom: 5rem;

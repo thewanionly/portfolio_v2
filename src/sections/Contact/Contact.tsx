@@ -15,7 +15,7 @@ const S = {
 
     max-width: 75rem;
   `,
-  ContactTitle: styled.h4`
+  ContactTitle: styled.h2`
     ${sectionTitle}
 
     color:  ${({ theme: { colors } }) => colors.headingLight};

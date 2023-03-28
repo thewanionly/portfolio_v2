@@ -25,7 +25,7 @@ const S = {
     flex-basis: 50%;
     text-align: start;
   `,
-  ProjectItemTitle: styled.h6`
+  ProjectItemTitle: styled.h3`
     color: ${({ theme: { colors } }) => colors.headingDark};
     letter-spacing: 0.15rem;
     margin-bottom: 1rem;

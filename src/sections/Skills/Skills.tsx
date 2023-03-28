@@ -14,7 +14,7 @@ const S = {
   SkillsContainer: styled.div`
     ${container}
   `,
-  SkillsTitle: styled.h4`
+  SkillsTitle: styled.h2`
     ${sectionTitle}
 
     color:  ${({ theme: { colors } }) => colors.headingLight};
