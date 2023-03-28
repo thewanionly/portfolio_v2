@@ -86,26 +86,11 @@ export const GlobalStyles = createGlobalStyle`
   }
 
   h2 {
-    font-size: ${({ theme: { fontSizes } }) => fontSizes.fontSizeXxl};
-    line-height: 4.4rem;
-  }
-
-  h3 {
-    font-size: ${({ theme: { fontSizes } }) => fontSizes.fontSizeXl};
-    line-height: 3.6rem;
-  }
-
-  h4 {
     font-size: ${({ theme: { fontSizes } }) => fontSizes.fontSizeLg};
     line-height: 3.8rem;
   }
 
-  h5 {
-    font-size: ${({ theme: { fontSizes } }) => fontSizes.fontSizeMed2};
-    line-height: 3.3rem;
-  }
-
-  h6 {
+  h3 {
     font-size: ${({ theme: { fontSizes } }) => fontSizes.fontSizeMed1};
     line-height: 2.4rem;
   }

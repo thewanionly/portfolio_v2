@@ -14,7 +14,7 @@ const S = {
   AboutContainer: styled.div`
     ${container}
   `,
-  AboutTitle: styled.h4`
+  AboutTitle: styled.h2`
     ${sectionTitle}
 
     margin-bottom: 5rem;

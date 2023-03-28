@@ -17,7 +17,7 @@ const S = {
     border-radius: 0.8rem;
     text-align: center;
   `,
-  AboutCardTitle: styled.h6`
+  AboutCardTitle: styled.h3`
     letter-spacing: 0.1rem;
     margin-bottom: 3rem;
     color: ${({ theme: { colors } }) => colors.primary};
