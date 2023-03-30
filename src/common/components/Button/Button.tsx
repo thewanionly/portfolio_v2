@@ -12,7 +12,7 @@ const colorVariantStyles = (
     [ButtonColor.PRIMARY]: {
       [ButtonVariant.CONTAINED]: css`
         background-color: ${theme.colors.primary};
-        color: ${theme.colors.btn};
+        color: ${theme.colors.btnPrimary};
 
         &:hover {
           background-color: ${theme.colors.primaryLight};
@@ -56,7 +56,7 @@ const colorVariantStyles = (
     [ButtonColor.SECONDARY]: {
       [ButtonVariant.CONTAINED]: css`
         background-color: ${theme.colors.secondary};
-        color: ${theme.colors.btn};
+        color: ${theme.colors.btnSecondary};
 
         &:hover {
           background-color: ${theme.colors.secondaryLighter};
