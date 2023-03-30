@@ -1,7 +1,7 @@
 export const COLORS = {
   /* Brand Colors */
-  blue: '#506db5',
-  blueLight: '#738ac4',
+  blue: '#4c83e1',
+  blueLight: '#6695e5',
   dark: '#0e0e0e',
 
   /* Neutral Colors */

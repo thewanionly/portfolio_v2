@@ -13,6 +13,7 @@ declare module 'styled-components' {
       secondaryLightest: string
       navMenuBg: string
       spinner: string
+      btnPrimary: string
 
       formInputBorder: string
       toastBg: string
@@ -30,7 +31,7 @@ declare module 'styled-components' {
       icon: string
       formInputBg: string
       toast: string
-      btn: string
+      btnSecondary: string
       btnDisabled: string
       navBtnLight: string
       bodyLight: string

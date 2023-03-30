@@ -13,6 +13,7 @@ export const theme = {
     secondaryLightest: rgba(COLORS.dark, 0.1),
     navMenuBg: rgba(COLORS.dark, 0.98),
     spinner: rgba(COLORS.dark, 0.6),
+    btnPrimary: COLORS.dark,
 
     formInputBorder: COLORS.grey,
     toastBg: COLORS.grey,
@@ -30,17 +31,16 @@ export const theme = {
     icon: COLORS.white,
     formInputBg: COLORS.white,
     toast: COLORS.white,
-    btn: COLORS.white,
     btnDisabled: rgba(COLORS.white, 0.8),
     navBtnLight: rgba(COLORS.white, 0.6),
     bodyLight: rgba(COLORS.white, 0.75),
     bodyLighter: rgba(COLORS.white, 0.5),
-
+    btnSecondary: COLORS.white,
     bodyDarkBg: COLORS.black,
     headingDark: COLORS.black,
     tag: rgba(COLORS.black, 0.6),
     navBtnBg: rgba(COLORS.black, 0.6),
-    bodyDark: rgba(COLORS.black, 0.5),
+    bodyDark: rgba(COLORS.black, 0.6),
     toastBoxShadow: rgba(COLORS.black, 0.2),
     projectImageShadow: rgba(COLORS.black, 0.16),
 

@@ -20,7 +20,7 @@ const S = {
   AboutCardTitle: styled.h3`
     letter-spacing: 0.1rem;
     margin-bottom: 3rem;
-    color: ${({ theme: { colors } }) => colors.primary};
+    color: ${({ theme: { colors } }) => colors.secondary};
   `,
   AboutCardImageContainer: styled.div`
     user-select: none;
