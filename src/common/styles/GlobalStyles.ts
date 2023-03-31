@@ -12,11 +12,11 @@ export const GlobalStyles = createGlobalStyle`
   html {
     box-sizing: border-box;
     scroll-behavior: smooth !important;
-    font-size: 43.75%; //1rem = 7px 7px/16px = 43.75%
+    font-size: 50%; //1rem = 8px 8px/16px = 50%
 
     @media only screen and ${({ theme: { breakPoints } }) =>
       breakPoints.tabletPortrait} {
-      font-size: 50%; //1rem = 8px 8px/16px = 50%
+      font-size: 53.125%; //1rem = 8.5px 8.5px/16px = 53.125%
     }
 
     @media only screen and ${({ theme: { breakPoints } }) =>
