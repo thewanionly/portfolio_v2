@@ -26,7 +26,7 @@ projectsList:
       - Jest
       - React Testing Library
       - Vite
-    viewProjectLink: https://wani-rock-paper-scissors.vercel.app/
+    viewProjectLink: https://rockpaperscissors-wani.vercel.app/
     viewSourceCodeLink: https://github.com/thewanionly/rock-paper-scissors
     image: img/rock-paper-scissors.png
   - title: World Countries
