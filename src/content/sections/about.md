@@ -4,13 +4,14 @@ aboutCard:
   - title: Experienced
     image: img/programming_4c83e1.svg
     blurImage: data:image/webp;base64,UklGRiIDAABXRUJQVlA4WAoAAAAgAAAAjgAAZwAASUNDUMgBAAAAAAHIAAAAAAQwAABtbnRyUkdCIFhZWiAAAAAAAAAAAAAAAABhY3NwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQAA9tYAAQAAAADTLQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAlkZXNjAAAA8AAAACRyWFlaAAABFAAAABRnWFlaAAABKAAAABRiWFlaAAABPAAAABR3dHB0AAABUAAAABRyVFJDAAABZAAAAChnVFJDAAABZAAAAChiVFJDAAABZAAAAChjcHJ0AAABjAAAADxtbHVjAAAAAAAAAAEAAAAMZW5VUwAAAAgAAAAcAHMAUgBHAEJYWVogAAAAAAAAb6IAADj1AAADkFhZWiAAAAAAAABimQAAt4UAABjaWFlaIAAAAAAAACSgAAAPhAAAts9YWVogAAAAAAAA9tYAAQAAAADTLXBhcmEAAAAAAAQAAAACZmYAAPKnAAANWQAAE9AAAApbAAAAAAAAAABtbHVjAAAAAAAAAAEAAAAMZW5VUwAAACAAAAAcAEcAbwBvAGcAbABlACAASQBuAGMALgAgADIAMAAxADZWUDggNAEAAPALAJ0BKo8AaAA+7WCmTb+5MC8uOt1D8B2JaW7gMGgB730BaeFjA6NCaftHRih2OAbCZWkob6hX6USqAO/JpDWZ82HLFa2Yi3WzdpXuyQHCNPwZrQAdzisqHAykupssnQe9pBy9bwMAAOQgVmce6GWsUNomIp85ntFN1gHgmmVPSBy/0YKwO0vtwAx5aiU0Mo4LOOBMWXYDzbrokCQa+guqeOwhXZaw07tnOqVp1rP4BMiCphpTYEvD0v4QKZSHxnzvnrvTlIWDHy0T0oZ4/ORuW9vcM6CalzTqJTXPDakNubVwlnUaAkEN+QcJPvKDd4W8lNmflGD9J9c88YeN9qPBnuk1L1wkABrw139g9GNdwhWw63vwIT1eR9nayMkA6winSRb9HAQ03WqOa/9lHZ5uwAAA
-    description: I'm an experienced frontend engineer for over 4 years now. I've
-      been using ReactJS ever since and have progressed into incorporating
-      TypeScript and NextJS in my technology stack. I'm also proficient in other
-      front-end development technologies and tools.
+    description: I'm an experienced frontend engineer for 5 years. I've been using
+      ReactJS ever since and have progressed into incorporating TypeScript and
+      NextJS in my technology stack. I'm also proficient in other front-end
+      development technologies and tools. I'm still actively and passionately
+      polishing my craft as well as keeping up to date with new technologies.
     highlightedWords:
       - frontend engineer
-      - over 4 years
+      - 5 years
       - ReactJS
       - TypeScript
       - NextJS
