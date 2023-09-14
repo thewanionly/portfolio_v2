@@ -17,8 +17,6 @@ projectsList:
       - ReactJS
       - TypeScript
       - JavaScript
-      - HTML5
-      - CSS3
       - emotion styled
       - Jest
       - React Testing Library
