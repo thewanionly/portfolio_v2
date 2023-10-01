@@ -70,32 +70,26 @@ const StyledHeaderNavToggle = styled.button<HeaderNavToggleProps>`
     }
   }
 
-  ${({ isMobile }) =>
-    !isMobile &&
-    css`
-      display: none;
-    `}
+  @media only screen and ${({ theme: { breakPoints } }) =>
+      breakPoints.tabletLandscape} {
+    display: none;
+  }
 `
 
 type HeaderNavToggleProps = {
   showCloseIcon: boolean
-  isMobile: boolean
 }
 
 export const HeaderNavToggle = () => {
-  const { isNavMenuOpen, showNavBar, toggleNavMenu } = useHeaderContext()
+  const { isNavMenuOpen, toggleNavMenu } = useHeaderContext()
 
   return (
     <StyledHeaderNavToggle
       aria-label={isNavMenuOpen ? 'close nav menu' : 'open nav menu'}
       showCloseIcon={isNavMenuOpen}
-      isMobile={!showNavBar}
       onClick={toggleNavMenu}
     >
-      <StyledHeaderNavToggleIcon
-        showCloseIcon={isNavMenuOpen}
-        isMobile={!showNavBar}
-      />
+      <StyledHeaderNavToggleIcon showCloseIcon={isNavMenuOpen} />
     </StyledHeaderNavToggle>
   )
 }

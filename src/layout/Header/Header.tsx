@@ -86,21 +86,20 @@ const S = {
         text-align: center;
       `}
 
-    ${({ showNavBar }) =>
-      showNavBar &&
-      css`
-        visibility: visible;
-        opacity: 1;
+    @media only screen and ${({ theme: { breakPoints } }) =>
+      breakPoints.tabletLandscape} {
+      visibility: visible;
+      opacity: 1;
 
-        position: initial;
-        top: 0;
-        left: 0;
-        background-color: transparent;
-        padding: 0;
-        width: auto;
-        height: auto;
-        z-index: 0;
-      `}
+      position: initial;
+      top: 0;
+      left: 0;
+      background-color: transparent;
+      padding: 0;
+      width: auto;
+      height: auto;
+      z-index: 0;
+    }
   `,
   HeaderNavBarList: styled(NavBar.List)<HeaderNavBarProps>`
     display: none;
@@ -113,27 +112,25 @@ const S = {
         gap: 2em;
       `}
 
-    ${({ showNavBar }) =>
-      showNavBar &&
-      css`
-        display: flex;
-        flex-direction: row;
-        gap: 3.4rem;
-      `}
+    @media only screen and ${({ theme: { breakPoints } }) =>
+      breakPoints.tabletLandscape} {
+      display: flex;
+      flex-direction: row;
+      gap: 3.4rem;
+    }
   `,
   HeaderNavBarListItem: styled(NavBar.ListItem)``,
 }
 
 type HeaderNavBarProps = {
   isMenu: boolean
-  showNavBar: boolean
 }
 
 export const Header = () => {
   const {
     components: { navLinks, logo },
   } = useContentContext()
-  const { isNavMenuOpen, showNavBar, closeNavMenu } = useHeaderContext()
+  const { isNavMenuOpen, closeNavMenu } = useHeaderContext()
 
   return (
     <S.Header>
@@ -145,8 +142,8 @@ export const Header = () => {
           blurSrc={logo.blurImage}
           onClick={closeNavMenu}
         />
-        <S.HeaderNavBar isMenu={isNavMenuOpen} showNavBar={showNavBar}>
-          <S.HeaderNavBarList isMenu={isNavMenuOpen} showNavBar={showNavBar}>
+        <S.HeaderNavBar isMenu={isNavMenuOpen}>
+          <S.HeaderNavBarList isMenu={isNavMenuOpen}>
             {navLinks.map(({ label, link }) => (
               <S.HeaderNavBarListItem
                 key={label}

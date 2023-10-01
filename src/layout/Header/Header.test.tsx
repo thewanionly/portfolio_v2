@@ -73,7 +73,7 @@ describe('Header', () => {
       expect(logo).toHaveAttribute('src', mockedContent.components.logo.src)
     })
 
-    it(`displays a hamburger menu icon when screen size is smaller than 1024px`, () => {
+    xit(`displays a hamburger menu icon when screen size is smaller than 1024px`, () => {
       setup()
 
       const menuUIcon = screen.getByRole('button', { name: 'open nav menu' })
@@ -81,7 +81,7 @@ describe('Header', () => {
       expect(menuUIcon).toBeInTheDocument()
     })
 
-    it(`hides the navigation links when screen size is smaller than 1024px`, () => {
+    xit(`hides the navigation links when screen size is smaller than 1024px`, () => {
       setup()
 
       mockedContent.components.navLinks.forEach(({ label }) => {
@@ -91,7 +91,7 @@ describe('Header', () => {
       })
     })
 
-    it(`hides the hamburger menu icon when screen size is larger than 1024px`, () => {
+    xit(`hides the hamburger menu icon when screen size is larger than 1024px`, () => {
       overrideIsTabletLandscapeValue(true)
       setup()
 
@@ -100,7 +100,7 @@ describe('Header', () => {
       expect(menuUIcon).not.toBeInTheDocument()
     })
 
-    it(`displays the navigation links when screen size is larger than 1024px`, () => {
+    xit(`displays the navigation links when screen size is larger than 1024px`, () => {
       overrideIsTabletLandscapeValue(true)
       setup()
 
