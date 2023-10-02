@@ -1,5 +1,7 @@
-import styled from 'styled-components'
 import Image from 'next/image'
+import Link from 'next/link'
+
+import styled from 'styled-components'
 
 import { Button, ButtonColor, ButtonVariant } from 'common/components'
 import { ProjectItem as ProjectItemType } from 'common/context'
@@ -16,9 +18,17 @@ const S = {
     aspect-ratio: 16 / 9;
     position: relative;
     margin-bottom: 2rem;
+    overflow: hidden;
+
+    cursor: pointer;
   `,
   ProjectItemImage: styled(Image)`
     object-fit: cover;
+    transition: 0.5s ease all;
+
+    &:hover {
+      transform: scale(1.2);
+    }
   `,
   ProjectItemDetails: styled.div`
     flex: 1;
@@ -92,15 +102,17 @@ export const ProjectItem = ({
   viewSourceCodeCTA,
 }: ProjectItemProps) => (
   <S.ProjectItem className={className}>
-    <S.ProjectItemImageContainer>
-      <S.ProjectItemImage
-        src={image}
-        alt={title}
-        fill
-        placeholder={blurImage ? 'blur' : undefined}
-        blurDataURL={blurImage}
-      />
-    </S.ProjectItemImageContainer>
+    <Link href={viewProjectLink}>
+      <S.ProjectItemImageContainer>
+        <S.ProjectItemImage
+          src={image}
+          alt={title}
+          fill
+          placeholder={blurImage ? 'blur' : undefined}
+          blurDataURL={blurImage}
+        />
+      </S.ProjectItemImageContainer>
+    </Link>
     <S.ProjectItemDetails>
       <S.ProjectItemTitle>{title}</S.ProjectItemTitle>
       <S.ProjectItemTechStackContainer
