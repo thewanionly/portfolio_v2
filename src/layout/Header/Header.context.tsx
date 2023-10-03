@@ -1,4 +1,10 @@
-import { createContext, useCallback, useContext, useState } from 'react'
+import {
+  createContext,
+  useCallback,
+  useContext,
+  useEffect,
+  useState,
+} from 'react'
 
 type HeaderProviderPops = {
   children: React.ReactNode
@@ -34,6 +40,10 @@ export const HeaderProvider = ({
   const toggleNavMenu = useCallback(() => {
     setIsNavMenuOpen((prevValue) => !prevValue)
   }, [])
+
+  useEffect(() => {
+    document.body.style.overflow = isNavMenuOpen ? 'hidden' : 'auto'
+  }, [isNavMenuOpen])
 
   const value = {
     isNavMenuOpen,
