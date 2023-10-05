@@ -26,8 +26,7 @@ const S = {
     flex: 1;
     flex-basis: 100%;
 
-    display: flex;
-    flex-direction: column;
+    display: grid;
     gap: 1rem;
 
     @media only screen and ${({ theme: { breakPoints } }) =>
@@ -39,6 +38,9 @@ const S = {
     }
   `,
   ContactFormFieldLabel: styled.label<HasError>`
+    grid-area: 1 / 1 / 2 / 2;
+    display: inline-block;
+
     font-weight: ${({ theme: { fontWeights } }) => fontWeights.fontWeightBold};
     font-size: ${({ theme: { fontSizes } }) => fontSizes.fontSizeSm};
     text-align: start;
@@ -46,6 +48,9 @@ const S = {
       !$hasError ? colors.bodyLight : colors.error};
   `,
   ContactFormField: styled(Field)<HasError>`
+    grid-area: 2 / 1 / 3 / 3;
+    width: 100%;
+
     outline: none;
     border-radius: 0.5rem;
     background-color: ${({ theme: { colors } }) => colors.formInputBg};
@@ -66,6 +71,9 @@ const S = {
     }
   `,
   ContactFormFieldErrorMessage: styled(ErrorMessage)`
+    justify-self: flex-end;
+    grid-area: 1 / 2 / 2 / 3;
+
     color: ${({ theme: { colors } }) => colors.error};
     text-align: start;
   `,
