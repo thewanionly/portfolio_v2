@@ -118,11 +118,13 @@ export const ProjectItem = ({
       <S.ProjectItemTechStackContainer
         data-testid={`project-techStack-${title}`}
       >
-        {techStack.map((tech) => (
-          <S.ProjectItemTechStackItem key={tech}>
-            {tech}
-          </S.ProjectItemTechStackItem>
-        ))}
+        {techStack
+          .filter((v) => v)
+          .map((tech) => (
+            <S.ProjectItemTechStackItem key={tech}>
+              {tech}
+            </S.ProjectItemTechStackItem>
+          ))}
       </S.ProjectItemTechStackContainer>
       <S.ProjectItemButtonContainer>
         <S.ProjectItemCTAButton
