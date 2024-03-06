@@ -66,7 +66,6 @@ projectsList:
       - Jest
       - React Testing Library
       - ShadcnUI
-      - ""
     viewProjectLink: https://password-generator-wani.vercel.app/
     viewSourceCodeLink: https://github.com/thewanionly/password-generator
   - title: Devfinder
