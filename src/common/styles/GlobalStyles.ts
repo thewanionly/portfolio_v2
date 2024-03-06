@@ -37,6 +37,13 @@ export const GlobalStyles = createGlobalStyle`
   }
 
   body {
+    /* Solution to layout shifts caused by scrollbars */
+    overflow-x: hidden;
+    width: 100vw;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
     /* Custom scrollbar width */
     &::-webkit-scrollbar {
       width: 1rem;

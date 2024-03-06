@@ -42,12 +42,11 @@ export const HeaderProvider = ({
   }, [])
 
   useEffect(() => {
-    document.body.style.overflow = isNavMenuOpen ? 'hidden' : 'auto'
+    document.body.style.overflowY = isNavMenuOpen ? 'hidden' : 'auto'
   }, [isNavMenuOpen])
 
   const value = {
     isNavMenuOpen,
-
     toggleNavMenu,
     closeNavMenu,
   }
