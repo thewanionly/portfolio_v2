@@ -89,19 +89,20 @@ export default function Index({ content }: IndexProps) {
         <link rel="icon" href="/favicon/favicon.ico" />
         <link rel="manifest" href="/favicon/site.webmanifest" />
       </Head>
-      <main>
-        <ContentContext.Provider value={content}>
-          <HeaderProvider>
-            <Header />
-          </HeaderProvider>
+
+      <ContentContext.Provider value={content}>
+        <HeaderProvider>
+          <Header />
+        </HeaderProvider>
+        <main>
           <Hero />
           <About />
           <Skills />
           <Projects />
           <Contact />
           <Footer />
-        </ContentContext.Provider>
-      </main>
+        </main>
+      </ContentContext.Provider>
     </>
   )
 }
