@@ -43,6 +43,7 @@ export const HeaderProvider = ({
 
   useEffect(() => {
     document.body.style.overflowY = isNavMenuOpen ? 'hidden' : 'auto'
+    document.body.style.paddingRight = isNavMenuOpen ? '1rem' : '0'
   }, [isNavMenuOpen])
 
   const value = {

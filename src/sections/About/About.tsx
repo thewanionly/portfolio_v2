@@ -10,6 +10,7 @@ import { AboutCard } from './AboutCard'
 const S = {
   About: styled.section`
     padding: 8rem 0;
+    background-color: ${({ theme: { colors } }) => colors.bodyLightBg};
   `,
   AboutContainer: styled.div`
     ${container}

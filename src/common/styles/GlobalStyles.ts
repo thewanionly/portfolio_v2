@@ -37,12 +37,7 @@ export const GlobalStyles = createGlobalStyle`
   }
 
   body {
-    /* Solution to layout shifts caused by scrollbars */
-    overflow-x: hidden;
-    width: 100vw;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    background-color: ${({ theme: { colors } }) => colors.secondary};
 
     /* Custom scrollbar width */
     &::-webkit-scrollbar {
@@ -67,7 +62,7 @@ export const GlobalStyles = createGlobalStyle`
 
     @media only screen and ${({ theme: { breakPoints } }) =>
       breakPoints.tabletLandscape} {
-     overflow: unset !important;
+     overflow-y: unset !important;
     }
   }
 

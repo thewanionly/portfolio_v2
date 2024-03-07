@@ -8,6 +8,7 @@ import { ProjectItem } from './ProjectItem'
 const S = {
   Projects: styled.section`
     padding: 8rem 0;
+    background-color: ${({ theme: { colors } }) => colors.bodyLightBg};
   `,
   ProjectsContainer: styled.div`
     ${container}
