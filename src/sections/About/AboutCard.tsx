@@ -14,8 +14,9 @@ const S = {
     max-width: 50rem;
     padding: 2.5rem 2rem;
     background-color: ${({ theme: { colors } }) => colors.aboutCardBg};
-    border-radius: 0.8rem;
+    border-radius: 8px;
     text-align: center;
+    border-bottom: 5px solid ${({ theme: { colors } }) => colors.primary};
   `,
   AboutCardTitle: styled.h3`
     letter-spacing: 0.1rem;
