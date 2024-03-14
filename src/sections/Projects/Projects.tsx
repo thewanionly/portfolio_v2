@@ -1,3 +1,5 @@
+import Link from 'next/link'
+
 import styled from 'styled-components'
 
 import { useContentContext } from 'common/context'
@@ -53,7 +55,9 @@ export const Projects = () => {
   return (
     <S.Projects id="projects">
       <S.ProjectsContainer>
-        <S.ProjectsTitle>{sectionTitle}</S.ProjectsTitle>
+        <S.ProjectsTitle>
+          <Link href="#projects">{sectionTitle}</Link>
+        </S.ProjectsTitle>
         <S.ProjectsList>
           {projectsList.map((projectItem) => (
             <S.ProjectItem

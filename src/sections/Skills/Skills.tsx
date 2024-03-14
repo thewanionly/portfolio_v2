@@ -1,3 +1,5 @@
+import Link from 'next/link'
+
 import styled from 'styled-components'
 
 import { useContentContext } from 'common/context'
@@ -53,7 +55,9 @@ export const Skills = () => {
   return (
     <S.Skills id="skills">
       <S.SkillsContainer>
-        <S.SkillsTitle>{sectionTitle}</S.SkillsTitle>
+        <S.SkillsTitle>
+          <Link href="#skills">{sectionTitle}</Link>
+        </S.SkillsTitle>
         <S.SkillsContent>
           {skillsGroup.map(({ description, skillsList }) => (
             <S.SkillsGroup

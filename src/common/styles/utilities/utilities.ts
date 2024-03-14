@@ -23,4 +23,11 @@ export const highlightText = css`
 export const sectionTitle = css`
   text-align: center;
   letter-spacing: 0.15rem;
+
+  a {
+    font-size: inherit;
+    font-weight: inherit;
+    letter-spacing: inherit;
+    color: inherit;
+  }
 `

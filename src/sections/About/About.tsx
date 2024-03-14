@@ -1,3 +1,5 @@
+import Link from 'next/link'
+
 import styled from 'styled-components'
 
 import { Button } from 'common/components'
@@ -68,7 +70,9 @@ export const About = () => {
   return (
     <S.About id="about">
       <S.AboutContainer>
-        <S.AboutTitle>{sectionTitle}</S.AboutTitle>
+        <S.AboutTitle>
+          <Link href="#about">{sectionTitle}</Link>
+        </S.AboutTitle>
         <S.AboutContent>
           {aboutCard.map((aboutCard) => (
             <S.AboutCard key={aboutCard.title} {...aboutCard} />

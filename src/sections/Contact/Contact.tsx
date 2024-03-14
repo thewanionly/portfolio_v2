@@ -1,3 +1,5 @@
+import Link from 'next/link'
+
 import styled from 'styled-components'
 
 import { useContentContext } from 'common/context'
@@ -40,7 +42,9 @@ export const Contact = () => {
   return (
     <S.Contact id="contact">
       <S.ContactContainer>
-        <S.ContactTitle>{sectionTitle}</S.ContactTitle>
+        <S.ContactTitle>
+          <Link href="#contact">{sectionTitle}</Link>
+        </S.ContactTitle>
         <S.ContactMessage>{message}</S.ContactMessage>
         <S.ContactForm />
       </S.ContactContainer>
