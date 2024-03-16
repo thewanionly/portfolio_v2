@@ -27,7 +27,7 @@ const S = {
       margin-bottom: 10rem;
     }
   `,
-  ProjectsList: styled.div`
+  ProjectsList: styled.ul`
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -37,9 +37,13 @@ const S = {
         breakPoints.tabletPortrait} {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(max(47%, 36.5rem), 1fr));
-      gap: 3rem;
+      row-gap: 6rem;
+      column-gap: 3rem;
       justify-items: center;
     }
+  `,
+  ProjectsListItem: styled.li`
+    height: 100%;
   `,
   ProjectItem: styled(ProjectItem)`
     min-width: 36.5rem;
@@ -60,12 +64,13 @@ export const Projects = () => {
         </S.ProjectsTitle>
         <S.ProjectsList>
           {projectsList.map((projectItem) => (
-            <S.ProjectItem
-              key={projectItem.title}
-              {...projectItem}
-              viewProjectCTA={viewProjectCTA}
-              viewSourceCodeCTA={viewSourceCodeCTA}
-            />
+            <S.ProjectsListItem key={projectItem.title}>
+              <S.ProjectItem
+                {...projectItem}
+                viewProjectCTA={viewProjectCTA}
+                viewSourceCodeCTA={viewSourceCodeCTA}
+              />
+            </S.ProjectsListItem>
           ))}
         </S.ProjectsList>
       </S.ProjectsContainer>

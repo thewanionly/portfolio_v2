@@ -9,6 +9,10 @@ import { ProjectItem as ProjectItemType } from 'common/context'
 const S = {
   ProjectItem: styled.div`
     text-align: center;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
   `,
   ProjectItemImageContainer: styled.div`
     flex: 1;
@@ -34,6 +38,7 @@ const S = {
     flex: 1;
     flex-basis: 50%;
     text-align: start;
+    margin-bottom: 2rem;
   `,
   ProjectItemTitle: styled.h3`
     color: ${({ theme: { colors } }) => colors.headingDark};
@@ -45,7 +50,6 @@ const S = {
     flex-wrap: wrap;
     justify-content: flex-start;
     gap: 1rem;
-    margin-bottom: 2rem;
   `,
   ProjectItemTechStackItem: styled.span`
     padding: 0.3rem 0.75rem;
@@ -102,49 +106,51 @@ export const ProjectItem = ({
   viewSourceCodeCTA,
 }: ProjectItemProps) => (
   <S.ProjectItem className={className}>
-    <Link href={viewProjectLink}>
-      <S.ProjectItemImageContainer>
-        <S.ProjectItemImage
-          src={image}
-          alt={title}
-          fill
-          placeholder={blurImage ? 'blur' : undefined}
-          blurDataURL={blurImage}
-        />
-      </S.ProjectItemImageContainer>
-    </Link>
-    <S.ProjectItemDetails>
-      <S.ProjectItemTitle>{title}</S.ProjectItemTitle>
-      <S.ProjectItemTechStackContainer
-        data-testid={`project-techStack-${title}`}
+    <div>
+      <Link href={viewProjectLink}>
+        <S.ProjectItemImageContainer>
+          <S.ProjectItemImage
+            src={image}
+            alt={title}
+            fill
+            placeholder={blurImage ? 'blur' : undefined}
+            blurDataURL={blurImage}
+          />
+        </S.ProjectItemImageContainer>
+      </Link>
+      <S.ProjectItemDetails>
+        <S.ProjectItemTitle>{title}</S.ProjectItemTitle>
+        <S.ProjectItemTechStackContainer
+          data-testid={`project-techStack-${title}`}
+        >
+          {techStack
+            .filter((v) => v)
+            .map((tech) => (
+              <S.ProjectItemTechStackItem key={tech}>
+                {tech}
+              </S.ProjectItemTechStackItem>
+            ))}
+        </S.ProjectItemTechStackContainer>
+      </S.ProjectItemDetails>
+    </div>
+    <S.ProjectItemButtonContainer>
+      <S.ProjectItemCTAButton
+        asLink
+        href={viewProjectLink}
+        color={ButtonColor.SECONDARY}
+        openLinkInNewTab
       >
-        {techStack
-          .filter((v) => v)
-          .map((tech) => (
-            <S.ProjectItemTechStackItem key={tech}>
-              {tech}
-            </S.ProjectItemTechStackItem>
-          ))}
-      </S.ProjectItemTechStackContainer>
-      <S.ProjectItemButtonContainer>
-        <S.ProjectItemCTAButton
-          asLink
-          href={viewProjectLink}
-          color={ButtonColor.SECONDARY}
-          openLinkInNewTab
-        >
-          {viewProjectCTA}
-        </S.ProjectItemCTAButton>
-        <S.ProjectItemCTAButton
-          asLink
-          href={viewSourceCodeLink}
-          color={ButtonColor.SECONDARY}
-          variant={ButtonVariant.OUTLINED}
-          openLinkInNewTab
-        >
-          {viewSourceCodeCTA}
-        </S.ProjectItemCTAButton>
-      </S.ProjectItemButtonContainer>
-    </S.ProjectItemDetails>
+        {viewProjectCTA}
+      </S.ProjectItemCTAButton>
+      <S.ProjectItemCTAButton
+        asLink
+        href={viewSourceCodeLink}
+        color={ButtonColor.SECONDARY}
+        variant={ButtonVariant.OUTLINED}
+        openLinkInNewTab
+      >
+        {viewSourceCodeCTA}
+      </S.ProjectItemCTAButton>
+    </S.ProjectItemButtonContainer>
   </S.ProjectItem>
 )
