@@ -60,6 +60,7 @@ const S = {
     height: 100%;
     transition: border-radius 1s ease-out;
     border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%;
+    animation: ${morph} 8s ease-in-out infinite both alternate;
     position: absolute;
     overflow: hidden;
   `,
