@@ -33,26 +33,36 @@ const S = {
     margin-top: 6rem;
     text-align: center;
     align-items: center;
+
+    @media only screen and ${({ theme: { breakPoints } }) =>
+        breakPoints.tabletLandscape} {
+      display: grid;
+      grid-template-columns: 1fr max-content;
+      grid-template-areas:
+        'left1 right'
+        'left2 right'
+        'left3 right'
+        'left4 right';
+      column-gap: 9rem;
+      text-align: start;
+    }
   `,
   HeroTitle: styled.h1`
+    grid-area: left1;
     text-transform: uppercase;
   `,
   HeroImageSpinContainer: styled.div`
+    grid-area: right;
     margin: 3rem 0 2rem;
-    width: 20rem;
+    width: 23rem;
     aspect-ratio: 1/1;
     position: relative;
     animation: ${spin} 12s ease-in-out infinite alternate;
 
     @media only screen and ${({ theme: { breakPoints } }) =>
         breakPoints.tabletPortrait} {
-      width: 25rem;
-      margin: 4rem 0 3rem;
-    }
-
-    @media only screen and ${({ theme: { breakPoints } }) =>
-        breakPoints.desktop} {
       width: 30rem;
+      margin: 4rem 0 3rem;
     }
   `,
   HeroImageContainer: styled.div`
@@ -91,7 +101,9 @@ const S = {
     line-height: inherit;
     font-weight: inherit;
   `,
-  HeroSubtitle: styled.div``,
+  HeroSubtitle: styled.div`
+    grid-area: left2;
+  `,
   HeroNicknameText: styled.p`
     color: ${({ theme: { colors } }) => colors.bodyLighter};
     line-height: 2.5rem;
@@ -101,25 +113,44 @@ const S = {
     line-height: 2.5rem;
     max-width: 48rem;
     margin: 0 auto;
+
+    @media only screen and ${({ theme: { breakPoints } }) =>
+        breakPoints.tabletLandscape} {
+      margin: 0;
+    }
   `,
   HeroTextHighlight: styled.strong`
     ${highlightText}
   `,
   HeroCTAButtonGroup: styled.div`
+    grid-area: left3;
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
     gap: 2rem;
+
+    @media only screen and ${({ theme: { breakPoints } }) =>
+        breakPoints.tabletLandscape} {
+      justify-content: flex-start;
+    }
   `,
   HeroCTAButton: styled(Button)`
     flex: 1;
     flex-basis: 45%;
     max-width: 100%;
-    min-width: 29rem;
+    min-width: 25rem;
 
     @media only screen and ${({ theme: { breakPoints } }) =>
-        breakPoints.tabletPortrait} {
+        breakPoints.tabletLandscape} {
       max-width: 35rem;
+    }
+  `,
+  SocialIcons: styled(SocialIcons)`
+    grid-area: left4;
+
+    @media only screen and ${({ theme: { breakPoints } }) =>
+        breakPoints.tabletLandscape} {
+      justify-content: flex-start;
     }
   `,
 }
@@ -177,7 +208,7 @@ export const Hero = () => {
             {contactsCTA}
           </S.HeroCTAButton>
         </S.HeroCTAButtonGroup>
-        <SocialIcons icons={socialLinks} />
+        <S.SocialIcons icons={socialLinks} />
       </S.HeroContainer>
     </S.Hero>
   )
