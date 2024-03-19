@@ -57,7 +57,10 @@ const S = {
     width: 23rem;
     aspect-ratio: 1/1;
     position: relative;
-    animation: ${spin} 12s ease-in-out infinite alternate;
+
+    @media (prefers-reduced-motion: no-preference) {
+      animation: ${spin} 12s ease-in-out infinite alternate;
+    }
 
     @media only screen and ${({ theme: { breakPoints } }) =>
         breakPoints.tabletPortrait} {
@@ -70,9 +73,13 @@ const S = {
     height: 100%;
     transition: border-radius 1s ease-out;
     border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%;
-    animation: ${morph} 8s ease-in-out infinite both alternate;
+
     position: absolute;
     overflow: hidden;
+
+    @media (prefers-reduced-motion: no-preference) {
+      animation: ${morph} 8s ease-in-out infinite both alternate;
+    }
   `,
   HeroImage: styled.div`
     width: 142%;
@@ -86,7 +93,9 @@ const S = {
     background-position: center;
     background-repeat: no-repeat;
 
-    animation: ${spin} 12s ease-in-out infinite alternate-reverse;
+    @media (prefers-reduced-motion: no-preference) {
+      animation: ${spin} 12s ease-in-out infinite alternate-reverse;
+    }
   `,
   HeroTitleSecondary: styled.span`
     display: block;
