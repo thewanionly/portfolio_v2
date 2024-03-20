@@ -39,10 +39,10 @@ const S = {
       display: grid;
       grid-template-columns: 1fr max-content;
       grid-template-areas:
-        'left1 right'
-        'left2 right'
-        'left3 right'
-        'left4 right';
+        'left1 right1'
+        'left2 right1'
+        'left3 right2'
+        'left4 right3';
       column-gap: 9rem;
       text-align: start;
     }
@@ -52,7 +52,7 @@ const S = {
     text-transform: uppercase;
   `,
   HeroImageSpinContainer: styled.div`
-    grid-area: right;
+    grid-area: right1;
     margin: 3rem 0 2rem;
     width: 23rem;
     aspect-ratio: 1/1;
@@ -112,6 +112,11 @@ const S = {
   `,
   HeroSubtitle: styled.div`
     grid-area: left2;
+
+    @media only screen and ${({ theme: { breakPoints } }) =>
+        breakPoints.tabletLandscape} {
+      align-self: flex-start;
+    } ;
   `,
   HeroNicknameText: styled.p`
     color: ${({ theme: { colors } }) => colors.bodyLighter};
@@ -155,10 +160,12 @@ const S = {
     }
   `,
   SocialIcons: styled(SocialIcons)`
-    grid-area: left4;
+    grid-area: right2;
+    justify-self: center;
 
     @media only screen and ${({ theme: { breakPoints } }) =>
         breakPoints.tabletLandscape} {
+      margin-top: -10px;
       justify-content: flex-start;
     }
   `,
