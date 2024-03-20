@@ -58,9 +58,10 @@ const S = {
     aspect-ratio: 1/1;
     position: relative;
 
-    @media (prefers-reduced-motion: no-preference) {
+    /* TODO: comment out for now as animation is causing slow browser rendering performace */
+    /* @media (prefers-reduced-motion: no-preference) {
       animation: ${spin} 12s ease-in-out infinite alternate;
-    }
+    } */
 
     @media only screen and ${({ theme: { breakPoints } }) =>
         breakPoints.tabletPortrait} {
@@ -77,9 +78,10 @@ const S = {
     position: absolute;
     overflow: hidden;
 
-    @media (prefers-reduced-motion: no-preference) {
+    /* TODO: comment out for now as animation is causing slow browser rendering performace */
+    /* @media (prefers-reduced-motion: no-preference) {
       animation: ${morph} 8s ease-in-out infinite both alternate;
-    }
+    } */
   `,
   HeroImage: styled.div`
     width: 142%;
@@ -93,9 +95,10 @@ const S = {
     background-position: center;
     background-repeat: no-repeat;
 
-    @media (prefers-reduced-motion: no-preference) {
+    /* TODO: comment out for now as animation is causing slow browser rendering performace */
+    /* @media (prefers-reduced-motion: no-preference) {
       animation: ${spin} 12s ease-in-out infinite alternate-reverse;
-    }
+    } */
   `,
   HeroTitleSecondary: styled.span`
     display: block;
